@@ -1,0 +1,72 @@
+[
+  {
+    "id": "dcauto-001",
+    "question": "Which HTTP method is used to create a new resource on a REST API?",
+    "options": ["GET", "POST", "PUT", "PATCH"],
+    "correct": 1,
+    "explanation": "POST is used to create new resources. GET retrieves, PUT replaces, and PATCH partially updates existing resources."
+  },
+  {
+    "id": "dcauto-002",
+    "question": "Which data format is the default for most modern REST APIs?",
+    "options": ["XML", "YAML", "JSON", "CSV"],
+    "correct": 2,
+    "explanation": "JSON (JavaScript Object Notation) is the default format for most modern REST APIs due to its lightweight structure and readability."
+  },
+  {
+    "id": "dcauto-003",
+    "question": "What does YANG stand for in the context of network automation?",
+    "options": ["Yet Another Next Generation", "Your Automated Network Guide", "YAML And Netconf Grammar", "None — it is not an acronym"],
+    "correct": 0,
+    "explanation": "YANG stands for Yet Another Next Generation. It is a data modeling language used to model configuration and state data for NETCONF and RESTCONF."
+  },
+  {
+    "id": "dcauto-004",
+    "question": "Which transport protocol does NETCONF use by default?",
+    "options": ["HTTP", "HTTPS", "SSH", "SNMP"],
+    "correct": 2,
+    "explanation": "NETCONF uses SSH (port 830) as its default transport protocol. It encodes data in XML and uses RPC-based operations."
+  },
+  {
+    "id": "dcauto-005",
+    "question": "How does RESTCONF differ from NETCONF?",
+    "options": ["RESTCONF uses XML, NETCONF uses JSON", "RESTCONF uses HTTP/HTTPS, NETCONF uses SSH", "RESTCONF replaces YANG models", "RESTCONF is only for Cisco devices"],
+    "correct": 1,
+    "explanation": "RESTCONF provides a RESTful interface over HTTP/HTTPS for accessing YANG-modeled data, while NETCONF uses SSH. Both can use YANG models."
+  },
+  {
+    "id": "dcauto-006",
+    "question": "In Cisco ACI, what is the correct object hierarchy from top to bottom?",
+    "options": ["EPG → BD → VRF → Tenant", "Tenant → VRF → BD → EPG", "VRF → Tenant → EPG → BD", "Tenant → BD → VRF → EPG"],
+    "correct": 1,
+    "explanation": "The ACI object hierarchy flows: Tenant → VRF (context) → Bridge Domain (BD) → Endpoint Group (EPG). The Tenant is the top-level container."
+  },
+  {
+    "id": "dcauto-007",
+    "question": "Which Python library is commonly used to make REST API calls?",
+    "options": ["flask", "requests", "paramiko", "django"],
+    "correct": 1,
+    "explanation": "The 'requests' library is the standard Python library for making HTTP/REST API calls. Flask and Django are web frameworks, and Paramiko is for SSH."
+  },
+  {
+    "id": "dcauto-008",
+    "question": "In an Ansible playbook, what keyword defines the list of actions to perform?",
+    "options": ["actions", "steps", "tasks", "commands"],
+    "correct": 2,
+    "explanation": "Ansible playbooks use 'tasks' to define the list of actions (modules) to execute on target hosts. Each task calls a specific Ansible module."
+  },
+  {
+    "id": "dcauto-009",
+    "question": "What type of API does Cisco DNA Center (Catalyst Center) expose?",
+    "options": ["SNMP-based API", "Intent-based REST API", "CLI-only API", "SOAP-based API"],
+    "correct": 1,
+    "explanation": "Cisco DNA Center exposes an intent-based REST API that allows you to express what you want the network to do, rather than configuring individual devices."
+  },
+  {
+    "id": "dcauto-010",
+    "question": "Which Git command creates a copy of a remote repository on your local machine?",
+    "options": ["git pull", "git fork", "git clone", "git init"],
+    "correct": 2,
+    "explanation": "git clone creates a full local copy of a remote repository including all branches and history. git init creates a new empty repository."
+  }
+]
