@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Claude memory and plans (but keep skills)
+.claude/memory/
+.claude/plans/
