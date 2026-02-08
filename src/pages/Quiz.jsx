@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import Question from '../components/Question'
 import Results from '../components/Results'
 import { loadQuestions } from '../utils/questionLoader'
+import exams from '../data/exams.json'
 
 const STREAK_KEY = 'latchd_streak'
 
@@ -43,6 +44,15 @@ export default function Quiz() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
   const { currentIndex, selectedAnswer, showFeedback, answers, completed } = state
+
+  const examData = exams.find(e => e.id === examId)
+  const topicData = examData?.topics.find(t => t.id === topicId)
+
+  useEffect(() => {
+    if (topicData && examData) {
+      document.title = `${topicData.name} — ${examData.name} | Latchd`
+    }
+  }, [topicData, examData])
 
   useEffect(() => {
     setLoading(true)
@@ -99,10 +109,10 @@ export default function Quiz() {
 
   if (loading) {
     return (
-      <div className="min-h-screen px-4 py-6 pb-8">
+      <div className="min-h-dvh px-4 py-6 pb-8">
         <div className="max-w-lg mx-auto">
           <div className="text-center py-12">
-            <div className="text-[#a0a0a0]">Loading questions...</div>
+            <div className="text-[#6b5e52]">Loading questions...</div>
           </div>
         </div>
       </div>
@@ -111,15 +121,15 @@ export default function Quiz() {
 
   if (error || questions.length === 0) {
     return (
-      <div className="min-h-screen px-4 py-6 pb-8">
+      <div className="min-h-dvh px-4 py-6 pb-8">
         <div className="max-w-lg mx-auto">
           <div className="text-center py-12">
-            <h1 className="text-xl font-bold text-[#f5f5f5] mb-2">
+            <h1 className="text-xl font-bold text-[#2c2418] mb-2">
               {error || 'No questions found'}
             </h1>
             <button
               onClick={handleBackHome}
-              className="text-sm text-orange-500 hover:text-orange-400"
+              className="text-sm text-[#e07840] hover:text-[#c8682f]"
             >
               ← Back to Home
             </button>
@@ -131,13 +141,14 @@ export default function Quiz() {
 
   if (completed) {
     return (
-      <div className="min-h-screen px-4 py-6 pb-8">
+      <div className="min-h-dvh px-4 py-6 pb-8">
         <div className="max-w-lg mx-auto">
           <Results
             questions={questions}
             answers={answers}
             onTryAgain={handleTryAgain}
             onBackHome={handleBackHome}
+            examId={examId}
           />
         </div>
       </div>
@@ -148,20 +159,20 @@ export default function Quiz() {
   const progressPct = ((currentIndex + 1) / questions.length) * 100
 
   return (
-    <div className="min-h-screen px-4 py-6 pb-8">
+    <div className="min-h-dvh px-4 py-6 pb-8">
       <div className="max-w-lg mx-auto">
         <div className="mb-6">
           <div className="flex justify-between items-center mb-2">
-            <span className="text-xs text-[#a0a0a0]">
+            <span className="text-xs text-[#6b5e52]">
               Question {currentIndex + 1} of {questions.length}
             </span>
-            <span className="text-xs text-[#666666]">
+            <span className="text-xs text-[#a39686]">
               {Math.round(progressPct)}%
             </span>
           </div>
-          <div className="w-full h-2 bg-[#2a2a2a] rounded-full">
+          <div className="w-full h-2 bg-[#e8e0d8] rounded-full">
             <div
-              className="h-2 bg-orange-500 rounded-full transition-all duration-300"
+              className="h-2 bg-[#e07840] rounded-full transition-all duration-300"
               style={{ width: `${progressPct}%` }}
             />
           </div>
@@ -177,7 +188,7 @@ export default function Quiz() {
         {showFeedback && (
           <button
             onClick={handleNext}
-            className="mt-6 w-full bg-orange-500 hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-500/50 text-white font-semibold py-3 rounded-lg transition-colors"
+            className="mt-6 w-full bg-[#e07840] hover:bg-[#c8682f] focus:outline-none focus:ring-2 focus:ring-[#e07840]/50 text-white font-semibold py-3 rounded-lg transition-colors"
           >
             {currentIndex < questions.length - 1 ? 'Next Question' : 'See Results'}
           </button>

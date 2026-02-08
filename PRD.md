@@ -18,7 +18,7 @@ Network engineer students preparing for Cisco DevNet exams (DCAUTO, DEVASC, DEVC
 - JSON quiz data, localStorage streak
 - Deployed: https://latchd-app.angel-inglese.workers.dev/
 
-## v1.1 — CURRENT
+## v1.1 — COMPLETED ✅
 
 ### Goals
 1. Restructure data for multiple exams with topics/subtopics
@@ -162,13 +162,83 @@ src/
 | 7-8 | Update Quiz to load topic-specific questions | ✅ |
 | 9-10 | Write DCAUTO topic questions (3 topics, 10 each) | ✅ |
 | 11-12 | Add EmailCTA component + integration | ✅ |
-| 13-14 | Polish, deploy, share | ⬜ |
+| 13-14 | Polish, deploy, share | ✅ |
 
 ## v1.1 Success Criteria
 
 - [x] 3+ exam topics with 10 questions each
 - [x] Exam → Topic → Quiz navigation works
-- [ ] Email CTA captures at least 1 signup
+- [ ] Email CTA captures at least 1 signup (deferred — localStorage only, no backend)
+- [x] Deployed and live
+
+## v1.2 — CURRENT
+
+### Goals
+1. Visual refresh: dark → warm light theme (Claude-inspired + subtle space accents)
+2. UX fix: CTA after quiz results ("Try another topic")
+3. SEO: meta tags, Open Graph, per-page titles
+4. Analytics: Cloudflare Web Analytics
+
+### Theme Direction
+
+Inspired by Claude's warm, cream-toned aesthetic merged with subtle space/NASA personality.
+
+- Cream/warm white background (`#faf8f5` or similar)
+- Soft shadows instead of hard borders
+- Warm text colors (dark brown/charcoal, not pure black)
+- Orange accent stays but softer/warmer
+- Subtle space emojis (🚀 🛸 ⭐ 🌌) as personality, not decoration
+- Rounded, approachable typography
+- Mobile-first, centered `max-w-lg` layout stays
+
+### UX Improvements
+
+- Results screen: add "Try another topic" CTA linking back to the exam's topic list
+- Results screen: add "Share your score" (copy-to-clipboard, no social auth)
+
+### SEO
+
+- `<title>` per page ("DCAUTO Practice Quiz | Latchd")
+- `<meta name="description">` per page
+- Open Graph tags (og:title, og:description, og:image, og:url)
+- Favicon (replace vite.svg with Latchd icon)
+- Canonical URLs
+
+### Analytics
+
+- Cloudflare Web Analytics (free)
+- Add JS snippet to `index.html`
+- No cookie banners needed (privacy-first, no cookies)
+
+## NOT in v1.2
+
+- No auth / Sign In
+- No Supabase or backend DB
+- No payments
+- No badges / gamification beyond streak
+- No profile page
+- No TypeScript
+- No real email capture backend (EmailCTA stays localStorage for now)
+
+## v1.2 Sprint (1hr/day, ~2 weeks)
+
+| Days | Task | Done |
+|------|------|------|
+| 1-2 | Update tailwind config + global styles for warm theme | ⬜ |
+| 3-4 | Restyle Home, ExamCard, StreakCounter | ⬜ |
+| 5-6 | Restyle ExamDetail, TopicCard, EmailCTA | ⬜ |
+| 7-8 | Restyle Quiz, Question, Results + add post-quiz CTA | ⬜ |
+| 9-10 | SEO: meta tags, OG tags, favicon | ⬜ |
+| 11-12 | Cloudflare Web Analytics setup + test | ⬜ |
+| 13-14 | Polish, deploy, verify analytics working | ⬜ |
+
+## v1.2 Success Criteria
+
+- [ ] Warm light theme applied across all screens
+- [ ] Space emojis integrated subtly
+- [ ] Post-quiz CTA works ("Try another topic")
+- [ ] SEO meta tags on all pages
+- [ ] Cloudflare Web Analytics showing visitor data
 - [ ] Deployed and live
 
 ## Lessons Learned from v0
@@ -196,3 +266,5 @@ Blockers: [any issues]
 | 2026-02-07 | v1.0 PRD created (fresh start) |
 | 2026-02-07 | v1.0 deployed to Cloudflare Pages ✅ |
 | 2026-02-07 | v1.1 scope added: exam/topic structure, more exams, email CTA |
+| 2026-02-08 | v1.1 completed ✅ (4 exams, 12 topics, 120 questions, EmailCTA) |
+| 2026-02-08 | v1.2 scope: warm theme, post-quiz CTA, SEO, CF Web Analytics |

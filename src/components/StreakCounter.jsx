@@ -23,8 +23,9 @@ export default function StreakCounter() {
   const [streak] = useState(getStreak)
 
   return (
-    <div className="flex items-center gap-2 text-[#a0a0a0] text-sm">
-      <span className="text-orange-500 font-semibold text-base">{streak}</span>
+    <div className="flex items-center gap-2 text-[#6b5e52] text-sm">
+      <span>🔥</span>
+      <span className="text-[#e07840] font-semibold text-base">{streak}</span>
       <span>day streak</span>
     </div>
   )

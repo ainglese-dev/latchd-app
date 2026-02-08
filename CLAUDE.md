@@ -7,7 +7,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 Latchd — Quiz app for network engineers studying Cisco DevNet/DC automation certifications (DCAUTO, DEVASC, DEVCOR). **PRD.md is the source of truth** — read it at the start of every session.
 
 - v1.0: COMPLETED ✅ — Single DCAUTO quiz, deployed to Cloudflare Pages
-- v1.1: CURRENT — Exam/topic structure, more exams, email CTA
+- v1.1: COMPLETED ✅ — Exam/topic structure, 4 exams, 12 topics, email CTA
+- v1.2: CURRENT — Warm light theme, post-quiz CTA, SEO, CF Web Analytics
 
 ## Tech Stack
 
@@ -67,7 +68,18 @@ src/
 
 `correct` is the zero-based index into `options`.
 
-## Constraints (v1.1)
+## v1.2 Theme Direction
+
+Warm light theme inspired by Claude's aesthetic + subtle space personality:
+- Background: cream/warm white (`#faf8f5` or similar) — NOT dark mode
+- Cards: white with soft shadows — NOT hard borders
+- Text: dark brown/charcoal — NOT pure black
+- Accent: warm orange (softer than current `#f97316`)
+- Space emojis (🚀 🛸 ⭐ 🌌) as subtle personality accents
+- Typography: Inter stays, rounded and approachable feel
+- Correct: green, Wrong: red (same logic, adjusted for light bg)
+
+## Constraints (v1.2)
 
 Do NOT build any of these — they are explicitly excluded:
 - Authentication / sign-in
@@ -79,6 +91,7 @@ Do NOT build any of these — they are explicitly excluded:
 - Leaderboard
 - Question randomization across topics
 - Progress tracking per topic (localStorage streak only)
+- Real email capture backend (EmailCTA stays localStorage)
 
 ## Lessons from v0
 

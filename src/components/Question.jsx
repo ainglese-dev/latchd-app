@@ -2,16 +2,16 @@ function getOptionStyle(index, correctIndex, selectedAnswer, showFeedback) {
   const base = 'w-full text-left p-4 rounded-lg border transition-colors text-sm'
 
   if (!showFeedback) {
-    return `${base} border-[#2a2a2a] hover:border-orange-500 hover:bg-[#222222] active:bg-[#1a1a1a] focus:outline-none focus:ring-2 focus:ring-orange-500/50 cursor-pointer`
+    return `${base} border-[#e8e0d8] hover:border-[#e07840] hover:bg-[#f5f0ea] active:bg-[#f5f0ea] focus:outline-none focus:ring-2 focus:ring-[#e07840]/50 shadow-card cursor-pointer`
   }
 
   if (index === correctIndex) {
-    return `${base} border-green-500 bg-green-500/10 cursor-default`
+    return `${base} border-[#2d8a4e] bg-[#2d8a4e]/10 cursor-default`
   }
   if (index === selectedAnswer && index !== correctIndex) {
-    return `${base} border-red-500 bg-red-500/10 cursor-default`
+    return `${base} border-[#c44545] bg-[#c44545]/10 cursor-default`
   }
-  return `${base} border-[#2a2a2a] opacity-50 cursor-default`
+  return `${base} border-[#e8e0d8] opacity-50 cursor-default`
 }
 
 export default function Question({ question, selectedAnswer, showFeedback, onSelect }) {
@@ -28,17 +28,17 @@ export default function Question({ question, selectedAnswer, showFeedback, onSel
             disabled={showFeedback}
             className={getOptionStyle(i, question.correct, selectedAnswer, showFeedback)}
           >
-            <span className="font-mono text-orange-500 mr-3">{String.fromCharCode(65 + i)}</span>
+            <span className="font-mono text-[#e07840] mr-3">{String.fromCharCode(65 + i)}</span>
             {option}
           </button>
         ))}
       </div>
       {showFeedback && (
-        <div className={`mt-4 p-4 rounded-lg ${isCorrect ? 'bg-green-500/10 border border-green-500/30' : 'bg-red-500/10 border border-red-500/30'}`}>
-          <p className={`font-semibold ${isCorrect ? 'text-green-400' : 'text-red-400'}`}>
+        <div className={`mt-4 p-4 rounded-lg ${isCorrect ? 'bg-[#2d8a4e]/10 border border-[#2d8a4e]/30' : 'bg-[#c44545]/10 border border-[#c44545]/30'}`}>
+          <p className={`font-semibold ${isCorrect ? 'text-[#2d8a4e]' : 'text-[#c44545]'}`}>
             {isCorrect ? 'Correct!' : 'Incorrect'}
           </p>
-          <p className="text-sm text-[#a0a0a0] mt-1">{question.explanation}</p>
+          <p className="text-sm text-[#6b5e52] mt-1">{question.explanation}</p>
         </div>
       )}
     </div>

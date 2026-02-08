@@ -2,11 +2,24 @@
 
 @theme {
   --font-sans: 'Inter', system-ui, sans-serif;
+
+  /* Warm light palette */
+  --color-cream: #faf8f5;
+  --color-surface-alt: #f5f0ea;
+  --color-charcoal: #2c2418;
+  --color-accent: #e07840;
+  --color-accent-hover: #c8682f;
+  --color-correct: #2d8a4e;
+  --color-wrong: #c44545;
+
+  /* Card shadows */
+  --shadow-card: 0 1px 3px rgba(44, 36, 24, 0.06), 0 1px 2px rgba(44, 36, 24, 0.04);
+  --shadow-card-hover: 0 4px 12px rgba(44, 36, 24, 0.08), 0 2px 4px rgba(44, 36, 24, 0.04);
 }
 
 body {
-  background-color: #111111;
-  color: #f5f5f5;
+  background-color: #faf8f5;
+  color: #2c2418;
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

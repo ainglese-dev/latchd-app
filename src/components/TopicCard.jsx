@@ -1,21 +1,17 @@
 import { Link } from 'react-router-dom'
 
-export default function TopicCard({ examId, topicId, name, description, questionCount, category = 'devnet' }) {
-  const colorClasses = category === 'enterprise'
-    ? 'bg-blue-500 hover:bg-blue-600 focus:ring-blue-500/50'
-    : 'bg-orange-500 hover:bg-orange-600 focus:ring-orange-500/50'
-
+export default function TopicCard({ examId, topicId, name, description, questionCount }) {
   return (
-    <div className="bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-5">
-      <h2 className="text-lg font-semibold text-[#f5f5f5] mb-1">{name}</h2>
-      <p className="text-sm text-[#a0a0a0] mb-4">{description}</p>
+    <div className="bg-white border border-[#e8e0d8] rounded-xl p-5 shadow-card hover:shadow-card-hover transition-shadow">
+      <h2 className="text-lg font-semibold text-[#2c2418] mb-1">{name}</h2>
+      <p className="text-sm text-[#6b5e52] mb-4">{description}</p>
       <div className="flex items-center justify-between">
-        <span className="text-xs text-[#666666]">{questionCount} questions</span>
+        <span className="text-xs text-[#a39686]">{questionCount} questions</span>
         <Link
           to={`/exam/${examId}/${topicId}`}
-          className={`${colorClasses} focus:outline-none focus:ring-2 text-white font-semibold text-sm px-5 py-2 rounded-lg transition-colors`}
+          className="bg-[#e07840] hover:bg-[#c8682f] focus:outline-none focus:ring-2 focus:ring-[#e07840]/50 text-white font-semibold text-sm px-5 py-2 rounded-lg transition-colors"
         >
-          Start Quiz
+          Start Quiz 🚀
         </Link>
       </div>
     </div>
