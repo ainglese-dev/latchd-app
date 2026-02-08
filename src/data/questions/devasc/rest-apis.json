@@ -1,0 +1,72 @@
+[
+  {
+    "id": "devasc-api-001",
+    "question": "Which HTTP status code indicates that a resource was successfully created?",
+    "options": ["200 OK", "201 Created", "204 No Content", "202 Accepted"],
+    "correct": 1,
+    "explanation": "201 Created indicates successful resource creation. 200 OK is for general success, 204 No Content is for successful requests with no response body, and 202 Accepted means the request was accepted but not yet processed."
+  },
+  {
+    "id": "devasc-api-002",
+    "question": "What HTTP request header specifies the format of the data being sent in the request body?",
+    "options": ["Accept", "Content-Type", "Authorization", "Content-Length"],
+    "correct": 1,
+    "explanation": "Content-Type specifies the format of data in the request body (e.g., application/json). Accept specifies what format the client wants in the response, not the request."
+  },
+  {
+    "id": "devasc-api-003",
+    "question": "Which authentication method sends credentials in the format 'Bearer <token>' in the Authorization header?",
+    "options": ["Basic Authentication", "API Key", "OAuth 2.0 Token", "Digest Authentication"],
+    "correct": 2,
+    "explanation": "OAuth 2.0 and JWT tokens use the 'Bearer' prefix in the Authorization header. Basic Authentication uses 'Basic' prefix with base64-encoded credentials."
+  },
+  {
+    "id": "devasc-api-004",
+    "question": "What is the difference between query parameters and path parameters in a REST API URL?",
+    "options": ["Query parameters filter results; path parameters identify resources", "Path parameters are optional; query parameters are required", "Query parameters are encrypted; path parameters are plain text", "There is no functional difference between them"],
+    "correct": 0,
+    "explanation": "Path parameters (e.g., /users/123) identify specific resources, while query parameters (e.g., ?status=active) filter or modify the request. Path parameters are part of the route."
+  },
+  {
+    "id": "devasc-api-005",
+    "question": "Which HTTP methods are considered idempotent, meaning multiple identical requests have the same effect as a single request?",
+    "options": ["GET, POST, DELETE", "GET, PUT, DELETE", "POST, PUT, PATCH", "Only GET"],
+    "correct": 1,
+    "explanation": "GET, PUT, and DELETE are idempotent — repeating them produces the same result. POST is not idempotent; each request creates a new resource."
+  },
+  {
+    "id": "devasc-api-006",
+    "question": "What HTTP response header is used by servers to implement rate limiting by informing clients when they can retry?",
+    "options": ["Retry-After", "Rate-Limit-Reset", "X-RateLimit-Remaining", "Throttle-Delay"],
+    "correct": 0,
+    "explanation": "Retry-After specifies how long the client should wait before retrying. X-RateLimit-Remaining is often used alongside it but indicates remaining requests, not retry timing."
+  },
+  {
+    "id": "devasc-api-007",
+    "question": "How does REST differ from SOAP in terms of data format?",
+    "options": ["REST only uses JSON; SOAP only uses XML", "REST supports multiple formats (JSON, XML); SOAP uses only XML", "REST uses XML; SOAP uses JSON", "Both REST and SOAP only support binary formats"],
+    "correct": 1,
+    "explanation": "REST is flexible and commonly uses JSON but also supports XML and other formats. SOAP strictly uses XML for messaging."
+  },
+  {
+    "id": "devasc-api-008",
+    "question": "Why do modern REST APIs commonly prefer JSON over XML?",
+    "options": ["JSON is more secure than XML", "JSON is more human-readable and lightweight", "JSON supports more data types than XML", "XML is deprecated and no longer supported"],
+    "correct": 1,
+    "explanation": "JSON is preferred for its lightweight structure and better human readability. It's easier to parse in JavaScript and most modern languages. XML is not deprecated but is more verbose."
+  },
+  {
+    "id": "devasc-api-009",
+    "question": "What is the purpose of CORS (Cross-Origin Resource Sharing) in REST APIs?",
+    "options": ["To encrypt API traffic between client and server", "To allow web browsers to make requests to different domains", "To compress API responses for faster transmission", "To implement API versioning across domains"],
+    "correct": 1,
+    "explanation": "CORS is a security mechanism that allows browsers to make requests to domains different from the one serving the web page. It controls cross-origin requests via HTTP headers."
+  },
+  {
+    "id": "devasc-api-010",
+    "question": "Which API versioning strategy embeds the version number in the URI path?",
+    "options": ["Header-based versioning", "Query parameter versioning", "URI versioning (e.g., /api/v1/users)", "Content negotiation versioning"],
+    "correct": 2,
+    "explanation": "URI versioning places the version in the path (e.g., /api/v1/users or /v2/products). This is the most common and visible approach, though header-based versioning is also used."
+  }
+]

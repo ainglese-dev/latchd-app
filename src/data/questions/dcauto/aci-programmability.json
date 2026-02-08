@@ -1,0 +1,72 @@
+[
+  {
+    "id": "dcauto-aci-001",
+    "question": "In Cisco ACI, what is the correct object hierarchy from top to bottom?",
+    "options": ["EPG → BD → VRF → Tenant", "Tenant → VRF → BD → EPG", "VRF → Tenant → EPG → BD", "Tenant → BD → VRF → EPG"],
+    "correct": 1,
+    "explanation": "The ACI object hierarchy flows: Tenant → VRF (context) → Bridge Domain (BD) → Endpoint Group (EPG). The Tenant is the top-level container."
+  },
+  {
+    "id": "dcauto-aci-002",
+    "question": "What is the primary purpose of an Endpoint Group (EPG) in Cisco ACI?",
+    "options": ["To group endpoints with common policy requirements", "To configure IP addressing for VLAN subnets", "To define physical switch port configurations", "To establish routing protocols between fabrics"],
+    "correct": 0,
+    "explanation": "EPGs group endpoints (VMs, containers, bare-metal servers) that require the same policy treatment. IP addressing is handled by Bridge Domains, not EPGs."
+  },
+  {
+    "id": "dcauto-aci-003",
+    "question": "In ACI, what is the relationship between Contracts and Subjects?",
+    "options": ["Contracts contain one or more Subjects that define allowed traffic", "Subjects are higher-level objects that contain multiple Contracts", "Contracts and Subjects are unrelated ACI objects", "Subjects define EPG membership while Contracts define routing"],
+    "correct": 0,
+    "explanation": "Contracts define the communication rules between EPGs, and each Contract contains one or more Subjects. Subjects specify filters (protocols/ports) that are permitted."
+  },
+  {
+    "id": "dcauto-aci-004",
+    "question": "Which Bridge Domain setting controls whether endpoints learn each other's MAC addresses via unicast routing?",
+    "options": ["L2 Unknown Unicast", "ARP Flooding", "Unicast Routing", "Endpoint Dataplane Learning"],
+    "correct": 2,
+    "explanation": "Unicast Routing enables inter-subnet communication within a BD by routing traffic at Layer 3. ARP Flooding and L2 Unknown Unicast control flooding behavior, not routing."
+  },
+  {
+    "id": "dcauto-aci-005",
+    "question": "What is the typical structure of a Cisco APIC REST API endpoint URL?",
+    "options": ["https://apic/api/v1/{tenant}/{object}", "https://apic/api/mo/{distinguished-name}.json", "https://apic/rest/{class}/{instance-id}", "https://apic/aci/policy/{tenant}/{app-profile}"],
+    "correct": 1,
+    "explanation": "APIC REST API uses Managed Object (MO) endpoints with distinguished names (DN). The format is /api/mo/{DN}.{format}, such as /api/mo/uni/tn-Tenant1.json."
+  },
+  {
+    "id": "dcauto-aci-006",
+    "question": "What is the role of an Application Profile in ACI?",
+    "options": ["To configure physical server applications", "To contain EPGs and define their relationships", "To manage APIC user access permissions", "To monitor fabric health and performance"],
+    "correct": 1,
+    "explanation": "An Application Profile (App-P) is a container for EPGs that logically groups them together for a specific application. It does not configure servers or manage user access."
+  },
+  {
+    "id": "dcauto-aci-007",
+    "question": "How can you enforce isolation between endpoints within the same EPG in ACI?",
+    "options": ["Enable Intra-EPG Isolation (Enforced or Unenforced)", "Create separate VRFs for each endpoint", "Disable unicast routing on the Bridge Domain", "Use different VLAN IDs within the EPG"],
+    "correct": 0,
+    "explanation": "Intra-EPG Isolation prevents endpoints within the same EPG from communicating directly. Enforced mode blocks all intra-EPG traffic; Unenforced allows it based on contracts."
+  },
+  {
+    "id": "dcauto-aci-008",
+    "question": "What protocol does Cisco ACI use for fabric discovery and topology learning?",
+    "options": ["LLDP (Link Layer Discovery Protocol)", "CDP (Cisco Discovery Protocol)", "LACP (Link Aggregation Control Protocol)", "IS-IS (Intermediate System to Intermediate System)"],
+    "correct": 0,
+    "explanation": "ACI uses LLDP for fabric discovery to learn the topology of leaf and spine switches. IS-IS is used for routing within the fabric, not discovery."
+  },
+  {
+    "id": "dcauto-aci-009",
+    "question": "When should you use the Common Tenant in ACI instead of creating a custom Tenant?",
+    "options": ["For shared resources like L3Outs and Contracts used across multiple Tenants", "For storing all production application EPGs", "For configuring APIC management interfaces", "For testing configurations before deploying to production"],
+    "correct": 0,
+    "explanation": "The Common Tenant is used for shared resources that multiple custom Tenants need to access, such as shared L3Outs or Contracts. Each application should have its own Tenant."
+  },
+  {
+    "id": "dcauto-aci-010",
+    "question": "In ACI's policy model, what is the difference between the desired configuration (Intent) and operational state?",
+    "options": ["Intent is what you configure; operational state is what actually exists in the fabric", "Operational state is the configuration backup; Intent is the running config", "Intent is for monitoring only; operational state controls traffic forwarding", "There is no difference — they are always synchronized"],
+    "correct": 0,
+    "explanation": "Intent represents the desired policy configured by administrators, while operational state shows what's actually deployed in the fabric. ACI's policy resolver ensures they stay synchronized."
+  }
+]

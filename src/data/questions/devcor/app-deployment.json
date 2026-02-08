@@ -1,0 +1,72 @@
+[
+  {
+    "id": "devcor-deploy-001",
+    "question": "What is the difference between a Docker image and a Docker container?",
+    "options": ["Images are running instances; containers are static templates", "Images are static templates; containers are running instances", "Images and containers are the same thing", "Images are for development; containers are for production"],
+    "correct": 1,
+    "explanation": "Docker images are read-only templates used to create containers. Containers are running instances of images. You build images, then run them as containers."
+  },
+  {
+    "id": "devcor-deploy-002",
+    "question": "Which Dockerfile instruction sets the base image for your container?",
+    "options": ["BASE", "FROM", "IMAGE", "PARENT"],
+    "correct": 1,
+    "explanation": "FROM specifies the base image (e.g., FROM python:3.9). It's typically the first instruction in a Dockerfile. BASE, IMAGE, and PARENT are not valid Dockerfile instructions."
+  },
+  {
+    "id": "devcor-deploy-003",
+    "question": "How do Docker image layers improve build efficiency?",
+    "options": ["Layers compress images to save disk space", "Layers are cached and reused if unchanged, speeding up builds", "Layers encrypt sensitive data in images", "Layers enable multi-architecture support"],
+    "correct": 1,
+    "explanation": "Docker caches each layer. If a layer hasn't changed, Docker reuses the cached version instead of rebuilding it, significantly speeding up builds."
+  },
+  {
+    "id": "devcor-deploy-004",
+    "question": "Which docker run flag maps a host port to a container port?",
+    "options": ["-v or --volume", "-p or --publish", "-e or --env", "-n or --name"],
+    "correct": 1,
+    "explanation": "-p or --publish maps ports (e.g., -p 8080:80 maps host port 8080 to container port 80). -v is for volumes, -e for environment variables, -n for naming containers."
+  },
+  {
+    "id": "devcor-deploy-005",
+    "question": "What is the purpose of Docker volumes?",
+    "options": ["To encrypt container data", "To persist data beyond container lifecycle", "To share CPU resources between containers", "To configure container networking"],
+    "correct": 1,
+    "explanation": "Volumes persist data outside the container's filesystem, surviving container deletion. They're used for databases, logs, and any data that needs to persist."
+  },
+  {
+    "id": "devcor-deploy-006",
+    "question": "Which Docker network mode allows a container to use the host's network stack directly?",
+    "options": ["bridge", "host", "none", "overlay"],
+    "correct": 1,
+    "explanation": "Host mode (--network host) makes the container use the host's network directly without isolation. Bridge is the default isolated network, none disables networking."
+  },
+  {
+    "id": "devcor-deploy-007",
+    "question": "In Kubernetes, what is a Pod?",
+    "options": ["A single container running in the cluster", "The smallest deployable unit that can contain one or more containers", "A Kubernetes worker node", "A storage volume for persistent data"],
+    "correct": 1,
+    "explanation": "A Pod is the smallest Kubernetes unit and can contain one or more tightly coupled containers that share network and storage. Containers within a Pod share localhost."
+  },
+  {
+    "id": "devcor-deploy-008",
+    "question": "What does a Kubernetes Deployment's replica count control?",
+    "options": ["The number of nodes in the cluster", "The number of identical Pods to run", "The number of containers per Pod", "The number of storage volumes to create"],
+    "correct": 1,
+    "explanation": "The replica count specifies how many identical Pods should run. Kubernetes maintains this count, recreating Pods if they fail to ensure desired state."
+  },
+  {
+    "id": "devcor-deploy-009",
+    "question": "Which Kubernetes Service type exposes a service externally using a cloud provider's load balancer?",
+    "options": ["ClusterIP", "NodePort", "LoadBalancer", "ExternalName"],
+    "correct": 2,
+    "explanation": "LoadBalancer creates an external load balancer (on cloud providers) to expose the service. ClusterIP is internal-only, NodePort exposes on node IPs."
+  },
+  {
+    "id": "devcor-deploy-010",
+    "question": "What is the difference between a ConfigMap and a Secret in Kubernetes?",
+    "options": ["ConfigMaps store configuration; Secrets store sensitive data (base64-encoded)", "ConfigMaps are encrypted; Secrets are plain text", "ConfigMaps are for production; Secrets are for development", "There is no difference — they're interchangeable"],
+    "correct": 0,
+    "explanation": "ConfigMaps store non-sensitive configuration data, while Secrets store sensitive data like passwords and tokens (base64-encoded, though not encrypted by default)."
+  }
+]

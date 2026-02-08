@@ -1,0 +1,72 @@
+[
+  {
+    "id": "enarsi-bgp-001",
+    "question": "In BGP path selection, which attribute is checked first when comparing routes to the same destination?",
+    "options": ["AS_PATH length", "WEIGHT (Cisco-specific)", "LOCAL_PREF", "MED (Multi-Exit Discriminator)"],
+    "correct": 1,
+    "explanation": "WEIGHT is the first attribute in BGP path selection (Cisco proprietary). It's locally significant and ranges from 0-65535, with higher values preferred. WEIGHT is checked before all other attributes including LOCAL_PREF and AS_PATH."
+  },
+  {
+    "id": "enarsi-bgp-002",
+    "question": "What is the primary difference between iBGP and eBGP regarding the AS_PATH attribute?",
+    "options": ["iBGP does not modify AS_PATH; eBGP prepends its own AS", "iBGP prepends AS_PATH; eBGP does not", "Both modify AS_PATH identically", "AS_PATH is not used in iBGP"],
+    "correct": 0,
+    "explanation": "When a route is advertised via eBGP, the local AS number is prepended to the AS_PATH. However, iBGP routers within the same AS do not modify the AS_PATH since they share the same AS number. This is a key distinction between internal and external BGP peering."
+  },
+  {
+    "id": "enarsi-bgp-003",
+    "question": "Why is a full mesh of iBGP sessions required in traditional BGP designs without route reflectors?",
+    "options": ["To prevent routing loops within an AS", "Because iBGP does not advertise routes learned from one iBGP peer to another iBGP peer", "To increase convergence speed", "To support multiple AS numbers"],
+    "correct": 1,
+    "explanation": "iBGP has a split-horizon rule: routes learned from one iBGP peer are not advertised to another iBGP peer to prevent loops. This means every iBGP router must peer with every other iBGP router (full mesh) unless route reflectors or confederations are used."
+  },
+  {
+    "id": "enarsi-bgp-004",
+    "question": "What is the purpose of the BGP LOCAL_PREF attribute?",
+    "options": ["To influence outbound traffic leaving the AS", "To influence inbound traffic entering the AS", "To set the administrative distance of BGP routes", "To prevent routing loops in iBGP"],
+    "correct": 0,
+    "explanation": "LOCAL_PREF (Local Preference) is used to influence the path selection for outbound traffic leaving the AS. Higher LOCAL_PREF values are preferred. It is exchanged between iBGP peers within an AS but not sent to eBGP peers."
+  },
+  {
+    "id": "enarsi-bgp-005",
+    "question": "Which BGP attribute should you manipulate to influence how other ASs send traffic into your network?",
+    "options": ["LOCAL_PREF", "AS_PATH prepending", "WEIGHT", "ORIGIN code"],
+    "correct": 1,
+    "explanation": "AS_PATH prepending is the most common method to influence inbound traffic. By artificially lengthening the AS_PATH (e.g., prepending your AS multiple times), you make the path less attractive to external ASs, causing them to prefer alternate routes."
+  },
+  {
+    "id": "enarsi-bgp-006",
+    "question": "What is the default BGP keepalive and hold time interval?",
+    "options": ["Keepalive: 30s, Hold: 90s", "Keepalive: 60s, Hold: 180s", "Keepalive: 10s, Hold: 30s", "Keepalive: 5s, Hold: 15s"],
+    "correct": 1,
+    "explanation": "BGP uses a default keepalive interval of 60 seconds and a hold time of 180 seconds (3 times the keepalive). If no keepalive or update message is received within the hold time, the BGP session is torn down."
+  },
+  {
+    "id": "enarsi-bgp-007",
+    "question": "Which BGP state indicates that the TCP three-way handshake has completed successfully?",
+    "options": ["Idle", "Connect", "OpenSent", "Established"],
+    "correct": 2,
+    "explanation": "The OpenSent state indicates that the TCP session has been established and a BGP Open message has been sent. After receiving the peer's Open message, the session moves to OpenConfirm, and finally to Established when keepalives are exchanged."
+  },
+  {
+    "id": "enarsi-bgp-008",
+    "question": "What BGP feature allows a router to advertise networks without having to redistribute them from an IGP?",
+    "options": ["BGP synchronization", "Network command", "Redistribute command", "BGP backdoor"],
+    "correct": 1,
+    "explanation": "The network command in BGP configuration allows you to originate BGP routes for specific networks that exist in the routing table. This is preferred over redistribution because it provides more control and doesn't automatically import all IGP routes into BGP."
+  },
+  {
+    "id": "enarsi-bgp-009",
+    "question": "How does BGP prevent routing loops when advertising routes between autonomous systems?",
+    "options": ["Split horizon rule", "AS_PATH loop detection", "Route poisoning", "Counting to infinity prevention"],
+    "correct": 1,
+    "explanation": "BGP prevents loops by checking the AS_PATH attribute. If a router receives a BGP update containing its own AS number in the AS_PATH, it rejects the route. This ensures routes don't loop back through the same AS."
+  },
+  {
+    "id": "enarsi-bgp-010",
+    "question": "What is the purpose of the BGP MED (Multi-Exit Discriminator) attribute?",
+    "options": ["To influence inbound traffic when multiple entry points exist into an AS", "To set the BGP router ID", "To prefer iBGP routes over eBGP routes", "To determine the BGP administrative distance"],
+    "correct": 0,
+    "explanation": "MED is used to influence inbound traffic from a neighboring AS when multiple entry points exist. Lower MED values are preferred. Unlike AS_PATH prepending, MED is only compared between routes from the same neighboring AS and is not propagated beyond the receiving AS."
+  }
+]

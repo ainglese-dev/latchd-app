@@ -162,13 +162,17 @@ Progress bar height: h-2
 
 ## Navigation
 
-v1.0 has no bottom nav — just a simple header:
+v1.1 has no bottom nav — just a simple header with optional back:
 
 ```jsx
 <header className="flex items-center justify-between mb-8">
   <h1 className="text-xl font-bold">Latchd</h1>
-  {/* No sign in, no profile, no nav links in v1.0 */}
 </header>
+```
+
+For Exam Detail and Quiz pages, add a back link:
+```jsx
+<Link to="/" className="text-[#a0a0a0] hover:text-[#f5f5f5] text-sm">← Back</Link>
 ```
 
 ## Anti-Patterns (Don't Do)
@@ -179,5 +183,5 @@ v1.0 has no bottom nav — just a simple header:
 - No text-white — use `text-[#f5f5f5]` for slight warmth
 - No bg-gray-900 — use `bg-[#111111]` and `bg-[#1a1a1a]` for consistency
 - No animations beyond `transition-colors` and `transition-all duration-300` on progress bar
-- No images or illustrations in v1.0
+- No images or illustrations in v1.1
 - No emoji in UI (only ✅/❌ in results review)

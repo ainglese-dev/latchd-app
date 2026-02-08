@@ -1,0 +1,72 @@
+[
+  {
+    "id": "devasc-py-001",
+    "question": "Which Python data type is immutable and cannot be changed after creation?",
+    "options": ["list", "dict", "tuple", "set"],
+    "correct": 2,
+    "explanation": "Tuples are immutable — once created, their elements cannot be changed. Lists, dictionaries, and sets are mutable and can be modified after creation."
+  },
+  {
+    "id": "devasc-py-002",
+    "question": "Which list method adds an element to the end of a list?",
+    "options": ["add()", "append()", "insert()", "extend()"],
+    "correct": 1,
+    "explanation": "append() adds a single element to the end of a list. extend() adds multiple elements, insert() adds at a specific index, and add() doesn't exist for lists (it's for sets)."
+  },
+  {
+    "id": "devasc-py-003",
+    "question": "What does the dictionary method get() do that direct key access (dict[key]) does not?",
+    "options": ["get() is faster than direct access", "get() returns None instead of raising KeyError if key doesn't exist", "get() modifies the dictionary while direct access doesn't", "get() only works with string keys"],
+    "correct": 1,
+    "explanation": "dict.get(key) returns None (or a default value) if the key doesn't exist, avoiding KeyError. Direct access with dict[key] raises KeyError if the key is missing."
+  },
+  {
+    "id": "devasc-py-004",
+    "question": "Which string method splits a string into a list of substrings based on a delimiter?",
+    "options": ["join()", "split()", "replace()", "format()"],
+    "correct": 1,
+    "explanation": "split() divides a string into a list using a delimiter (default is whitespace). join() does the opposite — joins list elements into a string."
+  },
+  {
+    "id": "devasc-py-005",
+    "question": "What keyword is used to exit a function and return a value to the caller?",
+    "options": ["exit", "return", "break", "yield"],
+    "correct": 1,
+    "explanation": "return exits a function and sends a value back to the caller. break exits loops, yield is for generators, and exit terminates the entire program."
+  },
+  {
+    "id": "devasc-py-006",
+    "question": "In exception handling, what is the purpose of the finally block?",
+    "options": ["To catch exceptions that weren't caught by except", "To execute code regardless of whether an exception occurred", "To raise a new exception after handling one", "To retry the code that caused the exception"],
+    "correct": 1,
+    "explanation": "The finally block always executes, whether an exception occurred or not. It's commonly used for cleanup tasks like closing files or network connections."
+  },
+  {
+    "id": "devasc-py-007",
+    "question": "What does this list comprehension do? [x*2 for x in range(5)]",
+    "options": ["Creates [0, 1, 2, 3, 4]", "Creates [0, 2, 4, 6, 8]", "Creates [2, 4, 6, 8, 10]", "Raises a SyntaxError"],
+    "correct": 1,
+    "explanation": "This creates [0, 2, 4, 6, 8] by doubling each value in range(5), which is 0 through 4. List comprehensions provide a concise way to create lists."
+  },
+  {
+    "id": "devasc-py-008",
+    "question": "Which json module function converts a Python dictionary to a JSON string?",
+    "options": ["json.load()", "json.loads()", "json.dump()", "json.dumps()"],
+    "correct": 3,
+    "explanation": "json.dumps() converts Python objects to JSON strings. json.loads() does the opposite (JSON string to Python). dump/load work with files instead of strings."
+  },
+  {
+    "id": "devasc-py-009",
+    "question": "What is the recommended way to open and automatically close a file in Python?",
+    "options": ["Use open() and manually call close()", "Use the with statement (context manager)", "Use try/except to handle file errors", "Use the file class constructor"],
+    "correct": 1,
+    "explanation": "The with statement ensures files are automatically closed when the block exits, even if an exception occurs. It's the Pythonic way to handle file I/O."
+  },
+  {
+    "id": "devasc-py-010",
+    "question": "What does range(1, 10, 2) generate in a for loop?",
+    "options": ["1, 2, 3, 4, 5, 6, 7, 8, 9", "1, 3, 5, 7, 9", "2, 4, 6, 8, 10", "0, 2, 4, 6, 8"],
+    "correct": 1,
+    "explanation": "range(start, stop, step) with range(1, 10, 2) generates 1, 3, 5, 7, 9 — starting at 1, stopping before 10, stepping by 2."
+  }
+]

@@ -197,15 +197,27 @@ function updateStreak() {
 
 Call `updateStreak()` when a quiz is completed (in Results screen mount).
 
-## Loading Quiz Data
+## Loading Quiz Data (v1.1)
 
-Import JSON directly — Vite handles this natively.
+With the exam/topic structure, use dynamic imports:
 
 ```javascript
-import quizData from '../data/dcauto-fundamentals.json'
+// In Quiz.jsx — load questions based on route params
+import { useParams } from 'react-router-dom'
+import exams from '../data/exams.json'
 
-// In component
-const questions = quizData.questions
+function Quiz() {
+  const { examId, topicId } = useParams()
+  const [questions, setQuestions] = useState([])
+
+  useEffect(() => {
+    const exam = exams.find(e => e.id === examId)
+    const topic = exam?.topics.find(t => t.id === topicId)
+    if (topic) {
+      import(`../data/questions/${topic.file}`).then(mod => setQuestions(mod.default))
+    }
+  }, [examId, topicId])
+}
 ```
 
 ## Common Pitfalls
@@ -213,5 +225,5 @@ const questions = quizData.questions
 1. **Don't shuffle on every render** — shuffle once when quiz starts, store in state
 2. **Don't use index as key** if you shuffle — use `question.id`
 3. **Disable options after answering** — prevent score manipulation
-4. **Don't store quiz results in localStorage for v1.0** — only streak
+4. **Don't store quiz results in localStorage for v1.1** — only streak
 5. **Keep all quiz state in the Quiz page** — don't lift to App level

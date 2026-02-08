@@ -1,0 +1,72 @@
+[
+  {
+    "id": "enarsi-eigrp-001",
+    "question": "By default, which two metrics does EIGRP use to calculate its composite metric?",
+    "options": ["Bandwidth and Delay", "Bandwidth and Reliability", "Delay and Load", "Hop count and MTU"],
+    "correct": 0,
+    "explanation": "EIGRP by default uses only bandwidth and delay in its composite metric calculation. Although reliability, load, and MTU are included in the metric formula, their K-values (K2, K3, K4, K5) are set to 0 by default, making them inactive. Only K1 (bandwidth) and K3 (delay) are enabled."
+  },
+  {
+    "id": "enarsi-eigrp-002",
+    "question": "What is a Feasible Successor in EIGRP?",
+    "options": ["The best route to a destination", "A backup route that meets the feasibility condition", "Any route advertised by a neighbor", "The route with the lowest hop count"],
+    "correct": 1,
+    "explanation": "A Feasible Successor is a backup route to a destination that satisfies the feasibility condition: its Advertised Distance (AD) must be less than the current Feasible Distance (FD) of the successor route. This ensures loop-free backup paths."
+  },
+  {
+    "id": "enarsi-eigrp-003",
+    "question": "What algorithm does EIGRP use to calculate the best path and maintain loop-free routing?",
+    "options": ["SPF (Shortest Path First)", "Bellman-Ford", "DUAL (Diffusing Update Algorithm)", "Dijkstra"],
+    "correct": 2,
+    "explanation": "EIGRP uses DUAL (Diffusing Update Algorithm) to calculate the best path and guarantee loop-free routing. DUAL allows EIGRP to quickly converge when a route becomes unavailable by using pre-calculated backup routes (feasible successors) without requiring a new route computation."
+  },
+  {
+    "id": "enarsi-eigrp-004",
+    "question": "What is the purpose of EIGRP stub routing?",
+    "options": ["To prevent queries from being sent to stub routers, improving convergence", "To reduce routing table size on the stub router", "To disable route summarization", "To enable load balancing across multiple paths"],
+    "correct": 0,
+    "explanation": "EIGRP stub routing prevents query messages from being sent to stub routers (typically spoke routers in hub-and-spoke topologies). This reduces unnecessary query propagation, speeds convergence, and prevents routing loops. Stub routers advertise only specified route types."
+  },
+  {
+    "id": "enarsi-eigrp-005",
+    "question": "Which EIGRP packet type is used to acknowledge the receipt of Update, Query, and Reply packets?",
+    "options": ["Hello", "Update", "Query", "ACK (Acknowledgment)"],
+    "correct": 3,
+    "explanation": "EIGRP uses ACK (Acknowledgment) packets to reliably deliver Update, Query, and Reply packets. ACK packets are unicast and contain no data. Hello packets are not acknowledged. This reliable transport mechanism is called RTP (Reliable Transport Protocol)."
+  },
+  {
+    "id": "enarsi-eigrp-006",
+    "question": "What EIGRP feature allows unequal-cost load balancing across multiple paths?",
+    "options": ["Maximum paths", "Variance", "Feasible distance", "Metric weights"],
+    "correct": 1,
+    "explanation": "The variance command enables unequal-cost load balancing in EIGRP. Variance multiplies the successor's FD to determine which feasible successors can be used for load balancing. For example, variance 2 allows paths with FD up to twice the successor's FD to be installed in the routing table."
+  },
+  {
+    "id": "enarsi-eigrp-007",
+    "question": "What is the default Hello interval for EIGRP on high-bandwidth interfaces (greater than T1 speeds)?",
+    "options": ["5 seconds", "10 seconds", "30 seconds", "60 seconds"],
+    "correct": 0,
+    "explanation": "EIGRP uses a 5-second Hello interval on high-bandwidth links (greater than 1.544 Mbps). The hold time is 3 times the Hello interval (15 seconds). On slower links (T1 and below), the Hello interval is 60 seconds with a hold time of 180 seconds."
+  },
+  {
+    "id": "enarsi-eigrp-008",
+    "question": "How does EIGRP for IPv6 differ from EIGRP for IPv4 in terms of neighbor discovery?",
+    "options": ["IPv6 uses multicast FF02::A instead of 224.0.0.10", "IPv6 requires manual neighbor configuration", "IPv6 does not use Hello packets", "IPv6 uses broadcast for neighbor discovery"],
+    "correct": 0,
+    "explanation": "EIGRP for IPv6 uses the link-local multicast address FF02::A for neighbor discovery and updates, while EIGRP for IPv4 uses 224.0.0.10. Both versions use Hello packets for neighbor discovery, but IPv6 uses link-local addresses for peering."
+  },
+  {
+    "id": "enarsi-eigrp-009",
+    "question": "What is the main benefit of using EIGRP named mode configuration instead of classic mode?",
+    "options": ["Named mode supports authentication; classic mode does not", "Named mode provides a hierarchical configuration structure for IPv4, IPv6, and VRF instances", "Named mode uses less memory", "Named mode converges faster"],
+    "correct": 1,
+    "explanation": "EIGRP named mode provides a hierarchical configuration structure that simplifies management of IPv4, IPv6, and VRF instances under a single EIGRP process. It also supports newer features like SHA authentication and per-interface configuration under address families."
+  },
+  {
+    "id": "enarsi-eigrp-010",
+    "question": "In EIGRP, what does the feasibility condition prevent?",
+    "options": ["Suboptimal routing", "Routing loops", "Split horizon violations", "Excessive bandwidth usage"],
+    "correct": 1,
+    "explanation": "The feasibility condition in EIGRP prevents routing loops by ensuring that a backup route's Advertised Distance is less than the current route's Feasible Distance. This guarantees that the backup path does not route through the current router, making it loop-free."
+  }
+]

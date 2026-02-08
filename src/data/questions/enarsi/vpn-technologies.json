@@ -1,0 +1,72 @@
+[
+  {
+    "id": "enarsi-vpn-001",
+    "question": "What is the primary difference between DMVPN Phase 1 and Phase 2 regarding spoke-to-spoke communication?",
+    "options": ["Phase 1 allows direct spoke-to-spoke tunnels; Phase 2 requires hub forwarding", "Phase 1 requires hub forwarding; Phase 2 allows direct spoke-to-spoke tunnels", "Both phases require hub forwarding for spoke-to-spoke traffic", "Both phases allow direct spoke-to-spoke communication"],
+    "correct": 1,
+    "explanation": "DMVPN Phase 1 requires all spoke-to-spoke traffic to transit through the hub (hub-and-spoke tunnels only). Phase 2 introduces spoke-to-spoke tunnels, allowing direct communication after NHRP resolution. Phase 3 further optimizes this with dynamic spoke-to-spoke tunnels."
+  },
+  {
+    "id": "enarsi-vpn-002",
+    "question": "What protocol does DMVPN use to dynamically learn the NBMA (public) IP address of remote spokes?",
+    "options": ["ISAKMP", "GRE", "NHRP (Next Hop Resolution Protocol)", "ESP"],
+    "correct": 2,
+    "explanation": "NHRP (Next Hop Resolution Protocol) is used in DMVPN to map tunnel IP addresses to their corresponding NBMA (public) IP addresses. This allows dynamic tunnel establishment between spokes without static configuration of peer addresses."
+  },
+  {
+    "id": "enarsi-vpn-003",
+    "question": "Which DMVPN phase allows spokes to use dynamic (DHCP-assigned) public IP addresses?",
+    "options": ["Only Phase 1", "Only Phase 2", "Only Phase 3", "All phases (1, 2, and 3)"],
+    "correct": 3,
+    "explanation": "All DMVPN phases support spokes with dynamic public IP addresses. The hub's NBMA address must be static or resolvable via DNS, but spokes can register dynamically with the hub using NHRP registration messages."
+  },
+  {
+    "id": "enarsi-vpn-004",
+    "question": "What is the purpose of IKE (Internet Key Exchange) Phase 1 in IPsec?",
+    "options": ["To encrypt user data", "To establish a secure, authenticated channel (ISAKMP SA) for IKE Phase 2 negotiation", "To perform NAT traversal", "To fragment large packets"],
+    "correct": 1,
+    "explanation": "IKE Phase 1 establishes a secure, bidirectional ISAKMP SA (Security Association) between peers for IKE protocol messages. This secure channel is then used in Phase 2 to negotiate IPsec SAs for encrypting actual user data."
+  },
+  {
+    "id": "enarsi-vpn-005",
+    "question": "Which IPsec protocol provides both encryption and authentication for packet payloads?",
+    "options": ["AH (Authentication Header)", "ESP (Encapsulating Security Payload)", "GRE", "NHRP"],
+    "correct": 1,
+    "explanation": "ESP (Encapsulating Security Payload) provides both confidentiality (encryption) and authentication for packet payloads. AH provides only authentication and integrity but no encryption. ESP is more commonly used in modern VPN deployments."
+  },
+  {
+    "id": "enarsi-vpn-006",
+    "question": "What is the main advantage of using GRE over IPsec for tunnel encapsulation?",
+    "options": ["GRE provides encryption; IPsec does not", "GRE supports multicast and routing protocols; IPsec tunnel mode does not", "GRE has lower overhead than IPsec", "GRE provides authentication; IPsec does not"],
+    "correct": 1,
+    "explanation": "GRE (Generic Routing Encapsulation) supports multicast traffic and allows routing protocols (like OSPF, EIGRP) to run across the tunnel, which is not possible with IPsec tunnel mode alone. GRE over IPsec combines GRE's flexibility with IPsec's security."
+  },
+  {
+    "id": "enarsi-vpn-007",
+    "question": "What is the primary improvement DMVPN Phase 3 provides over Phase 2?",
+    "options": ["Phase 3 adds encryption; Phase 2 does not support it", "Phase 3 enables hierarchical hub topologies and NHRP shortcuts", "Phase 3 uses TCP instead of UDP", "Phase 3 eliminates the need for a hub router"],
+    "correct": 1,
+    "explanation": "DMVPN Phase 3 introduces NHRP shortcuts and redirect messages, allowing spoke-to-spoke tunnels to be established on demand without requiring the hub to forward the initial packets. It also supports hierarchical hub designs for better scalability."
+  },
+  {
+    "id": "enarsi-vpn-008",
+    "question": "What is the purpose of the 'tunnel protection' command in DMVPN configuration?",
+    "options": ["To enable GRE keepalives", "To apply IPsec encryption to the GRE tunnel using an IPsec profile", "To configure NHRP authentication", "To enable QoS on the tunnel interface"],
+    "correct": 1,
+    "explanation": "The 'tunnel protection' command binds an IPsec profile to a tunnel interface, enabling IPsec encryption for the GRE tunnel. This simplifies configuration compared to crypto maps and supports dynamic peers in DMVPN."
+  },
+  {
+    "id": "enarsi-vpn-009",
+    "question": "What happens during IKE Phase 2 negotiation?",
+    "options": ["Peers authenticate each other and establish ISAKMP SA", "IPsec SAs are negotiated for encrypting user data", "Public IP addresses are exchanged via NHRP", "Dead Peer Detection (DPD) is configured"],
+    "correct": 1,
+    "explanation": "IKE Phase 2 (Quick Mode) negotiates the IPsec Security Associations (SAs) used to encrypt and authenticate user data. It uses the secure channel established in Phase 1 to exchange keying material and define transform sets for data protection."
+  },
+  {
+    "id": "enarsi-vpn-010",
+    "question": "What is the primary benefit of FlexVPN over traditional IPsec VPNs?",
+    "options": ["FlexVPN is faster than IPsec", "FlexVPN uses a unified IKEv2-based framework supporting multiple deployment models (site-to-site, remote access)", "FlexVPN does not require certificates", "FlexVPN eliminates the need for encryption"],
+    "correct": 1,
+    "explanation": "FlexVPN leverages IKEv2 to provide a unified, standards-based VPN solution that supports various deployment models (site-to-site, remote access, hub-and-spoke) with a single configuration framework. It simplifies configuration and improves interoperability compared to legacy IPsec implementations."
+  }
+]

@@ -1,8 +1,8 @@
-import { useState, useCallback } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useState, useCallback, useEffect } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
 import Question from '../components/Question'
 import Results from '../components/Results'
-import questions from '../data/dcauto-fundamentals.json'
+import { loadQuestions } from '../utils/questionLoader'
 
 const STREAK_KEY = 'latchd_streak'
 
@@ -37,8 +37,25 @@ function updateStreak() {
 
 export default function Quiz() {
   const navigate = useNavigate()
+  const { examId, topicId } = useParams()
   const [state, setState] = useState(initialState)
+  const [questions, setQuestions] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
   const { currentIndex, selectedAnswer, showFeedback, answers, completed } = state
+
+  useEffect(() => {
+    setLoading(true)
+    loadQuestions(examId, topicId).then(data => {
+      if (data) {
+        setQuestions(data)
+        setError(null)
+      } else {
+        setError('Failed to load questions')
+      }
+      setLoading(false)
+    })
+  }, [examId, topicId])
 
   const handleSelect = useCallback((index) => {
     if (showFeedback) return
@@ -55,7 +72,7 @@ export default function Quiz() {
         { questionId: currentQuestion.id, selected: index, correct: isCorrect }
       ]
     }))
-  }, [currentIndex, showFeedback])
+  }, [currentIndex, showFeedback, questions])
 
   const handleNext = useCallback(() => {
     window.scrollTo(0, 0)
@@ -70,7 +87,7 @@ export default function Quiz() {
       setState(prev => ({ ...prev, completed: true }))
       updateStreak()
     }
-  }, [currentIndex])
+  }, [currentIndex, questions])
 
   const handleTryAgain = useCallback(() => {
     setState(initialState)
@@ -79,6 +96,38 @@ export default function Quiz() {
   const handleBackHome = useCallback(() => {
     navigate('/')
   }, [navigate])
+
+  if (loading) {
+    return (
+      <div className="min-h-screen px-4 py-6 pb-8">
+        <div className="max-w-lg mx-auto">
+          <div className="text-center py-12">
+            <div className="text-[#a0a0a0]">Loading questions...</div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  if (error || questions.length === 0) {
+    return (
+      <div className="min-h-screen px-4 py-6 pb-8">
+        <div className="max-w-lg mx-auto">
+          <div className="text-center py-12">
+            <h1 className="text-xl font-bold text-[#f5f5f5] mb-2">
+              {error || 'No questions found'}
+            </h1>
+            <button
+              onClick={handleBackHome}
+              className="text-sm text-orange-500 hover:text-orange-400"
+            >
+              ← Back to Home
+            </button>
+          </div>
+        </div>
+      </div>
+    )
+  }
 
   if (completed) {
     return (

@@ -1,0 +1,72 @@
+[
+  {
+    "id": "dcauto-nxos-001",
+    "question": "Which Python library is commonly used to make REST API calls?",
+    "options": ["flask", "requests", "paramiko", "django"],
+    "correct": 1,
+    "explanation": "The 'requests' library is the standard Python library for making HTTP/REST API calls. Flask and Django are web frameworks, and Paramiko is for SSH."
+  },
+  {
+    "id": "dcauto-nxos-002",
+    "question": "In an Ansible playbook, what keyword defines the list of actions to perform?",
+    "options": ["actions", "steps", "tasks", "commands"],
+    "correct": 2,
+    "explanation": "Ansible playbooks use 'tasks' to define the list of actions (modules) to execute on target hosts. Each task calls a specific Ansible module."
+  },
+  {
+    "id": "dcauto-nxos-003",
+    "question": "Which Git command creates a copy of a remote repository on your local machine?",
+    "options": ["git pull", "git fork", "git clone", "git init"],
+    "correct": 2,
+    "explanation": "git clone creates a full local copy of a remote repository including all branches and history. git init creates a new empty repository."
+  },
+  {
+    "id": "dcauto-nxos-004",
+    "question": "What is the primary advantage of using NX-API over CLI-based automation for Cisco NX-OS?",
+    "options": ["NX-API provides structured data output (JSON/XML)", "NX-API is faster than SSH connections", "NX-API doesn't require authentication", "NX-API works without enabling any features"],
+    "correct": 0,
+    "explanation": "NX-API returns structured JSON or XML data, making parsing much easier than screen scraping CLI output. Both methods require authentication and NX-API must be enabled first."
+  },
+  {
+    "id": "dcauto-nxos-005",
+    "question": "Which NX-API output format is more human-readable and commonly used in modern automation?",
+    "options": ["XML", "JSON", "YAML", "CSV"],
+    "correct": 1,
+    "explanation": "JSON (JavaScript Object Notation) is more human-readable and widely supported by modern programming languages. NX-API supports both JSON and XML, but JSON is preferred."
+  },
+  {
+    "id": "dcauto-nxos-006",
+    "question": "What is the primary use case for the Paramiko Python library in NX-OS automation?",
+    "options": ["Sending REST API calls to NX-API", "Establishing SSH connections and executing CLI commands", "Parsing JSON responses from network devices", "Managing Git repositories for configuration backups"],
+    "correct": 1,
+    "explanation": "Paramiko is a Python SSH library used to establish SSH connections to network devices and execute CLI commands programmatically. It's not used for REST APIs or JSON parsing."
+  },
+  {
+    "id": "dcauto-nxos-007",
+    "question": "When parsing output from NX-OS show commands, which Python technique is most reliable for extracting specific values?",
+    "options": ["Using regular expressions (re module)", "Splitting output by whitespace only", "Counting character positions in each line", "Using NX-API JSON output instead of parsing CLI text"],
+    "correct": 3,
+    "explanation": "Using NX-API with JSON output is the most reliable method as it provides structured data. Regular expressions can work but are fragile and prone to breaking with output format changes."
+  },
+  {
+    "id": "dcauto-nxos-008",
+    "question": "What NX-OS feature allows you to roll back configuration changes to a previous checkpoint?",
+    "options": ["Configuration archive", "Rollback configuration", "Checkpoint and rollback", "Configuration replace"],
+    "correct": 2,
+    "explanation": "NX-OS uses the checkpoint and rollback feature. You create a checkpoint with 'checkpoint <name>', then roll back with 'rollback running-config checkpoint <name>'."
+  },
+  {
+    "id": "dcauto-nxos-009",
+    "question": "In an NX-OS automation script, how should you handle configuration errors returned by the device?",
+    "options": ["Ignore errors and continue executing", "Use try/except blocks to catch errors and log them", "Retry the same command repeatedly until it succeeds", "Assume all commands will succeed without error handling"],
+    "correct": 1,
+    "explanation": "Proper error handling uses try/except blocks to catch exceptions, log errors, and gracefully handle failures. Ignoring errors or retrying blindly can cause configuration inconsistencies."
+  },
+  {
+    "id": "dcauto-nxos-010",
+    "question": "How do you enable a feature on NX-OS using the API?",
+    "options": ["Send a POST request with the feature name in the JSON body", "Use the 'feature <name>' CLI command via SSH or NX-API CLI", "Features are enabled automatically when referenced", "Modify the feature configuration file directly"],
+    "correct": 1,
+    "explanation": "Features are enabled using the 'feature <name>' CLI command, which can be sent via SSH (Paramiko) or NX-API CLI mode. NX-API uses JSON-RPC for CLI commands."
+  }
+]

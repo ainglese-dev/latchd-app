@@ -4,7 +4,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Latchd v1.0 — Quiz app for network engineers studying Cisco DevNet/DC automation certifications (DCAUTO, DEVASC, DEVCOR). MVP is a single DCAUTO fundamentals quiz with 10 questions. **PRD.md is the source of truth** — read it at the start of every session.
+Latchd — Quiz app for network engineers studying Cisco DevNet/DC automation certifications (DCAUTO, DEVASC, DEVCOR). **PRD.md is the source of truth** — read it at the start of every session.
+
+- v1.0: COMPLETED ✅ — Single DCAUTO quiz, deployed to Cloudflare Pages
+- v1.1: CURRENT — Exam/topic structure, more exams, email CTA
 
 ## Tech Stack
 
@@ -24,18 +27,31 @@ npm run preview  # Preview production build locally
 
 ## Architecture
 
-Three-screen SPA flow: **Home → Quiz → Results**
+Four-screen SPA flow: **Home → Exam Detail → Quiz → Results**
 
 ```
 src/
-├── components/       # Reusable UI: QuizCard, Question, Results, StreakCounter
-├── pages/            # Page components: Home, Quiz
-├── data/             # Quiz JSON files (dcauto-fundamentals.json)
+├── components/       # ExamCard, TopicCard, Question, Results, StreakCounter, EmailCTA
+├── pages/            # Home, ExamDetail (NEW), Quiz
+├── data/
+│   ├── exams.json    # Exam registry with topics
+│   └── questions/    # Organized by exam/topic
+│       ├── dcauto/
+│       ├── devasc/
+│       └── devcor/
 ├── App.jsx           # Router and layout
 └── main.jsx          # Entry point
 ```
 
 **No backend, no API, no database.** Quiz data is imported directly from JSON files.
+
+### Routing
+
+```
+/                          → Home (exam cards)
+/exam/:examId              → ExamDetail (topic cards)
+/exam/:examId/:topicId     → Quiz (questions)
+```
 
 ### Question Format
 
@@ -51,17 +67,18 @@ src/
 
 `correct` is the zero-based index into `options`.
 
-## Constraints (v1.0)
+## Constraints (v1.1)
 
-Do NOT build any of these — they are explicitly excluded from MVP:
+Do NOT build any of these — they are explicitly excluded:
 - Authentication / sign-in
 - Backend / Supabase
 - Payments
 - Badges / mission patches
 - Profile page
-- Multi-vendor tabs (AWS, Azure, etc.)
 - TypeScript
 - Leaderboard
+- Question randomization across topics
+- Progress tracking per topic (localStorage streak only)
 
 ## Lessons from v0
 

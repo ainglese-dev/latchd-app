@@ -1,0 +1,94 @@
+[
+  {
+    "id": "dcauto",
+    "category": "devnet",
+    "name": "DCAUTO 300-635",
+    "description": "Automating and Programming Cisco Data Center Solutions",
+    "topics": [
+      {
+        "id": "network-programmability",
+        "name": "Network Programmability",
+        "description": "REST APIs, YANG, NETCONF, RESTCONF",
+        "file": "dcauto/network-programmability.json"
+      },
+      {
+        "id": "aci-programmability",
+        "name": "ACI Programmability",
+        "description": "Cisco ACI automation and APIs",
+        "file": "dcauto/aci-programmability.json"
+      },
+      {
+        "id": "nxos-automation",
+        "name": "NX-OS Automation",
+        "description": "Python, Ansible, Git for NX-OS",
+        "file": "dcauto/nxos-automation.json"
+      }
+    ]
+  },
+  {
+    "id": "devasc",
+    "category": "devnet",
+    "name": "DEVASC 200-901",
+    "description": "Developing Applications and Automating Workflows using Cisco Platforms",
+    "topics": [
+      {
+        "id": "rest-apis",
+        "name": "REST API Fundamentals",
+        "description": "HTTP methods, status codes, authentication",
+        "file": "devasc/rest-apis.json"
+      },
+      {
+        "id": "python-basics",
+        "name": "Python Programming",
+        "description": "Data structures, functions, libraries",
+        "file": "devasc/python-basics.json"
+      }
+    ]
+  },
+  {
+    "id": "devcor",
+    "category": "devnet",
+    "name": "DEVCOR 350-901",
+    "description": "Developing Applications using Cisco Core Platforms and APIs",
+    "topics": [
+      {
+        "id": "app-deployment",
+        "name": "Application Deployment",
+        "description": "CI/CD, Docker, Kubernetes basics",
+        "file": "devcor/app-deployment.json"
+      }
+    ]
+  },
+  {
+    "id": "enarsi",
+    "category": "enterprise",
+    "name": "ENARSI 300-410",
+    "description": "Implementing Cisco Enterprise Advanced Routing and Services",
+    "topics": [
+      {
+        "id": "bgp-fundamentals",
+        "name": "BGP Fundamentals",
+        "description": "Path selection, attributes, route filtering",
+        "file": "enarsi/bgp-fundamentals.json"
+      },
+      {
+        "id": "ospf-advanced",
+        "name": "OSPF Advanced",
+        "description": "Multi-area OSPF, LSA types, summarization",
+        "file": "enarsi/ospf-advanced.json"
+      },
+      {
+        "id": "eigrp-advanced",
+        "name": "EIGRP Advanced",
+        "description": "Metrics, DUAL, authentication, stub routing",
+        "file": "enarsi/eigrp-advanced.json"
+      },
+      {
+        "id": "vpn-technologies",
+        "name": "VPN Technologies",
+        "description": "DMVPN, FlexVPN, GRE, IPsec",
+        "file": "enarsi/vpn-technologies.json"
+      }
+    ]
+  }
+]

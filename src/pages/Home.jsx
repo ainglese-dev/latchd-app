@@ -1,6 +1,6 @@
 import StreakCounter from '../components/StreakCounter'
-import QuizCard from '../components/QuizCard'
-import questions from '../data/dcauto-fundamentals.json'
+import ExamCard from '../components/ExamCard'
+import exams from '../data/exams.json'
 
 export default function Home() {
   return (
@@ -15,12 +15,19 @@ export default function Home() {
           <StreakCounter />
         </div>
 
-        <QuizCard
-          id="dcauto-fundamentals"
-          title="DCAUTO Fundamentals"
-          description="Cisco DevNet Automation basics — APIs, YANG, NETCONF, and more"
-          questionCount={questions.length}
-        />
+        <div className="space-y-4">
+          {exams.map(exam => (
+            <ExamCard
+              key={exam.id}
+              id={exam.id}
+              name={exam.name}
+              description={exam.description}
+              topicCount={exam.topics.length}
+              questionCount={10}
+              category={exam.category}
+            />
+          ))}
+        </div>
       </div>
     </div>
   )
