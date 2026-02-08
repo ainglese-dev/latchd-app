@@ -1,0 +1,72 @@
+[
+  {
+    "id": "devasc-cicd-001",
+    "question": "What does CI stand for in CI/CD?",
+    "options": ["Code Integration", "Continuous Integration", "Complete Installation", "Configured Infrastructure"],
+    "correct": 1,
+    "explanation": "Continuous Integration (CI) is the practice of frequently merging code changes into a shared repository, with automated builds and tests running on each merge to detect issues early."
+  },
+  {
+    "id": "devasc-cicd-002",
+    "question": "What is the primary goal of Continuous Delivery (CD)?",
+    "options": ["To deploy every commit to production automatically", "To ensure code is always in a deployable state", "To eliminate the need for testing", "To replace manual code reviews"],
+    "correct": 1,
+    "explanation": "Continuous Delivery ensures that code is always in a deployable state by automating the build, test, and staging processes. Deployment to production may still require manual approval, unlike Continuous Deployment which is fully automated."
+  },
+  {
+    "id": "devasc-cicd-003",
+    "question": "Which file is commonly used to define a GitHub Actions CI/CD pipeline?",
+    "options": ["Jenkinsfile", ".travis.yml", ".github/workflows/*.yml", "Dockerfile"],
+    "correct": 2,
+    "explanation": "GitHub Actions pipelines are defined in YAML files located in the .github/workflows/ directory. Jenkinsfile is for Jenkins, .travis.yml is for Travis CI."
+  },
+  {
+    "id": "devasc-cicd-004",
+    "question": "In a CI/CD pipeline, what typically happens first?",
+    "options": ["Deploy to production", "Run integration tests", "Build the application", "Notify the team"],
+    "correct": 2,
+    "explanation": "A typical CI/CD pipeline starts with building/compiling the application, then runs unit tests, integration tests, and finally deploys. The build step verifies that the code compiles and dependencies resolve correctly."
+  },
+  {
+    "id": "devasc-cicd-005",
+    "question": "What is a 'pipeline artifact' in CI/CD?",
+    "options": ["A bug found during testing", "A file or package produced by a build step that can be used in later stages", "A deprecated pipeline configuration", "A manual approval gate"],
+    "correct": 1,
+    "explanation": "An artifact is an output produced by a pipeline stage — such as a compiled binary, Docker image, or test report — that can be passed to subsequent stages or stored for deployment."
+  },
+  {
+    "id": "devasc-cicd-006",
+    "question": "What is the purpose of a 'staging environment' in a CI/CD workflow?",
+    "options": ["To store source code", "To mirror production for final testing before release", "To run unit tests faster", "To manage Git branches"],
+    "correct": 1,
+    "explanation": "A staging environment closely mirrors production and is used for final validation (integration tests, UAT, performance tests) before deploying to production. It helps catch environment-specific issues."
+  },
+  {
+    "id": "devasc-cicd-007",
+    "question": "Which practice helps ensure that a CI pipeline catches bugs early?",
+    "options": ["Running tests only before major releases", "Writing automated tests that run on every commit", "Deploying directly to production", "Using manual code review only"],
+    "correct": 1,
+    "explanation": "Automated tests running on every commit (or pull request) are the foundation of CI. They catch regressions and bugs as soon as they're introduced, when they're cheapest to fix."
+  },
+  {
+    "id": "devasc-cicd-008",
+    "question": "What is 'infrastructure as code' (IaC) in the context of CI/CD?",
+    "options": ["Writing application code that manages infrastructure", "Defining infrastructure configuration in version-controlled files", "Using CI/CD to build physical servers", "Coding directly on production servers"],
+    "correct": 1,
+    "explanation": "Infrastructure as Code (IaC) means defining infrastructure (servers, networks, databases) in declarative configuration files (e.g., Terraform, CloudFormation) that are version-controlled and can be deployed through CI/CD pipelines."
+  },
+  {
+    "id": "devasc-cicd-009",
+    "question": "What is a 'webhook' in the context of CI/CD?",
+    "options": ["A security vulnerability in pipelines", "An HTTP callback that triggers a pipeline when an event occurs", "A tool for monitoring production servers", "A Git branching strategy"],
+    "correct": 1,
+    "explanation": "A webhook is an HTTP callback triggered by an event (e.g., a git push or pull request). CI/CD platforms use webhooks to automatically start pipeline runs when code changes are pushed to a repository."
+  },
+  {
+    "id": "devasc-cicd-010",
+    "question": "What is the difference between Continuous Delivery and Continuous Deployment?",
+    "options": ["They are the same thing", "Continuous Delivery requires manual approval to deploy; Continuous Deployment is fully automated", "Continuous Deployment only works with Docker", "Continuous Delivery skips testing"],
+    "correct": 1,
+    "explanation": "Continuous Delivery ensures code is always deployable but requires manual approval for production releases. Continuous Deployment goes further by automatically deploying every change that passes the pipeline to production."
+  }
+]

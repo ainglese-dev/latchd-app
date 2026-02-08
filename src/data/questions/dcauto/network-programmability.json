@@ -40,5 +40,33 @@
     "options": ["SNMP-based API", "Intent-based REST API", "CLI-only API", "SOAP-based API"],
     "correct": 1,
     "explanation": "Cisco DNA Center exposes an intent-based REST API that allows you to express what you want the network to do, rather than configuring individual devices."
+  },
+  {
+    "id": "dcauto-np-007",
+    "question": "Which protocol uses a subscription-based model to push operational data from network devices to a collector?",
+    "options": ["SNMP polling", "Model-Driven Telemetry", "NETCONF get", "Syslog"],
+    "correct": 1,
+    "explanation": "Model-Driven Telemetry (MDT) uses a push-based subscription model to stream operational data from devices in near real-time, unlike SNMP which relies on polling."
+  },
+  {
+    "id": "dcauto-np-008",
+    "question": "What is the primary purpose of a YANG model in network programmability?",
+    "options": ["To encrypt API traffic", "To define the structure and constraints of configuration and state data", "To replace CLI commands with Python scripts", "To manage device firmware updates"],
+    "correct": 1,
+    "explanation": "YANG models define the structure, data types, and constraints of configuration and operational state data. They serve as a contract between the client and the network device."
+  },
+  {
+    "id": "dcauto-np-009",
+    "question": "Which NETCONF operation replaces the entire target configuration with the provided configuration?",
+    "options": ["<edit-config> with merge", "<copy-config>", "<edit-config> with replace", "<delete-config>"],
+    "correct": 2,
+    "explanation": "The <edit-config> operation with the 'replace' attribute replaces the entire target configuration subtree. <copy-config> copies between datastores, while merge only updates specified elements."
+  },
+  {
+    "id": "dcauto-np-010",
+    "question": "What encoding formats does RESTCONF support for payload data?",
+    "options": ["XML only", "JSON only", "XML and JSON", "YAML and JSON"],
+    "correct": 2,
+    "explanation": "RESTCONF supports both XML (application/yang-data+xml) and JSON (application/yang-data+json) encoding formats for request and response payloads."
   }
 ]

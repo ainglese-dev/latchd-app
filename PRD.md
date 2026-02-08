@@ -156,18 +156,18 @@ src/
 
 | Days | Task | Done |
 |------|------|------|
-| 1-2 | Restructure data: exams.json + questions/ folders | ⬜ |
-| 3-4 | ExamDetail page + updated routing | ⬜ |
-| 5-6 | Update Home to show exam cards | ⬜ |
-| 7-8 | Update Quiz to load topic-specific questions | ⬜ |
-| 9-10 | Write DCAUTO topic questions (3 topics, 10 each) | ⬜ |
-| 11-12 | Add EmailCTA component + integration | ⬜ |
+| 1-2 | Restructure data: exams.json + questions/ folders | ✅ |
+| 3-4 | ExamDetail page + updated routing | ✅ |
+| 5-6 | Update Home to show exam cards | ✅ |
+| 7-8 | Update Quiz to load topic-specific questions | ✅ |
+| 9-10 | Write DCAUTO topic questions (3 topics, 10 each) | ✅ |
+| 11-12 | Add EmailCTA component + integration | ✅ |
 | 13-14 | Polish, deploy, share | ⬜ |
 
 ## v1.1 Success Criteria
 
-- [ ] 3+ exam topics with 10 questions each
-- [ ] Exam → Topic → Quiz navigation works
+- [x] 3+ exam topics with 10 questions each
+- [x] Exam → Topic → Quiz navigation works
 - [ ] Email CTA captures at least 1 signup
 - [ ] Deployed and live
 

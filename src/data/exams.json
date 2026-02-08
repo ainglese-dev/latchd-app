@@ -9,19 +9,22 @@
         "id": "network-programmability",
         "name": "Network Programmability",
         "description": "REST APIs, YANG, NETCONF, RESTCONF",
-        "file": "dcauto/network-programmability.json"
+        "file": "dcauto/network-programmability.json",
+        "questionCount": 10
       },
       {
         "id": "aci-programmability",
         "name": "ACI Programmability",
         "description": "Cisco ACI automation and APIs",
-        "file": "dcauto/aci-programmability.json"
+        "file": "dcauto/aci-programmability.json",
+        "questionCount": 10
       },
       {
         "id": "nxos-automation",
         "name": "NX-OS Automation",
         "description": "Python, Ansible, Git for NX-OS",
-        "file": "dcauto/nxos-automation.json"
+        "file": "dcauto/nxos-automation.json",
+        "questionCount": 10
       }
     ]
   },
@@ -35,13 +38,29 @@
         "id": "rest-apis",
         "name": "REST API Fundamentals",
         "description": "HTTP methods, status codes, authentication",
-        "file": "devasc/rest-apis.json"
+        "file": "devasc/rest-apis.json",
+        "questionCount": 10
       },
       {
         "id": "python-basics",
         "name": "Python Programming",
         "description": "Data structures, functions, libraries",
-        "file": "devasc/python-basics.json"
+        "file": "devasc/python-basics.json",
+        "questionCount": 10
+      },
+      {
+        "id": "git-basics",
+        "name": "Git Version Control",
+        "description": "Repos, branching, merging, collaboration",
+        "file": "devasc/git-basics.json",
+        "questionCount": 10
+      },
+      {
+        "id": "ci-cd",
+        "name": "CI/CD Pipelines",
+        "description": "Continuous integration, delivery, deployment",
+        "file": "devasc/ci-cd.json",
+        "questionCount": 10
       }
     ]
   },
@@ -55,7 +74,8 @@
         "id": "app-deployment",
         "name": "Application Deployment",
         "description": "CI/CD, Docker, Kubernetes basics",
-        "file": "devcor/app-deployment.json"
+        "file": "devcor/app-deployment.json",
+        "questionCount": 10
       }
     ]
   },
@@ -69,25 +89,29 @@
         "id": "bgp-fundamentals",
         "name": "BGP Fundamentals",
         "description": "Path selection, attributes, route filtering",
-        "file": "enarsi/bgp-fundamentals.json"
+        "file": "enarsi/bgp-fundamentals.json",
+        "questionCount": 10
       },
       {
         "id": "ospf-advanced",
         "name": "OSPF Advanced",
         "description": "Multi-area OSPF, LSA types, summarization",
-        "file": "enarsi/ospf-advanced.json"
+        "file": "enarsi/ospf-advanced.json",
+        "questionCount": 10
       },
       {
         "id": "eigrp-advanced",
         "name": "EIGRP Advanced",
         "description": "Metrics, DUAL, authentication, stub routing",
-        "file": "enarsi/eigrp-advanced.json"
+        "file": "enarsi/eigrp-advanced.json",
+        "questionCount": 10
       },
       {
         "id": "vpn-technologies",
         "name": "VPN Technologies",
         "description": "DMVPN, FlexVPN, GRE, IPsec",
-        "file": "enarsi/vpn-technologies.json"
+        "file": "enarsi/vpn-technologies.json",
+        "questionCount": 10
       }
     ]
   }

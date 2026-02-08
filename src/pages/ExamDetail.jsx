@@ -41,7 +41,7 @@ export default function ExamDetail() {
               topicId={topic.id}
               name={topic.name}
               description={topic.description}
-              questionCount={10}
+              questionCount={topic.questionCount || 10}
               category={exam.category}
             />
           ))}

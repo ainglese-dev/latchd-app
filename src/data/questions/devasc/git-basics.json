@@ -1,0 +1,72 @@
+[
+  {
+    "id": "devasc-git-001",
+    "question": "Which Git command creates a new local repository in the current directory?",
+    "options": ["git new", "git init", "git create", "git start"],
+    "correct": 1,
+    "explanation": "git init initializes a new Git repository in the current directory by creating a .git subdirectory with the necessary repository structure."
+  },
+  {
+    "id": "devasc-git-002",
+    "question": "What does 'git clone' do?",
+    "options": ["Creates a new empty repository", "Copies a remote repository to your local machine", "Merges two branches together", "Pushes local changes to a remote"],
+    "correct": 1,
+    "explanation": "git clone creates a local copy of a remote repository, including all branches, commits, and history."
+  },
+  {
+    "id": "devasc-git-003",
+    "question": "Which command stages all modified and new files for the next commit?",
+    "options": ["git commit -a", "git add .", "git stage --all", "git push"],
+    "correct": 1,
+    "explanation": "git add . stages all modified and untracked files in the current directory and subdirectories. git commit -a only stages modified tracked files, not new untracked files."
+  },
+  {
+    "id": "devasc-git-004",
+    "question": "What is the purpose of a .gitignore file?",
+    "options": ["To list files that should be deleted from the repository", "To specify files and patterns that Git should not track", "To configure remote repository URLs", "To store Git credentials"],
+    "correct": 1,
+    "explanation": ".gitignore specifies intentionally untracked files that Git should ignore. Common entries include build artifacts, dependency directories (node_modules), and environment files (.env)."
+  },
+  {
+    "id": "devasc-git-005",
+    "question": "What does 'git merge feature-branch' do when run from the main branch?",
+    "options": ["Deletes the feature branch", "Integrates changes from feature-branch into main", "Creates a new branch called feature-branch", "Pushes main to the feature branch"],
+    "correct": 1,
+    "explanation": "git merge integrates changes from the specified branch into the current branch. Running it from main merges feature-branch's commits into main."
+  },
+  {
+    "id": "devasc-git-006",
+    "question": "Which Git command shows the commit history of the current branch?",
+    "options": ["git status", "git log", "git diff", "git show"],
+    "correct": 1,
+    "explanation": "git log displays the commit history for the current branch, showing commit hashes, authors, dates, and messages. git status shows working tree status, and git diff shows uncommitted changes."
+  },
+  {
+    "id": "devasc-git-007",
+    "question": "What is a Git 'pull request' (or 'merge request') used for?",
+    "options": ["To download a repository for the first time", "To propose changes and request code review before merging", "To pull the latest changes from a remote", "To request access to a private repository"],
+    "correct": 1,
+    "explanation": "A pull request is a collaboration feature that lets you propose changes from one branch to another, enabling code review, discussion, and approval before merging."
+  },
+  {
+    "id": "devasc-git-008",
+    "question": "What happens during a Git merge conflict?",
+    "options": ["Git automatically chooses the newer changes", "Git deletes the conflicting files", "Git marks the conflicting sections and requires manual resolution", "Git reverts both branches to their common ancestor"],
+    "correct": 2,
+    "explanation": "When Git cannot automatically merge changes (e.g., both branches modified the same lines), it marks the conflicting sections with conflict markers (<<<<, ====, >>>>) and requires manual resolution."
+  },
+  {
+    "id": "devasc-git-009",
+    "question": "What is the difference between 'git fetch' and 'git pull'?",
+    "options": ["They are identical commands", "git fetch downloads changes without merging; git pull downloads and merges", "git fetch works with branches; git pull works with tags", "git pull is used for private repos; git fetch for public"],
+    "correct": 1,
+    "explanation": "git fetch downloads new data from a remote repository without integrating it into your working files. git pull is essentially git fetch followed by git merge — it downloads and immediately merges."
+  },
+  {
+    "id": "devasc-git-010",
+    "question": "Which branching strategy uses short-lived feature branches merged into a main branch?",
+    "options": ["Trunk-based development", "GitHub Flow", "Gitflow", "All of the above"],
+    "correct": 3,
+    "explanation": "All three strategies use feature branches merged into a main branch, though they differ in complexity. GitHub Flow is the simplest (feature branches + main), Gitflow adds develop/release/hotfix branches, and trunk-based development emphasizes very short-lived branches."
+  }
+]
