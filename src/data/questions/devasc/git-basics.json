@@ -68,5 +68,54 @@
     "options": ["Trunk-based development", "GitHub Flow", "Gitflow", "All of the above"],
     "correct": 3,
     "explanation": "All three strategies use feature branches merged into a main branch, though they differ in complexity. GitHub Flow is the simplest (feature branches + main), Gitflow adds develop/release/hotfix branches, and trunk-based development emphasizes very short-lived branches."
+  },
+  {
+    "id": "devasc-git-011",
+    "question": "What is the main difference between git rebase and git merge?",
+    "options": ["Rebase deletes the source branch; merge keeps it", "Rebase replays commits on top of another branch creating a linear history; merge creates a merge commit", "Rebase only works with remote branches; merge works with local branches", "Rebase is faster; merge is more accurate"],
+    "correct": 1,
+    "explanation": "git rebase moves or replays your branch's commits on top of another branch, creating a clean linear history. git merge combines branches by creating a new merge commit that has two parents. Rebase rewrites history, which is why it should not be used on shared/public branches."
+  },
+  {
+    "id": "devasc-git-012",
+    "question": "What does 'git stash' do?",
+    "options": ["Permanently deletes uncommitted changes", "Temporarily saves uncommitted changes so you can switch branches with a clean working directory", "Creates a new branch from the current changes", "Pushes changes to a remote stash server"],
+    "correct": 1,
+    "explanation": "git stash temporarily shelves (stashes) your uncommitted changes, giving you a clean working directory. You can later restore them with git stash pop or git stash apply. This is useful when you need to switch branches but aren't ready to commit."
+  },
+  {
+    "id": "devasc-git-013",
+    "question": "What does 'git cherry-pick <commit-hash>' do?",
+    "options": ["Deletes the specified commit from the branch", "Applies the changes from a specific commit onto the current branch", "Reverts all commits up to the specified one", "Marks a commit as important for future reference"],
+    "correct": 1,
+    "explanation": "git cherry-pick takes a single commit from another branch and applies its changes to the current branch as a new commit. This is useful when you need a specific fix from another branch without merging the entire branch."
+  },
+  {
+    "id": "devasc-git-014",
+    "question": "What is the purpose of git tags?",
+    "options": ["To rename branches", "To mark specific commits as important reference points, typically for releases", "To add comments to files in the repository", "To create temporary branches for testing"],
+    "correct": 1,
+    "explanation": "Git tags mark specific points in history as important — most commonly used for release versions (e.g., v1.0.0, v2.1.3). Unlike branches, tags do not move as new commits are made. Annotated tags store extra metadata like tagger name, date, and message."
+  },
+  {
+    "id": "devasc-git-015",
+    "question": "What does HEAD point to in Git?",
+    "options": ["The first commit in the repository", "The remote origin server", "The currently checked-out commit or branch", "The most recent tag"],
+    "correct": 2,
+    "explanation": "HEAD is a pointer to the current commit you are working on — usually it points to the tip of the currently checked-out branch. When you switch branches, HEAD moves to point to the new branch's latest commit."
+  },
+  {
+    "id": "devasc-git-016",
+    "question": "What is the difference between 'git reset --soft', '--mixed', and '--hard'?",
+    "options": ["They affect different remote repositories", "--soft keeps changes staged, --mixed unstages changes but keeps them in working directory, --hard discards all changes", "--soft resets one commit, --mixed resets two, --hard resets all commits", "They are aliases for the same operation with different verbosity levels"],
+    "correct": 1,
+    "explanation": "git reset --soft moves HEAD but keeps changes staged. --mixed (the default) moves HEAD and unstages changes, but keeps them in your working directory. --hard moves HEAD and discards all changes entirely. Be cautious with --hard as it permanently deletes uncommitted work."
+  },
+  {
+    "id": "devasc-git-017",
+    "question": "What is a 'detached HEAD' state in Git, and when does it typically occur?",
+    "options": ["It means the repository is corrupted and needs to be re-cloned", "HEAD points directly to a commit instead of a branch, typically after checking out a specific commit hash or tag", "It occurs when a merge conflict cannot be resolved", "It means the remote repository has been disconnected"],
+    "correct": 1,
+    "explanation": "Detached HEAD occurs when you check out a specific commit hash, tag, or remote branch directly — HEAD points to a commit instead of a branch name. Any new commits made in this state are not on any branch and can be lost if you switch away without creating a branch. Use 'git checkout -b new-branch' to save your work."
   }
 ]

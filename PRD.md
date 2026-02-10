@@ -8,7 +8,7 @@ Quiz app for network engineers studying DevNet/DC automation certifications. Tha
 
 ## Target User
 
-Network engineer students preparing for Cisco DevNet exams (DCAUTO, DEVASC, DEVCOR).
+Network engineer students preparing for Cisco DevNet and Enterprise exams (DCAUTO, DEVASC, DEVCOR, ENARSI).
 
 ## v1.0 — COMPLETED ✅
 
@@ -171,7 +171,7 @@ src/
 - [ ] Email CTA captures at least 1 signup (deferred — localStorage only, no backend)
 - [x] Deployed and live
 
-## v1.2 — CURRENT
+## v1.2 — COMPLETED ✅
 
 ### Goals
 1. Visual refresh: dark → warm light theme (Claude-inspired + subtle space accents)
@@ -224,22 +224,131 @@ Inspired by Claude's warm, cream-toned aesthetic merged with subtle space/NASA p
 
 | Days | Task | Done |
 |------|------|------|
-| 1-2 | Update tailwind config + global styles for warm theme | ⬜ |
-| 3-4 | Restyle Home, ExamCard, StreakCounter | ⬜ |
-| 5-6 | Restyle ExamDetail, TopicCard, EmailCTA | ⬜ |
-| 7-8 | Restyle Quiz, Question, Results + add post-quiz CTA | ⬜ |
-| 9-10 | SEO: meta tags, OG tags, favicon | ⬜ |
-| 11-12 | Cloudflare Web Analytics setup + test | ⬜ |
-| 13-14 | Polish, deploy, verify analytics working | ⬜ |
+| 1-2 | Update tailwind config + global styles for warm theme | ✅ |
+| 3-4 | Restyle Home, ExamCard, StreakCounter | ✅ |
+| 5-6 | Restyle ExamDetail, TopicCard, EmailCTA | ✅ |
+| 7-8 | Restyle Quiz, Question, Results + add post-quiz CTA | ✅ |
+| 9-10 | SEO: meta tags, OG tags, favicon | ✅ |
+| 11-12 | Cloudflare Web Analytics setup + test | ✅ |
+| 13-14 | Polish, deploy, verify analytics working | ✅ |
 
 ## v1.2 Success Criteria
 
-- [ ] Warm light theme applied across all screens
-- [ ] Space emojis integrated subtly
-- [ ] Post-quiz CTA works ("Try another topic")
-- [ ] SEO meta tags on all pages
-- [ ] Cloudflare Web Analytics showing visitor data
-- [ ] Deployed and live
+- [x] Warm light theme applied across all screens
+- [x] Space emojis integrated subtly
+- [x] Post-quiz CTA works ("Try another topic")
+- [x] SEO meta tags on all pages
+- [ ] Cloudflare Web Analytics showing visitor data (token placeholder — needs real token)
+- [x] Deployed and live
+
+## v1.3 — COMPLETED ✅
+
+### Goals
+1. Fix v1.2 deviations (cleanup)
+2. Question quality: review accuracy + expand to 15-20 per topic
+3. Separate landing page at `/` (app moves to `/app/*`)
+4. Locked topic indicators for future premium content
+
+### v1.2 Fixes
+
+- [ ] Replace CF Analytics placeholder token with real token (deferred to v1.4)
+- [x] Add `og:image` meta tag (create 1200x630 OG card)
+- [x] Dynamic canonical URL per route (not always root)
+- [x] Fix "1 topics" → "1 topic" pluralization in ExamCard
+- [x] Increase progress bar track contrast (`#e8e0d8` → `#d4cac0`)
+- [x] Add back/exit link on Quiz page (top of screen)
+
+### Landing Page
+
+New marketing page at `/` — app moves to `/app/*`.
+
+**Landing page content:**
+- Hero: "Cisco cert practice, done right" + CTA → `/app`
+- Value props (3 max): free, exam-focused, no signup required
+- Exam preview cards (visual only, links to `/app/exam/:id`)
+- Email CTA (moved from app Home to landing)
+- Footer: minimal (built by Angel, GitHub link optional)
+
+**Landing page style:**
+- Same warm theme as app
+- Wider layout allowed (`max-w-3xl` or `max-w-4xl`)
+- Hero section can be taller/more spacious than app screens
+
+**Routing changes:**
+```
+/                              → Landing page (NEW)
+/app                           → App Home (exam cards)
+/app/exam/:examId              → ExamDetail (topic cards)
+/app/exam/:examId/:topicId     → Quiz (questions)
+```
+
+### Locked Topics
+
+- Some topics show a lock icon (🔒) instead of "Start Quiz"
+- Tooltip on hover: "Premium — coming soon"
+- No click action, no auth, no paywall
+- Controlled by a `locked: true` field in `exams.json` topic entries
+- Start with 1-2 topics locked per exam to signal premium is coming
+
+### Question Quality
+
+- Review all 120 existing questions for accuracy
+- Expand each topic from 10 to 15-20 questions
+- Ensure question difficulty range: ~30% easy, ~50% medium, ~20% hard
+- No duplicate concepts across topics within same exam
+
+## NOT in v1.3
+
+- No auth / login
+- No payment processing
+- No Supabase or backend DB
+- No real premium content gating (lock is visual only)
+- No TypeScript
+- No real email capture backend
+
+## v1.3 Sprint (1hr/day, ~2 weeks)
+
+| Days | Task | Done |
+|------|------|------|
+| 1-2 | Fix 6 v1.2 deviations | ✅ |
+| 3-4 | Landing page: hero + value props + CTA | ✅ |
+| 5-6 | Move app routes to /app/*, update all links | ✅ |
+| 7-8 | Add locked topic support (exams.json + TopicCard) | ✅ |
+| 9-12 | Question review + expand to 15-20 per topic | ✅ |
+| 13-14 | Polish, deploy, verify | ✅ |
+
+## v1.3 Success Criteria
+
+- [x] All 6 v1.2 deviations fixed (5/6 — CF Analytics token deferred to v1.4)
+- [x] Landing page live at `/`
+- [x] App accessible at `/app`
+- [x] At least 2 locked topics visible per exam (8 locked total across 4 exams)
+- [x] Each topic has 15-20 questions (17 per topic, 204 total)
+- [ ] CF Web Analytics collecting real data (deferred to v1.4)
+- [x] Deployed and live
+
+## v1.4 — PLANNED
+
+### Goals
+1. Authentication for progress tracking and premium content access
+2. Free tier remains (current content accessible without login)
+3. Premium tier requires login (unlocks locked topics, expanded question banks)
+4. Progress validation: track quiz scores, completed topics, streak history per user
+5. Replace CF Analytics placeholder token with real Cloudflare Web Analytics token
+
+### Open Questions (decide before implementation)
+- Auth provider: Supabase Auth, Auth0, Clerk, or Cloudflare Access?
+- Backend: Supabase, Cloudflare D1 + Workers, or another option?
+- What content is free vs premium? (Currently 6 free topics, 8 locked)
+- Payment integration needed, or login-only gating first?
+
+### NOT in v1.4 (tentative)
+- No payment processing (start with free login-only gating)
+- No social login (start with email/password)
+- No badges / gamification beyond streak
+- No leaderboard
+
+---
 
 ## Lessons Learned from v0
 
@@ -268,3 +377,6 @@ Blockers: [any issues]
 | 2026-02-07 | v1.1 scope added: exam/topic structure, more exams, email CTA |
 | 2026-02-08 | v1.1 completed ✅ (4 exams, 12 topics, 120 questions, EmailCTA) |
 | 2026-02-08 | v1.2 scope: warm theme, post-quiz CTA, SEO, CF Web Analytics |
+| 2026-02-08 | v1.2 completed ✅ (warm theme, SEO, analytics snippet, post-quiz CTAs) |
+| 2026-02-08 | v1.3 scope: fixes, landing page, locked topics, question expansion |
+| 2026-02-10 | v1.3 completed ✅ (landing page, 8 locked topics, 17q/topic, ENARSI exam, route restructure) |

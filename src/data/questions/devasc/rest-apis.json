@@ -68,5 +68,54 @@
     "options": ["Header-based versioning", "Query parameter versioning", "URI versioning (e.g., /api/v1/users)", "Content negotiation versioning"],
     "correct": 2,
     "explanation": "URI versioning places the version in the path (e.g., /api/v1/users or /v2/products). This is the most common and visible approach, though header-based versioning is also used."
+  },
+  {
+    "id": "devasc-api-011",
+    "question": "What is the HATEOAS principle in REST APIs?",
+    "options": ["A security protocol for encrypting API traffic", "The server provides hyperlinks in responses to guide clients to related resources", "A method for compressing large API payloads", "A versioning strategy using HTTP headers"],
+    "correct": 1,
+    "explanation": "HATEOAS (Hypermedia as the Engine of Application State) means the server includes hyperlinks in responses that tell the client what actions or resources are available next. This allows clients to navigate the API dynamically without hardcoding URLs."
+  },
+  {
+    "id": "devasc-api-012",
+    "question": "Which pagination approach uses an opaque token to retrieve the next page of results and handles real-time data changes more reliably?",
+    "options": ["Offset-based pagination", "Page number pagination", "Cursor-based pagination", "Limit-only pagination"],
+    "correct": 2,
+    "explanation": "Cursor-based pagination uses an opaque token (cursor) pointing to a specific item in the dataset. Unlike offset-based pagination, it handles insertions and deletions between requests gracefully, making it more reliable for real-time or frequently changing data."
+  },
+  {
+    "id": "devasc-api-013",
+    "question": "When should an API return HTTP 204 No Content instead of 200 OK?",
+    "options": ["When the request fails validation", "When the operation succeeds but there is no response body to return", "When the resource has been moved permanently", "When the client needs to authenticate first"],
+    "correct": 1,
+    "explanation": "HTTP 204 No Content indicates a successful request where the server intentionally returns no body. It is commonly used for DELETE operations or PUT/PATCH updates where the client does not need the updated resource returned."
+  },
+  {
+    "id": "devasc-api-014",
+    "question": "What is the key semantic difference between HTTP PUT and PATCH methods?",
+    "options": ["PUT creates resources; PATCH deletes resources", "PUT is idempotent; PATCH can never be idempotent", "PUT replaces the entire resource; PATCH applies a partial update", "PUT is used for collections; PATCH is used for individual items"],
+    "correct": 2,
+    "explanation": "PUT replaces the entire resource with the provided representation — any fields not included are removed or reset to defaults. PATCH applies only the specified changes, leaving other fields unchanged. Both can be used to update resources, but their semantics differ significantly."
+  },
+  {
+    "id": "devasc-api-015",
+    "question": "What HTTP status code indicates that a client has exceeded the API's rate limit?",
+    "options": ["403 Forbidden", "408 Request Timeout", "429 Too Many Requests", "503 Service Unavailable"],
+    "correct": 2,
+    "explanation": "HTTP 429 Too Many Requests is returned when a client sends too many requests in a given time window. The response often includes a Retry-After header telling the client how long to wait before retrying."
+  },
+  {
+    "id": "devasc-api-016",
+    "question": "How do webhooks differ from polling when monitoring for changes in a remote system?",
+    "options": ["Webhooks require the client to repeatedly check for updates; polling pushes updates automatically", "Webhooks push notifications to the client when events occur; polling requires the client to repeatedly check", "Webhooks only work with SOAP APIs; polling works with REST", "There is no practical difference between webhooks and polling"],
+    "correct": 1,
+    "explanation": "Webhooks are event-driven — the server sends an HTTP callback to the client when something changes. Polling requires the client to make repeated requests at intervals to check for updates. Webhooks are more efficient because they eliminate unnecessary requests when nothing has changed."
+  },
+  {
+    "id": "devasc-api-017",
+    "question": "In the OpenAPI (Swagger) specification, what does the 'paths' object define?",
+    "options": ["Database connection strings for the API", "The available API endpoints and the HTTP methods supported on each", "The authentication tokens required by the API", "The programming languages the API supports"],
+    "correct": 1,
+    "explanation": "The 'paths' object in an OpenAPI specification maps each API endpoint to its supported HTTP methods (GET, POST, PUT, DELETE) along with parameters, request bodies, and response schemas. It is the core of the API contract definition."
   }
 ]

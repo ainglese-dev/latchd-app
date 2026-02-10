@@ -68,5 +68,54 @@
     "options": ["To influence inbound traffic when multiple entry points exist into an AS", "To set the BGP router ID", "To prefer iBGP routes over eBGP routes", "To determine the BGP administrative distance"],
     "correct": 0,
     "explanation": "MED is used to influence inbound traffic from a neighboring AS when multiple entry points exist. Lower MED values are preferred. Unlike AS_PATH prepending, MED is only compared between routes from the same neighboring AS and is not propagated beyond the receiving AS."
+  },
+  {
+    "id": "enarsi-bgp-011",
+    "question": "What is the primary purpose of a BGP route reflector?",
+    "options": ["To filter routes between eBGP peers", "To eliminate the full-mesh iBGP requirement within an AS", "To prefer routes with the shortest AS_PATH", "To redistribute routes between OSPF and BGP"],
+    "correct": 1,
+    "explanation": "In iBGP, routes learned from one iBGP peer are not advertised to other iBGP peers, requiring a full mesh. A route reflector relaxes this rule by 'reflecting' iBGP routes to its clients, eliminating the need for every iBGP speaker to peer with every other."
+  },
+  {
+    "id": "enarsi-bgp-012",
+    "question": "What is the purpose of BGP confederations?",
+    "options": ["To create encrypted tunnels between BGP peers", "To divide a large AS into smaller sub-ASes to reduce the iBGP full-mesh requirement", "To aggregate prefixes before advertising them to eBGP peers", "To synchronize BGP and IGP routing tables"],
+    "correct": 1,
+    "explanation": "BGP confederations split a single AS into multiple sub-ASes. Within each sub-AS, full-mesh iBGP (or route reflectors) is still needed, but between sub-ASes, eBGP-like peering is used. To external peers, the confederation appears as a single AS, reducing the overall iBGP mesh complexity."
+  },
+  {
+    "id": "enarsi-bgp-013",
+    "question": "Which BGP community value, when attached to a route, tells receiving peers not to advertise the route to any other peer?",
+    "options": ["no-export", "no-advertise", "local-AS", "internet"],
+    "correct": 1,
+    "explanation": "The well-known BGP community 'no-advertise' instructs any receiving BGP speaker not to advertise the route to any peer — iBGP or eBGP. 'no-export' prevents advertising to eBGP peers but still allows iBGP distribution. 'local-AS' prevents advertising outside the local confederation sub-AS."
+  },
+  {
+    "id": "enarsi-bgp-014",
+    "question": "What does BGP route dampening do?",
+    "options": ["It load-balances traffic across multiple BGP paths", "It suppresses routes that flap repeatedly to improve stability", "It reduces the hold timer for faster convergence", "It prevents loops in iBGP by adding the originator ID"],
+    "correct": 1,
+    "explanation": "BGP route dampening penalizes routes that flap (repeatedly go up and down). Each flap increases a penalty value. When the penalty exceeds a suppress limit, the route is suppressed. Over time the penalty decays, and the route is reused once it drops below the reuse limit. This improves overall BGP stability."
+  },
+  {
+    "id": "enarsi-bgp-015",
+    "question": "In the BGP best path selection algorithm, which attribute is evaluated FIRST (highest priority) before all others?",
+    "options": ["LOCAL_PREF", "AS_PATH length", "WEIGHT", "MED"],
+    "correct": 2,
+    "explanation": "The BGP best path selection algorithm evaluates attributes in a specific order. WEIGHT (a Cisco-proprietary, locally significant attribute) is checked first. If weights are equal, LOCAL_PREF is checked next, followed by locally originated routes, AS_PATH length, origin type, MED, and so on."
+  },
+  {
+    "id": "enarsi-bgp-016",
+    "question": "When is the 'neighbor next-hop-self' command typically used in BGP?",
+    "options": ["On eBGP peers to change the next-hop to a loopback address", "On iBGP peers so that routes learned from eBGP are reachable via the advertising router's own address", "On route reflector clients to override the cluster ID", "On confederation peers to reset the AS_PATH"],
+    "correct": 1,
+    "explanation": "When a router learns a prefix via eBGP, the next-hop is the eBGP neighbor's address. When advertising this prefix to iBGP peers, the next-hop is preserved by default. If iBGP peers cannot reach that external next-hop, 'neighbor next-hop-self' changes the next-hop to the advertising router's own address, ensuring reachability."
+  },
+  {
+    "id": "enarsi-bgp-017",
+    "question": "A router has BGP graceful restart enabled and undergoes a process restart. During the restart, what happens to the forwarding table and peer behavior?",
+    "options": ["All BGP routes are immediately withdrawn and peers tear down sessions", "The forwarding table is preserved, and peers mark routes as stale but continue forwarding for a grace period", "Peers switch all traffic to backup paths and delete stale routes immediately", "The router sends a NOTIFICATION message instructing peers to hold routes indefinitely"],
+    "correct": 1,
+    "explanation": "With BGP graceful restart, when a BGP process restarts, the forwarding plane continues using existing routes. Peers that support graceful restart detect the session drop, mark routes from the restarting router as stale, but keep them in the RIB and forwarding table for a configurable restart timer. Once the session re-establishes and End-of-RIB is received, stale routes are either refreshed or removed."
   }
 ]

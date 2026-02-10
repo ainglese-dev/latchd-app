@@ -68,5 +68,54 @@
     "options": ["XML only", "JSON only", "XML and JSON", "YAML and JSON"],
     "correct": 2,
     "explanation": "RESTCONF supports both XML (application/yang-data+xml) and JSON (application/yang-data+json) encoding formats for request and response payloads."
+  },
+  {
+    "id": "dcauto-np-011",
+    "question": "Which HTTP method does RESTCONF use to create a new resource that must not already exist?",
+    "options": ["PUT", "POST", "PATCH", "DELETE"],
+    "correct": 1,
+    "explanation": "RESTCONF uses POST to create a new resource. If the resource already exists, the server returns an error. PUT can also create but will replace if it exists, while PATCH merges with existing data."
+  },
+  {
+    "id": "dcauto-np-012",
+    "question": "In a YANG data model, what is the key difference between a 'container' and a 'list'?",
+    "options": ["A container holds only leaf nodes; a list holds only other lists", "A container is a single grouping of nodes; a list is a collection of identically structured entries indexed by a key", "A container supports multiple instances; a list supports only one instance", "A container is used only in NETCONF; a list is used only in RESTCONF"],
+    "correct": 1,
+    "explanation": "A YANG container is a single grouping node that holds child nodes (leaves, other containers, etc.). A YANG list defines a sequence of entries that share the same structure, with each entry uniquely identified by one or more key leaves."
+  },
+  {
+    "id": "dcauto-np-013",
+    "question": "What is the purpose of the NETCONF candidate datastore?",
+    "options": ["It stores the device's active running configuration", "It provides a staging area where configuration changes can be prepared and validated before being committed to the running datastore", "It holds the factory default configuration for the device", "It logs all previous configuration changes for audit purposes"],
+    "correct": 1,
+    "explanation": "The candidate datastore is a writable staging area where an operator can make and validate configuration changes without affecting the live running configuration. Changes are applied to the running datastore only when an explicit <commit> operation is issued."
+  },
+  {
+    "id": "dcauto-np-014",
+    "question": "Which protocol does gNMI (gRPC Network Management Interface) use as its transport layer?",
+    "options": ["NETCONF over SSH", "RESTCONF over HTTPS", "gRPC over HTTP/2", "SNMP over UDP"],
+    "correct": 2,
+    "explanation": "gNMI is a network management protocol built on top of gRPC, which itself uses HTTP/2 as its transport. gNMI supports streaming telemetry and configuration management using YANG-modeled data encoded in Protocol Buffers (protobuf)."
+  },
+  {
+    "id": "dcauto-np-015",
+    "question": "What is a primary advantage of OpenConfig YANG models compared to vendor-native YANG models?",
+    "options": ["OpenConfig models expose more device-specific features than native models", "OpenConfig models are vendor-neutral and provide a consistent data structure across multi-vendor environments", "OpenConfig models can only be used with NETCONF, not RESTCONF", "OpenConfig models replace the need for any vendor-specific configuration entirely"],
+    "correct": 1,
+    "explanation": "OpenConfig YANG models are developed by a vendor-neutral consortium and provide a standardized, consistent data model across devices from different vendors. This simplifies multi-vendor automation. However, they may not cover all vendor-specific features, which is where native models are still needed."
+  },
+  {
+    "id": "dcauto-np-016",
+    "question": "When authenticating to the Cisco DNA Center APIs, what must a client first obtain before making subsequent API calls?",
+    "options": ["An SSH key pair", "A service token (authentication token) from the /dna/system/api/v1/auth/token endpoint", "A NETCONF session ID", "A SAML assertion from an external IdP"],
+    "correct": 1,
+    "explanation": "Cisco DNA Center uses token-based authentication. The client first sends a POST request with Basic Auth credentials to the authentication endpoint, which returns a time-limited service token. This token is then included in the X-Auth-Token header for all subsequent API requests."
+  },
+  {
+    "id": "dcauto-np-017",
+    "question": "A network engineer wants to programmatically retrieve the list of networks in a Meraki organization. Which of the following is the correct approach using the Meraki Dashboard API?",
+    "options": ["Send a NETCONF <get> RPC to the Meraki cloud controller over SSH on port 830", "Send an authenticated GET request to the Meraki Dashboard API v1 endpoint with the API key in the X-Cisco-Meraki-API-Key header", "Use SNMP GetBulk requests to the Meraki cloud endpoint on UDP port 161", "Establish a gRPC streaming session to the Meraki Dashboard on port 50051"],
+    "correct": 1,
+    "explanation": "The Meraki Dashboard API is a RESTful API accessed over HTTPS. Authentication is performed by including the API key in the X-Cisco-Meraki-API-Key header (or the newer Authorization: Bearer header). NETCONF, SNMP, and gRPC are not used to interact with the Meraki cloud management platform."
   }
 ]

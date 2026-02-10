@@ -68,5 +68,54 @@
     "options": ["Intent is what you configure; operational state is what actually exists in the fabric", "Operational state is the configuration backup; Intent is the running config", "Intent is for monitoring only; operational state controls traffic forwarding", "There is no difference — they are always synchronized"],
     "correct": 0,
     "explanation": "Intent represents the desired policy configured by administrators, while operational state shows what's actually deployed in the fabric. ACI's policy resolver ensures they stay synchronized."
+  },
+  {
+    "id": "dcauto-aci-011",
+    "question": "What is the primary difference between the Cobra SDK and the ACI Toolkit when programmatically interacting with Cisco ACI?",
+    "options": ["Cobra SDK is Python-based while ACI Toolkit uses only REST calls", "Cobra SDK provides full access to the ACI object model, while ACI Toolkit is a simplified library focused on common tasks and ease of use", "ACI Toolkit is the official Cisco SDK; Cobra is a community project", "Cobra SDK works only with on-premises APIC; ACI Toolkit works only with Cloud APIC"],
+    "correct": 1,
+    "explanation": "The Cobra SDK is the full-featured, auto-generated Python SDK that maps directly to the entire ACI Management Information Tree (MIT). ACI Toolkit is a community-friendly, simplified library that abstracts common operations (like creating tenants, EPGs, and contracts) into easier-to-use Python objects, though it does not cover the full object model."
+  },
+  {
+    "id": "dcauto-aci-012",
+    "question": "What is the role of the ACI Multi-Site Orchestrator (MSO)?",
+    "options": ["It replaces the APIC controller within a single fabric", "It provides centralized policy management and automation across multiple ACI fabrics or sites", "It handles Layer 4-7 service insertion within a single ACI fabric", "It is used exclusively for monitoring health scores across sites"],
+    "correct": 1,
+    "explanation": "The ACI Multi-Site Orchestrator (now called Nexus Dashboard Orchestrator) provides a single point of management for defining and deploying policies consistently across multiple ACI fabrics (sites). It enables stretched tenants, VRFs, and EPGs across sites while each site retains its own APIC cluster for local control."
+  },
+  {
+    "id": "dcauto-aci-013",
+    "question": "In ACI, which of the following is part of the Fabric Access Policies?",
+    "options": ["Contracts and Filters", "Bridge Domain subnet configuration", "Interface profiles, switch profiles, and VLAN pools", "EPG-to-EPG communication rules"],
+    "correct": 2,
+    "explanation": "Fabric Access Policies define how the ACI fabric connects to external devices (bare-metal servers, hypervisors, etc.). They include switch profiles, interface profiles, interface policy groups, VLAN pools, physical/virtual domains, and attachable access entity profiles (AEPs). Contracts and Bridge Domains are part of the tenant/networking policy, not access policy."
+  },
+  {
+    "id": "dcauto-aci-014",
+    "question": "When querying the APIC REST API, what is the difference between a MO (Managed Object) query and a class query?",
+    "options": ["A MO query returns all objects of a given class across the fabric; a class query returns a specific object by DN", "A MO query targets a specific object by its Distinguished Name (DN); a class query returns all objects of a specified class", "There is no difference; both return the same results", "A MO query uses GET; a class query uses POST"],
+    "correct": 1,
+    "explanation": "A Managed Object (MO) query targets a specific object using its Distinguished Name (DN) in the URL path (e.g., /api/mo/uni/tn-Prod.json). A class query returns all instances of a particular object class across the fabric (e.g., /api/class/fvTenant.json). Both use the GET method but differ in scope and targeting."
+  },
+  {
+    "id": "dcauto-aci-015",
+    "question": "What is the purpose of a service graph in ACI?",
+    "options": ["To visualize the physical topology of leaf and spine switches", "To define how Layer 4-7 services (such as firewalls or load balancers) are inserted into the traffic path between EPGs", "To display real-time packet flow statistics between endpoints", "To map YANG models to the ACI object tree"],
+    "correct": 1,
+    "explanation": "An ACI service graph defines how Layer 4-7 network services (firewalls, load balancers, IDS/IPS) are inserted into the data path between EPGs. The service graph specifies the service device, its mode (routed, transparent, or one-arm), and how traffic is redirected through it using policy-based redirect (PBR) or bridge-based insertion."
+  },
+  {
+    "id": "dcauto-aci-016",
+    "question": "What do ACI health scores represent?",
+    "options": ["The percentage of available bandwidth on leaf uplinks", "A numerical value (0-100) that aggregates fault information to indicate the overall health of an object such as a tenant, EPG, or the entire fabric", "The number of endpoints currently learned in the fabric", "The ratio of successful API calls to total API calls on the APIC"],
+    "correct": 1,
+    "explanation": "ACI health scores are computed values ranging from 0 (worst) to 100 (fully healthy) that aggregate the severity and quantity of faults affecting an object. Health scores are calculated at every level of the MIT hierarchy -- from individual endpoints up through EPGs, tenants, and the overall fabric -- providing a quick indicator of operational status."
+  },
+  {
+    "id": "dcauto-aci-017",
+    "question": "An ACI administrator needs to enforce security policies between endpoints within the same EPG based on VM attributes such as operating system type. Which ACI feature should they use, and what additional configuration is required?",
+    "options": ["Intra-EPG isolation with no additional configuration", "Preferred Group membership with vzAny contracts", "Microsegmentation (uSeg) EPGs with attribute-based rules that classify endpoints into sub-groups using criteria like VM name, IP, MAC, or custom attributes", "Taboo contracts applied within the EPG"],
+    "correct": 2,
+    "explanation": "Microsegmentation (uSeg) in ACI allows administrators to create sub-EPG classifications based on endpoint attributes such as VM name, IP address, MAC address, or custom VM attributes from the hypervisor. This enables granular security policies between endpoints that would otherwise share the same EPG and freely communicate. It requires integration with the VMM domain and defining attribute-based match rules on the uSeg EPG."
   }
 ]

@@ -68,5 +68,54 @@
     "options": ["ConfigMaps store configuration; Secrets store sensitive data (base64-encoded)", "ConfigMaps are encrypted; Secrets are plain text", "ConfigMaps are for production; Secrets are for development", "There is no difference — they're interchangeable"],
     "correct": 0,
     "explanation": "ConfigMaps store non-sensitive configuration data, while Secrets store sensitive data like passwords and tokens (base64-encoded, though not encrypted by default)."
+  },
+  {
+    "id": "devcor-deploy-011",
+    "question": "In a docker-compose.yml file, what does the 'depends_on' key specify?",
+    "options": ["The order in which containers share volumes", "The startup dependency order between services", "The network priority of each container", "The CPU allocation order for services"],
+    "correct": 1,
+    "explanation": "The 'depends_on' key in docker-compose.yml defines service startup order. If service B depends_on service A, Docker Compose starts A before B. Note that depends_on does not wait for a service to be 'ready,' only for it to be started."
+  },
+  {
+    "id": "devcor-deploy-012",
+    "question": "What is the primary benefit of a multi-stage Docker build?",
+    "options": ["It allows running multiple containers from one Dockerfile", "It reduces the final image size by discarding build-time dependencies", "It enables parallel execution of application processes", "It automatically scales the number of container replicas"],
+    "correct": 1,
+    "explanation": "Multi-stage builds use multiple FROM statements in a single Dockerfile. Build tools, compilers, and intermediate artifacts are left behind in earlier stages, and only the final runtime artifacts are copied into the last stage, producing a much smaller production image."
+  },
+  {
+    "id": "devcor-deploy-013",
+    "question": "What is the purpose of Kubernetes namespaces?",
+    "options": ["To isolate container processes at the kernel level", "To provide logical separation of resources within a cluster", "To define network subnets for Pod communication", "To encrypt secrets stored in etcd"],
+    "correct": 1,
+    "explanation": "Kubernetes namespaces provide logical isolation within a cluster. They allow teams to organize resources, apply resource quotas, and set RBAC policies independently. They do not provide network or kernel-level isolation by default."
+  },
+  {
+    "id": "devcor-deploy-014",
+    "question": "How does a Kubernetes readiness probe differ from a liveness probe?",
+    "options": ["A readiness probe restarts the container on failure; a liveness probe does not", "A liveness probe removes the Pod from Service endpoints; a readiness probe restarts it", "A readiness probe controls whether traffic is sent to the Pod; a liveness probe controls whether the container is restarted", "There is no functional difference; they use different syntax for the same check"],
+    "correct": 2,
+    "explanation": "A readiness probe determines if a Pod is ready to receive traffic — failing it removes the Pod from Service endpoints. A liveness probe determines if a container is still running — failing it causes the kubelet to restart the container. They serve complementary but distinct purposes."
+  },
+  {
+    "id": "devcor-deploy-015",
+    "question": "What Kubernetes resource manages external HTTP/HTTPS access to services and provides host-based or path-based routing?",
+    "options": ["LoadBalancer Service", "NodePort Service", "Ingress", "Gateway API Route"],
+    "correct": 2,
+    "explanation": "An Ingress resource defines rules for routing external HTTP/HTTPS traffic to internal Services based on hostnames and URL paths. An Ingress Controller (such as NGINX or Traefik) implements these rules. LoadBalancer and NodePort Services expose traffic but lack built-in host/path routing."
+  },
+  {
+    "id": "devcor-deploy-016",
+    "question": "Which of the following is a common public container image registry that Docker pulls from by default when no registry hostname is specified?",
+    "options": ["GitHub Container Registry (ghcr.io)", "Amazon Elastic Container Registry (ECR)", "Docker Hub (docker.io)", "Google Artifact Registry"],
+    "correct": 2,
+    "explanation": "When you run 'docker pull nginx' without specifying a registry, Docker defaults to Docker Hub (docker.io). Other registries like ghcr.io, ECR, and Google Artifact Registry require explicit hostnames in the image reference."
+  },
+  {
+    "id": "devcor-deploy-017",
+    "question": "A team uses Helm to manage Kubernetes deployments. They need to deploy the same application to staging and production with different replica counts and resource limits. Which Helm feature allows them to override default configuration without modifying the chart templates?",
+    "options": ["Helm hooks with pre-install jobs", "A custom values.yaml file passed with 'helm install -f'", "Helm chart dependencies in Chart.yaml", "Kubernetes kustomize overlays embedded in the chart"],
+    "correct": 1,
+    "explanation": "Helm charts use a values.yaml file for default configuration. Users can supply a custom values file with 'helm install -f custom-values.yaml' or use '--set' flags to override specific values. This allows the same chart templates to produce different manifests for different environments without modifying the templates themselves."
   }
 ]

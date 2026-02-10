@@ -54,7 +54,7 @@ export default function Results({ questions, answers, onTryAgain, onBackHome, ex
         </button>
         {examId && (
           <Link
-            to={`/exam/${examId}`}
+            to={`/app/exam/${examId}`}
             className="w-full block text-center border border-[#d4cac0] hover:border-[#c8682f] hover:bg-[#f5f0ea] focus:outline-none focus:ring-2 focus:ring-[#e07840]/50 text-[#2c2418] font-medium py-3 rounded-lg transition-colors"
           >
             Try another topic

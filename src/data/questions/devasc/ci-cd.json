@@ -68,5 +68,54 @@
     "options": ["They are the same thing", "Continuous Delivery requires manual approval to deploy; Continuous Deployment is fully automated", "Continuous Deployment only works with Docker", "Continuous Delivery skips testing"],
     "correct": 1,
     "explanation": "Continuous Delivery ensures code is always deployable but requires manual approval for production releases. Continuous Deployment goes further by automatically deploying every change that passes the pipeline to production."
+  },
+  {
+    "id": "devasc-cicd-011",
+    "question": "What is a blue/green deployment strategy?",
+    "options": ["Deploying to two different cloud providers simultaneously", "Running two identical production environments and switching traffic from the old (blue) to the new (green) after verification", "Color-coding pipeline stages for visual clarity", "Deploying features only to internal users first"],
+    "correct": 1,
+    "explanation": "Blue/green deployment maintains two identical production environments. The current version runs on blue while the new version is deployed to green. After testing green, traffic is switched from blue to green. If issues arise, you can instantly switch back to blue, providing a fast rollback mechanism."
+  },
+  {
+    "id": "devasc-cicd-012",
+    "question": "How does a canary release differ from a blue/green deployment?",
+    "options": ["Canary releases skip testing entirely", "Canary releases gradually roll out changes to a small subset of users before full deployment", "Canary releases only work with containerized applications", "Canary releases require two identical production environments running simultaneously"],
+    "correct": 1,
+    "explanation": "A canary release routes a small percentage of traffic (e.g., 5%) to the new version while most users stay on the current version. If metrics look good, traffic is gradually shifted. This reduces risk by limiting the blast radius of potential issues, unlike blue/green which switches all traffic at once."
+  },
+  {
+    "id": "devasc-cicd-013",
+    "question": "How should sensitive values like API keys and passwords be managed in CI/CD pipelines?",
+    "options": ["Hardcode them directly in the pipeline configuration file", "Store them as encrypted secrets or environment variables in the CI/CD platform", "Commit them to the repository in a secrets.txt file", "Pass them as command-line arguments in the pipeline logs"],
+    "correct": 1,
+    "explanation": "CI/CD platforms provide encrypted secret storage (e.g., GitHub Secrets, GitLab CI Variables) that injects sensitive values as environment variables at runtime. Secrets should never be hardcoded in pipeline files or committed to repositories, as they would be visible in version history."
+  },
+  {
+    "id": "devasc-cicd-014",
+    "question": "What role does Docker play in CI/CD pipelines?",
+    "options": ["Docker replaces the need for any CI/CD platform", "Docker provides consistent, reproducible build environments and packages applications into deployable containers", "Docker is only used for database management in pipelines", "Docker encrypts pipeline artifacts for secure storage"],
+    "correct": 1,
+    "explanation": "Docker ensures that builds and tests run in consistent, isolated environments regardless of the CI/CD runner's configuration. Applications are packaged into container images that run identically in development, staging, and production, eliminating 'works on my machine' issues."
+  },
+  {
+    "id": "devasc-cicd-015",
+    "question": "What is the difference between triggering a CI/CD pipeline 'on push' versus 'on pull request'?",
+    "options": ["'On push' triggers when code is pushed to any branch; 'on pull request' triggers when a PR is opened or updated", "'On push' is for production; 'on pull request' is for staging only", "'On push' runs tests; 'on pull request' skips tests", "There is no difference — both trigger at the same time"],
+    "correct": 0,
+    "explanation": "'On push' triggers the pipeline whenever code is pushed to the configured branches. 'On pull request' triggers when a PR is created, updated, or synchronized. Teams often use 'on PR' for running tests and checks before merging, and 'on push to main' for deployment."
+  },
+  {
+    "id": "devasc-cicd-016",
+    "question": "Why do some CI/CD pipelines enforce minimum test coverage requirements?",
+    "options": ["To make the pipeline run faster", "To ensure a baseline percentage of code is covered by automated tests, reducing the risk of undetected bugs", "To limit the number of tests that can be written", "To prevent developers from writing too much code"],
+    "correct": 1,
+    "explanation": "Test coverage thresholds (e.g., 80% minimum) ensure that new code is accompanied by tests. The pipeline fails if coverage drops below the threshold, encouraging developers to write tests and reducing the risk of deploying untested code paths. Coverage alone doesn't guarantee quality, but it helps prevent blind spots."
+  },
+  {
+    "id": "devasc-cicd-017",
+    "question": "In the context of CI/CD, what is a rollback and which deployment strategy makes rollbacks easiest?",
+    "options": ["A rollback deletes the Git repository; trunk-based development makes it easiest", "A rollback reverts to the previous working version; blue/green deployments allow instant rollback by switching traffic back", "A rollback re-runs all pipeline stages; canary releases prevent the need for rollbacks entirely", "A rollback pauses the pipeline; manual deployments make rollbacks easiest"],
+    "correct": 1,
+    "explanation": "A rollback reverts the production environment to the previous stable version when a new deployment causes issues. Blue/green deployments make rollbacks nearly instant because the previous version is still running on the idle environment — you simply switch traffic back. Other strategies may require redeploying the old version."
   }
 ]

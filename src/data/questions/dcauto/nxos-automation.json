@@ -68,5 +68,54 @@
     "options": ["Send a POST request with the feature name in the JSON body", "Use the 'feature <name>' CLI command via SSH or NX-API CLI", "Features are enabled automatically when referenced", "Modify the feature configuration file directly"],
     "correct": 1,
     "explanation": "Features are enabled using the 'feature <name>' CLI command, which can be sent via SSH (Paramiko) or NX-API CLI mode. NX-API uses JSON-RPC for CLI commands."
+  },
+  {
+    "id": "dcauto-nxos-011",
+    "question": "What is the NX-API Sandbox (also known as NX-API Developer Sandbox) used for on a Cisco Nexus switch?",
+    "options": ["It provides a Linux shell for running custom scripts on the switch", "It is a web-based tool on the switch that lets you test NX-API requests, view the request/response payloads, and generate code snippets", "It is a Cisco cloud service for simulating Nexus topologies", "It replaces the CLI for all switch management tasks"],
+    "correct": 1,
+    "explanation": "The NX-API Sandbox (Developer Sandbox) is a built-in web-based utility accessible on the switch (typically at https://<switch-ip>/ins_api_sandbox.html). It allows engineers to enter CLI commands or API calls, see the JSON/XML request and response payloads, and copy auto-generated Python code snippets -- making it invaluable for learning and testing NX-API."
+  },
+  {
+    "id": "dcauto-nxos-012",
+    "question": "Which Ansible module is specifically designed to send configuration commands to a Cisco NX-OS device?",
+    "options": ["nxos_facts", "nxos_config", "nxos_command", "nxos_ping"],
+    "correct": 1,
+    "explanation": "The nxos_config module is used to manage the configuration of NX-OS devices. It can push configuration lines, compare against the running config, and support features like replace and backup. The nxos_command module is for sending operational (show) commands, nxos_facts gathers device facts, and nxos_ping tests reachability."
+  },
+  {
+    "id": "dcauto-nxos-013",
+    "question": "What does POAP (Power On Auto Provisioning) do on a Cisco Nexus switch?",
+    "options": ["It enables the NX-API feature automatically at boot", "It allows a new Nexus switch to automatically download and apply its software image and configuration from a server when it boots for the first time without a startup configuration", "It configures SNMP community strings during initial setup", "It creates a checkpoint of the running configuration on every reboot"],
+    "correct": 1,
+    "explanation": "POAP automates the process of provisioning new Nexus switches. When a switch boots with no startup-config, it uses DHCP to obtain an IP address and the location of a POAP script (typically a Python script on a TFTP/HTTP server). The script then downloads and installs the correct NX-OS image and the intended configuration, enabling zero-touch Day-0 deployment."
+  },
+  {
+    "id": "dcauto-nxos-014",
+    "question": "What is the Guestshell on a Cisco NX-OS device?",
+    "options": ["A secondary CLI for configuring management interfaces only", "A secure Linux container environment running on the switch that allows execution of custom scripts, tools, and third-party applications", "A Python-only REPL for running NX-OS show commands", "A virtualized instance of the NX-OS operating system for testing"],
+    "correct": 1,
+    "explanation": "The Guestshell is a secure, CentOS-based Linux container that runs within the NX-OS environment. It provides network engineers with a full Linux shell where they can install packages (via yum/pip), run Python/Bash scripts, use configuration management tools like Ansible, and interact with the switch's CLI through built-in NX-OS integration -- all without affecting the switch's core OS."
+  },
+  {
+    "id": "dcauto-nxos-015",
+    "question": "In the context of NX-OS automation, what is the difference between Day-0 and Day-1 provisioning?",
+    "options": ["Day-0 handles production traffic engineering; Day-1 handles initial device setup", "Day-0 is the initial device bring-up (image, base config, management access); Day-1 is the deployment of feature-specific configurations (routing, interfaces, policies) after the device is reachable", "Day-0 uses Ansible; Day-1 uses Python only", "There is no difference; both refer to the same provisioning phase"],
+    "correct": 1,
+    "explanation": "Day-0 provisioning covers the very first stage of getting a device operational: installing the OS image, setting the hostname, configuring management interfaces, and enabling remote access (often via POAP). Day-1 provisioning follows once the device is reachable and covers deploying feature-rich configurations such as routing protocols, VLANs, access policies, and monitoring -- typically using tools like Ansible, Python scripts, or Terraform."
+  },
+  {
+    "id": "dcauto-nxos-016",
+    "question": "What is a key difference between NX-API REST and NX-API CLI modes on a Nexus 9000 switch?",
+    "options": ["NX-API REST uses SSH while NX-API CLI uses HTTPS", "NX-API REST exposes the MIT (Management Information Tree) as a RESTful object model similar to ACI, while NX-API CLI wraps traditional NX-OS CLI commands in JSON/XML payloads sent over HTTP/HTTPS", "NX-API REST is available only on Nexus 7000; NX-API CLI is available only on Nexus 9000", "There is no difference; they are two names for the same feature"],
+    "correct": 1,
+    "explanation": "NX-API CLI (also called NX-API) allows you to send traditional CLI commands (show, configure) wrapped in JSON or XML payloads via HTTP/HTTPS POST requests. NX-API REST (available on Nexus 9000 in standalone mode) exposes a model-driven, object-based REST interface with a Management Information Tree (MIT) similar to ACI's object model, allowing CRUD operations on structured objects via standard HTTP methods."
+  },
+  {
+    "id": "dcauto-nxos-017",
+    "question": "A network engineer wants to use YANG models to configure a Nexus 9000 switch running NX-OS. They need to subscribe to real-time configuration change notifications using model-driven telemetry. Which combination of protocols and features must be enabled on the switch to accomplish this?",
+    "options": ["NX-API CLI and SNMP traps", "NETCONF/RESTCONF for YANG-based configuration and gRPC dial-in or dial-out telemetry for streaming model-driven telemetry subscriptions", "Only SSH with traditional CLI commands", "POAP and Guestshell with cron-based polling scripts"],
+    "correct": 1,
+    "explanation": "NX-OS on Nexus 9000 supports YANG models via both NETCONF (over SSH on port 830) and RESTCONF (over HTTPS). For model-driven telemetry, NX-OS supports gRPC-based streaming telemetry in both dial-in (collector connects to the switch) and dial-out (switch pushes to the collector) modes. The engineer needs to enable the NETCONF or RESTCONF agent for configuration and configure telemetry subscriptions with gRPC transport for real-time notifications -- both using YANG-modeled data paths."
   }
 ]

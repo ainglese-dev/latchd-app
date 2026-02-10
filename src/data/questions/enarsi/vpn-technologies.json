@@ -68,5 +68,54 @@
     "options": ["FlexVPN is faster than IPsec", "FlexVPN uses a unified IKEv2-based framework supporting multiple deployment models (site-to-site, remote access)", "FlexVPN does not require certificates", "FlexVPN eliminates the need for encryption"],
     "correct": 1,
     "explanation": "FlexVPN leverages IKEv2 to provide a unified, standards-based VPN solution that supports various deployment models (site-to-site, remote access, hub-and-spoke) with a single configuration framework. It simplifies configuration and improves interoperability compared to legacy IPsec implementations."
+  },
+  {
+    "id": "enarsi-vpn-011",
+    "question": "What is the key difference between IPsec transport mode and tunnel mode?",
+    "options": ["Transport mode encrypts the entire IP packet and adds a new IP header; tunnel mode encrypts only the payload", "Transport mode encrypts only the payload and preserves the original IP header; tunnel mode encrypts the entire original IP packet and adds a new IP header", "Transport mode is used for site-to-site VPNs; tunnel mode is used for remote access only", "There is no difference; the terms are interchangeable"],
+    "correct": 1,
+    "explanation": "In transport mode, IPsec encrypts only the packet payload (and transport header) while keeping the original IP header intact — typically used for host-to-host communication. In tunnel mode, the entire original IP packet is encrypted and encapsulated inside a new IP packet with a new header — this is the standard mode for site-to-site VPNs where the original source and destination must be hidden."
+  },
+  {
+    "id": "enarsi-vpn-012",
+    "question": "Which of the following is an advantage of IKEv2 over IKEv1?",
+    "options": ["IKEv2 uses more exchange messages for stronger security", "IKEv2 supports built-in NAT traversal and requires fewer message exchanges to establish an SA", "IKEv2 eliminates the need for Diffie-Hellman key exchange", "IKEv2 only supports pre-shared key authentication, making it simpler"],
+    "correct": 1,
+    "explanation": "IKEv2 improves upon IKEv1 in several ways: it requires only 4 messages (2 exchanges) to establish an IKE SA compared to IKEv1's 6 or 9 messages, it has built-in NAT traversal (NAT-T) support, built-in Dead Peer Detection (DPD), and supports EAP authentication. It also supports MOBIKE for mobile clients changing IP addresses."
+  },
+  {
+    "id": "enarsi-vpn-013",
+    "question": "What is the purpose of NAT Traversal (NAT-T) in IPsec?",
+    "options": ["To translate private IP addresses inside encrypted tunnels", "To encapsulate ESP packets in UDP port 4500 so they can pass through NAT devices", "To dynamically assign public IP addresses to VPN endpoints", "To compress IPsec headers to reduce overhead on NAT devices"],
+    "correct": 1,
+    "explanation": "NAT devices modify IP headers, which breaks IPsec ESP integrity checks. NAT-T solves this by encapsulating ESP packets inside UDP (port 4500). The NAT device translates the outer UDP/IP header without touching the encrypted ESP payload inside, preserving IPsec integrity. NAT-T is automatically negotiated during IKE when NAT is detected between peers."
+  },
+  {
+    "id": "enarsi-vpn-014",
+    "question": "On a Cisco IOS router, what is the advantage of using 'tunnel protection ipsec profile' over legacy crypto maps for securing GRE tunnels?",
+    "options": ["Crypto maps support multicast traffic but tunnel protection does not", "Tunnel protection simplifies configuration by binding the IPsec profile directly to the tunnel interface, eliminating the need for ACL-based traffic selection", "Tunnel protection uses a different encryption algorithm than crypto maps", "Crypto maps are no longer supported in any IOS version"],
+    "correct": 1,
+    "explanation": "With legacy crypto maps, you must define an ACL to match interesting traffic and apply the crypto map to the physical interface. With tunnel protection, you create an IPsec profile and apply it directly to the GRE tunnel interface — all traffic through that tunnel is automatically protected. This approach is simpler, less error-prone, and is the recommended method for protecting GRE tunnels."
+  },
+  {
+    "id": "enarsi-vpn-015",
+    "question": "What type of VPN is Cisco GETVPN (Group Encrypted Transport VPN) primarily designed for?",
+    "options": ["Remote access VPN for mobile users over the internet", "Point-to-point VPN between two branch offices", "Any-to-any encrypted communication over a private MPLS WAN without tunnel overlays", "SSL-based VPN for clientless browser access"],
+    "correct": 2,
+    "explanation": "GETVPN is designed for networks with a private WAN infrastructure (such as MPLS). It uses a group key model with a Key Server (KS) that distributes encryption policies and keys to Group Members (GMs). GETVPN preserves the original IP header (tunnel-less), maintaining routing efficiency and enabling any-to-any encrypted communication without building point-to-point tunnels."
+  },
+  {
+    "id": "enarsi-vpn-016",
+    "question": "An engineer is troubleshooting a site-to-site IPsec VPN that fails to establish. The 'show crypto isakmp sa' output shows the IKE SA state as 'MM_NO_STATE'. What is the most likely cause?",
+    "options": ["The IPsec transform set is mismatched between peers", "The IKE Phase 1 proposal (encryption, hash, authentication, or DH group) is mismatched or the peer is unreachable", "The crypto ACL does not match interesting traffic", "The tunnel interface IP address is incorrect"],
+    "correct": 1,
+    "explanation": "MM_NO_STATE in Main Mode indicates that IKE Phase 1 negotiation failed at an early stage. The most common cause is a mismatch in the ISAKMP policy parameters (encryption algorithm, hash algorithm, authentication method, or Diffie-Hellman group) between the two peers, or the remote peer is not reachable on UDP port 500. Transform set mismatches would affect Phase 2, not Phase 1."
+  },
+  {
+    "id": "enarsi-vpn-017",
+    "question": "An organization's security policy requires that compromise of one VPN session's encryption key must not allow decryption of past or future sessions. Which IPsec feature satisfies this requirement, and how does it work?",
+    "options": ["Anti-replay protection, which uses sequence numbers to prevent packet reuse", "Perfect Forward Secrecy (PFS), which performs a new Diffie-Hellman exchange for each Phase 2 SA so session keys are independent", "IKE SA rekey, which changes the Phase 1 key every 24 hours", "Dead Peer Detection (DPD), which tears down sessions to compromised peers"],
+    "correct": 1,
+    "explanation": "Perfect Forward Secrecy (PFS) ensures that IPsec Phase 2 (Quick Mode) session keys are not derived from the Phase 1 keying material. Instead, a new Diffie-Hellman exchange is performed for each Phase 2 SA. This means that even if one session key is compromised, past and future session keys remain secure because they were generated independently. PFS is configured by specifying a DH group in the IPsec transform set or crypto map."
   }
 ]

@@ -68,5 +68,54 @@
     "options": ["Suboptimal routing", "Routing loops", "Split horizon violations", "Excessive bandwidth usage"],
     "correct": 1,
     "explanation": "The feasibility condition in EIGRP prevents routing loops by ensuring that a backup route's Advertised Distance is less than the current route's Feasible Distance. This guarantees that the backup path does not route through the current router, making it loop-free."
+  },
+  {
+    "id": "enarsi-eigrp-011",
+    "question": "What does it mean when an EIGRP route is 'stuck in active' (SIA)?",
+    "options": ["The route is actively being used for forwarding and cannot be removed", "A query for a lost route has not received a reply within the SIA timer, indicating a convergence problem", "The route is in the topology table but has not been installed in the routing table", "EIGRP is actively redistributing the route into another protocol"],
+    "correct": 1,
+    "explanation": "When EIGRP loses a route and has no feasible successor, it sends queries to neighbors. If a neighbor does not reply within the SIA timer (default 3 minutes), the route is declared stuck-in-active, and the neighbor relationship is reset. SIA conditions typically indicate a query is propagating too far or a neighbor is slow to respond."
+  },
+  {
+    "id": "enarsi-eigrp-012",
+    "question": "Which two authentication methods does EIGRP support for securing neighbor relationships?",
+    "options": ["Plain-text and AES-256", "MD5 and HMAC-SHA-256", "PAP and CHAP", "RSA signatures and Diffie-Hellman"],
+    "correct": 1,
+    "explanation": "EIGRP supports MD5 authentication (classic mode and named mode) and HMAC-SHA-256 authentication (named mode only). Both methods use a shared key to generate a hash of EIGRP packets, ensuring that only routers with the correct key can form adjacencies. SHA-256 is the stronger and recommended option."
+  },
+  {
+    "id": "enarsi-eigrp-013",
+    "question": "When you configure EIGRP route summarization on an interface, what route is automatically added to the summarizing router's routing table?",
+    "options": ["A default route (0.0.0.0/0) pointing to that interface", "A summary route pointing to Null0 to prevent routing loops", "A static route to the longest-match prefix within the summary", "A floating static route with an administrative distance of 255"],
+    "correct": 1,
+    "explanation": "When EIGRP summarizes routes on an interface, it installs a summary route pointing to Null0 (the discard route) in the local routing table. This prevents routing loops — if a packet arrives for a more-specific prefix that does not exist, it is dropped at the summarizing router rather than being forwarded in a loop."
+  },
+  {
+    "id": "enarsi-eigrp-014",
+    "question": "EIGRP wide metrics use a 64-bit composite metric. What is the primary reason Cisco introduced wide metrics in EIGRP named mode?",
+    "options": ["To support authentication with longer key lengths", "To accurately represent high-bandwidth interfaces (10G, 40G, 100G) that classic 32-bit metrics cannot differentiate", "To allow EIGRP to carry IPv6 prefixes", "To increase the maximum hop count beyond 255"],
+    "correct": 1,
+    "explanation": "Classic EIGRP uses a 32-bit metric calculation where bandwidth is scaled such that interfaces faster than approximately 10 Gbps all compute to the same minimum metric value. Wide metrics use 64-bit values with a scaled bandwidth formula (EIGRP_BANDWIDTH = 10^7 * 65536 / bandwidth_kbps) that can differentiate between 10G, 40G, 100G, and faster links."
+  },
+  {
+    "id": "enarsi-eigrp-015",
+    "question": "What is the effect of configuring 'passive-interface' on an EIGRP-enabled interface?",
+    "options": ["The interface sends Hellos but does not accept them from neighbors", "The interface stops sending and receiving EIGRP Hellos, preventing neighbor formation, but the connected network is still advertised", "The interface forms adjacencies but does not advertise its connected network", "The interface is completely removed from the EIGRP process"],
+    "correct": 1,
+    "explanation": "Configuring passive-interface in EIGRP suppresses Hello packets on that interface, which prevents EIGRP neighbor adjacencies from forming. However, the network connected to that interface is still advertised in EIGRP updates sent out other (non-passive) interfaces. This is commonly used on LAN segments where no EIGRP neighbors exist."
+  },
+  {
+    "id": "enarsi-eigrp-016",
+    "question": "In a DMVPN network running EIGRP, what issue can occur if split-horizon is not disabled on the hub's tunnel interface?",
+    "options": ["EIGRP packets will not be encrypted by IPsec", "Routes learned from one spoke will not be advertised to other spokes through the hub", "The hub will not form EIGRP adjacencies with any spoke", "EIGRP will use the wrong next-hop address for spoke-to-spoke traffic"],
+    "correct": 1,
+    "explanation": "EIGRP split-horizon prevents a router from advertising routes back out the same interface they were learned on. On a DMVPN hub's multipoint GRE tunnel interface, all spokes are reachable through the same interface. With split-horizon enabled, routes learned from one spoke are not advertised to other spokes. Disabling split-horizon ('no ip split-horizon eigrp <AS>') on the hub tunnel interface resolves this."
+  },
+  {
+    "id": "enarsi-eigrp-017",
+    "question": "An enterprise network running EIGRP experiences SIA events during convergence. An engineer wants to limit query scope without changing the topology. Which combination of techniques is MOST effective at reducing EIGRP query propagation?",
+    "options": ["Increase the hold timer and enable passive-interface on all LAN segments", "Configure EIGRP stub routing on remote branch routers and use route summarization at distribution layer routers", "Reduce the Hello interval to 1 second and enable EIGRP authentication on all links", "Enable EIGRP wide metrics and increase the variance multiplier for load balancing"],
+    "correct": 1,
+    "explanation": "EIGRP stub routing on branch routers tells the hub that stubs will never be transit routers, so the hub never sends queries to them — dramatically reducing query scope. Route summarization at distribution routers creates query boundaries because a router that has a summary route and loses a component route does not need to query further. Together, these two techniques are the most effective way to contain query propagation and prevent SIA conditions."
   }
 ]

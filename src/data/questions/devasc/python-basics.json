@@ -68,5 +68,54 @@
     "options": ["1, 2, 3, 4, 5, 6, 7, 8, 9", "1, 3, 5, 7, 9", "2, 4, 6, 8, 10", "0, 2, 4, 6, 8"],
     "correct": 1,
     "explanation": "range(start, stop, step) with range(1, 10, 2) generates 1, 3, 5, 7, 9 — starting at 1, stopping before 10, stepping by 2."
+  },
+  {
+    "id": "devasc-py-011",
+    "question": "What is the purpose of *args in a Python function definition?",
+    "options": ["It makes all arguments required", "It allows the function to accept any number of positional arguments as a tuple", "It unpacks a dictionary into keyword arguments", "It restricts the function to only one argument"],
+    "correct": 1,
+    "explanation": "*args collects any number of extra positional arguments into a tuple. This lets you write functions that accept a variable number of arguments, such as def my_func(*args) which can be called with my_func(1, 2, 3)."
+  },
+  {
+    "id": "devasc-py-012",
+    "question": "What does **kwargs allow in a Python function definition?",
+    "options": ["It passes arguments by reference instead of by value", "It allows the function to accept any number of keyword arguments as a dictionary", "It forces all arguments to be strings", "It enables type checking on arguments"],
+    "correct": 1,
+    "explanation": "**kwargs collects any number of extra keyword arguments into a dictionary. For example, def my_func(**kwargs) can be called with my_func(name='Alice', age=30), and kwargs will be {'name': 'Alice', 'age': 30}."
+  },
+  {
+    "id": "devasc-py-013",
+    "question": "What is a decorator in Python?",
+    "options": ["A comment style that generates documentation", "A function that wraps another function to extend or modify its behavior", "A special type of class that cannot be inherited", "A syntax for defining constants"],
+    "correct": 1,
+    "explanation": "A decorator is a function that takes another function as input and returns a modified version of it. Decorators are applied using the @decorator_name syntax above a function definition and are commonly used for logging, authentication, and caching."
+  },
+  {
+    "id": "devasc-py-014",
+    "question": "What does the following expression evaluate to? (lambda x, y: x + y)(3, 7)",
+    "options": ["A function object", "10", "(3, 7)", "SyntaxError"],
+    "correct": 1,
+    "explanation": "lambda creates an anonymous function. Here, lambda x, y: x + y defines a function that adds its two arguments. The parentheses immediately call it with arguments 3 and 7, returning 10."
+  },
+  {
+    "id": "devasc-py-015",
+    "question": "What is the primary purpose of a Python virtual environment (venv)?",
+    "options": ["To run Python code faster using virtualization", "To isolate project dependencies from the system Python and other projects", "To create virtual machines for testing", "To encrypt Python source files"],
+    "correct": 1,
+    "explanation": "A virtual environment creates an isolated Python environment with its own installed packages, independent of the system Python. This prevents dependency conflicts between projects that may require different versions of the same package."
+  },
+  {
+    "id": "devasc-py-016",
+    "question": "Which command installs a specific version of a package using pip?",
+    "options": ["pip install requests version 2.28.0", "pip install requests==2.28.0", "pip install requests -v 2.28.0", "pip get requests@2.28.0"],
+    "correct": 1,
+    "explanation": "pip install package==version installs a specific version. The double equals (==) is the version pinning syntax. You can also use >= for minimum versions or ~= for compatible releases."
+  },
+  {
+    "id": "devasc-py-017",
+    "question": "What is the difference between a class variable and an instance variable in Python?",
+    "options": ["Class variables are private; instance variables are public", "Class variables are shared across all instances; instance variables are unique to each instance", "Class variables can only be integers; instance variables can be any type", "There is no difference — they are the same thing"],
+    "correct": 1,
+    "explanation": "Class variables are defined in the class body and shared by all instances — changing one affects all. Instance variables are defined in __init__ using self and are unique to each object."
   }
 ]

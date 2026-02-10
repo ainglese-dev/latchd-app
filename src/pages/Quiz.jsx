@@ -1,9 +1,10 @@
 import { useState, useCallback, useEffect } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams, Link } from 'react-router-dom'
 import Question from '../components/Question'
 import Results from '../components/Results'
 import { loadQuestions } from '../utils/questionLoader'
 import exams from '../data/exams.json'
+import { useSEO } from '../utils/useSEO'
 
 const STREAK_KEY = 'latchd_streak'
 
@@ -48,11 +49,10 @@ export default function Quiz() {
   const examData = exams.find(e => e.id === examId)
   const topicData = examData?.topics.find(t => t.id === topicId)
 
-  useEffect(() => {
-    if (topicData && examData) {
-      document.title = `${topicData.name} — ${examData.name} | Latchd`
-    }
-  }, [topicData, examData])
+  useSEO({
+    title: topicData && examData ? `${topicData.name} — ${examData.name} | Latchd` : 'Quiz | Latchd',
+    path: `/app/exam/${examId}/${topicId}`
+  })
 
   useEffect(() => {
     setLoading(true)
@@ -104,7 +104,7 @@ export default function Quiz() {
   }, [])
 
   const handleBackHome = useCallback(() => {
-    navigate('/')
+    navigate('/app')
   }, [navigate])
 
   if (loading) {
@@ -161,6 +161,10 @@ export default function Quiz() {
   return (
     <div className="min-h-dvh px-4 py-6 pb-8">
       <div className="max-w-lg mx-auto">
+        <Link to={`/app/exam/${examId}`} className="text-sm text-[#6b5e52] hover:text-[#2c2418] mb-4 inline-block">
+          ← Exit Quiz
+        </Link>
+
         <div className="mb-6">
           <div className="flex justify-between items-center mb-2">
             <span className="text-xs text-[#6b5e52]">
@@ -170,7 +174,7 @@ export default function Quiz() {
               {Math.round(progressPct)}%
             </span>
           </div>
-          <div className="w-full h-2 bg-[#e8e0d8] rounded-full">
+          <div className="w-full h-2 bg-[#d4cac0] rounded-full">
             <div
               className="h-2 bg-[#e07840] rounded-full transition-all duration-300"
               style={{ width: `${progressPct}%` }}

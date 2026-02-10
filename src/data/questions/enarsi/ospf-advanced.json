@@ -68,5 +68,54 @@
     "options": ["area range", "summary-address", "auto-summary", "ip summary-address"],
     "correct": 0,
     "explanation": "The 'area range' command is used on an ABR to summarize Type 1 and Type 2 LSAs into a single Type 3 summary LSA for advertisement into other areas. The 'summary-address' command is used on an ASBR to summarize external routes (Type 5 LSAs)."
+  },
+  {
+    "id": "enarsi-ospf-011",
+    "question": "What algorithm does OSPF use to calculate the shortest path to each destination?",
+    "options": ["Bellman-Ford algorithm", "Dijkstra's Shortest Path First (SPF) algorithm", "DUAL algorithm", "Floyd-Warshall algorithm"],
+    "correct": 1,
+    "explanation": "OSPF uses Dijkstra's SPF algorithm to build a shortest-path tree from the link-state database. Each router runs SPF independently using the complete topology information flooded via LSAs. This produces loop-free, consistent routing tables across all routers in an area."
+  },
+  {
+    "id": "enarsi-ospf-012",
+    "question": "Which OSPF version adds native support for IPv6 routing?",
+    "options": ["OSPFv1", "OSPFv2 with address-family extensions", "OSPFv3", "OSPFv2 with IPv6 tunneling"],
+    "correct": 2,
+    "explanation": "OSPFv3 was originally defined in RFC 5340 to support IPv6 natively. It runs directly over IPv6 link-local addresses and uses new LSA types. Later extensions (address-family capability) also allow OSPFv3 to carry IPv4 prefixes, but its primary design purpose was IPv6 support."
+  },
+  {
+    "id": "enarsi-ospf-013",
+    "question": "Which OSPF authentication type uses a cryptographic hash to protect OSPF packets?",
+    "options": ["Type 0 — Null authentication", "Type 1 — Plain-text authentication", "Type 2 — MD5 cryptographic authentication", "Type 3 — AES-256 encryption"],
+    "correct": 2,
+    "explanation": "OSPF supports three authentication types: Type 0 (null/none), Type 1 (simple plain-text password), and Type 2 (MD5 cryptographic authentication). Type 2 uses an MD5 hash of the OSPF packet plus a shared key, preventing the password from being sent in clear text. There is no native Type 3 or AES authentication in standard OSPF."
+  },
+  {
+    "id": "enarsi-ospf-014",
+    "question": "What does the OSPF 'max-lsa' feature protect against?",
+    "options": ["Excessive SPF recalculations caused by link flaps", "A router's LSDB growing too large, potentially exhausting memory", "Unauthorized routers injecting LSAs into the area", "Duplicate Router IDs within the same OSPF area"],
+    "correct": 1,
+    "explanation": "The 'max-lsa' command sets a limit on the number of non-self-generated LSAs a router will accept in its LSDB. If the count exceeds the threshold, the router can log warnings or shut down OSPF adjacencies. This protects against database overload from misconfiguration or route leaking that could exhaust router memory."
+  },
+  {
+    "id": "enarsi-ospf-015",
+    "question": "In an NSSA area, what happens to Type 7 LSAs when they reach the ABR?",
+    "options": ["They are discarded at the ABR boundary", "The ABR converts them to Type 5 External LSAs for flooding into the backbone", "They are converted to Type 3 Summary LSAs", "They remain as Type 7 LSAs and are flooded into area 0 unchanged"],
+    "correct": 1,
+    "explanation": "NSSA areas use Type 7 LSAs to carry external routes originated by ASBRs within the NSSA. When these Type 7 LSAs reach the NSSA ABR, the ABR translates them into Type 5 External LSAs for distribution into area 0 and other normal areas. The forwarding address field is preserved or set based on the ABR's translation rules."
+  },
+  {
+    "id": "enarsi-ospf-016",
+    "question": "What is the purpose of an OSPF demand circuit?",
+    "options": ["To prioritize OSPF traffic over data traffic on congested links", "To suppress periodic Hello and LSA refresh flooding over the link to reduce overhead", "To dynamically adjust OSPF cost based on available bandwidth", "To establish OSPF adjacency over non-broadcast multi-access networks"],
+    "correct": 1,
+    "explanation": "OSPF demand circuits (RFC 1793) suppress periodic Hello packets and LSA refreshes over links where bandwidth is expensive or limited (such as ISDN dial-up). Adjacencies are maintained without periodic Hellos, and LSAs are only re-flooded when topology actually changes. This avoids unnecessary traffic on costly WAN links."
+  },
+  {
+    "id": "enarsi-ospf-017",
+    "question": "An engineer enables OSPF prefix suppression on a network of point-to-point links. The transit link addresses (/31s) between routers disappear from the routing tables of remote routers, yet the routers can still route traffic across those links. What mechanism allows this to work?",
+    "options": ["The transit prefixes are converted to default routes", "OSPF still includes the links in the SPF topology (Router LSAs) but omits the transit prefixes from the stub network advertisements, so the forwarding path is computed via the link topology", "BGP is used as a fallback to carry the suppressed prefixes", "The prefixes are moved into a separate OSPF area and summarized"],
+    "correct": 1,
+    "explanation": "OSPF prefix suppression (RFC 6860) removes transit link prefixes from stub network advertisements in Router LSAs and Network LSAs. However, the link descriptions that SPF uses to build the shortest-path tree remain intact. This means routers still compute correct forwarding paths through these links — they simply cannot be addressed directly by the transit prefix. This reduces the routing table size without affecting reachability."
   }
 ]
