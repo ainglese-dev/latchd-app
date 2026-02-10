@@ -4,6 +4,7 @@ import Question from '../components/Question'
 import Results from '../components/Results'
 import { loadQuestions } from '../utils/questionLoader'
 import exams from '../data/exams.json'
+import { ArrowLeft } from '../components/Icons'
 import { useSEO } from '../utils/useSEO'
 
 const STREAK_KEY = 'latchd_streak'
@@ -129,9 +130,9 @@ export default function Quiz() {
             </h1>
             <button
               onClick={handleBackHome}
-              className="text-sm text-[#e07840] hover:text-[#c8682f]"
+              className="inline-flex items-center gap-1 text-sm text-[#e07840] hover:text-[#c8682f]"
             >
-              ← Back to Home
+              <ArrowLeft className="w-3.5 h-3.5" /> Back to Home
             </button>
           </div>
         </div>
@@ -161,8 +162,8 @@ export default function Quiz() {
   return (
     <div className="min-h-dvh px-4 py-6 pb-8">
       <div className="max-w-lg mx-auto">
-        <Link to={`/app/exam/${examId}`} className="text-sm text-[#6b5e52] hover:text-[#2c2418] mb-4 inline-block">
-          ← Exit Quiz
+        <Link to={`/app/exam/${examId}`} className="inline-flex items-center gap-1 text-sm text-[#6b5e52] hover:text-[#2c2418] mb-4">
+          <ArrowLeft className="w-3.5 h-3.5" /> Exit Quiz
         </Link>
 
         <div className="mb-6">

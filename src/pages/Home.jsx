@@ -12,13 +12,14 @@ export default function Home() {
       <div className="max-w-lg mx-auto">
         <header className="mb-8">
           <Link to="/" className="text-xl font-bold text-[#2c2418] hover:text-[#e07840] transition-colors">Latchd</Link>
-          <p className="text-sm text-[#6b5e52]">Cisco certification practice 🛸</p>
+          <p className="text-sm text-[#6b5e52]">Cisco certification practice</p>
         </header>
 
         <div className="mb-6">
           <StreakCounter />
         </div>
 
+        <h2 className="text-sm font-semibold text-[#6b5e52] mb-3">Exams</h2>
         <div className="space-y-4">
           {exams.map(exam => (
             <ExamCard

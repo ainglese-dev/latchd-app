@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { Star, Compass, CheckCircle, XCircle } from './Icons'
 
 export default function Results({ questions, answers, onTryAgain, onBackHome, examId }) {
   const score = answers.filter(a => a.correct).length
@@ -20,7 +21,7 @@ export default function Results({ questions, answers, onTryAgain, onBackHome, ex
       <div className="text-center mb-8">
         <p className="text-4xl sm:text-5xl font-bold text-[#2c2418] mb-2">{score}/{total}</p>
         <p className={`text-lg font-medium ${passed ? 'text-[#2d8a4e]' : 'text-[#c44545]'}`}>
-          {passed ? '⭐ Passed!' : '🌌 Keep exploring'}
+          {passed ? <><Star className="w-5 h-5 inline-block -mt-0.5 mr-1" /> Passed!</> : <><Compass className="w-5 h-5 inline-block -mt-0.5 mr-1" /> Keep exploring</>}
         </p>
       </div>
 
@@ -32,7 +33,7 @@ export default function Results({ questions, answers, onTryAgain, onBackHome, ex
               key={q.id}
               className="flex items-start gap-3 p-3 rounded-lg bg-white border border-[#e8e0d8] shadow-card"
             >
-              <span className="text-lg mt-0.5 shrink-0">{isCorrect ? '✅' : '❌'}</span>
+              <span className={`mt-0.5 shrink-0 ${isCorrect ? 'text-[#2d8a4e]' : 'text-[#c44545]'}`}>{isCorrect ? <CheckCircle className="w-5 h-5" /> : <XCircle className="w-5 h-5" />}</span>
               <p className="text-sm text-[#6b5e52] leading-relaxed">{q.question}</p>
             </div>
           )

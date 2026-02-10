@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Flame } from './Icons'
 
 const STREAK_KEY = 'latchd_streak'
 
@@ -24,7 +25,7 @@ export default function StreakCounter() {
 
   return (
     <div className="flex items-center gap-2 text-[#6b5e52] text-sm">
-      <span>🔥</span>
+      <Flame className="w-4 h-4 text-[#e07840]" />
       <span className="text-[#e07840] font-semibold text-base">{streak}</span>
       <span>day streak</span>
     </div>

@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { ArrowRight } from './Icons'
 
 export default function ExamCard({ id, name, description, topicCount, questionCount }) {
   return (
@@ -11,7 +12,7 @@ export default function ExamCard({ id, name, description, topicCount, questionCo
           to={`/app/exam/${id}`}
           className="bg-[#e07840] hover:bg-[#c8682f] focus:outline-none focus:ring-2 focus:ring-[#e07840]/50 text-white font-semibold text-sm px-5 py-2.5 w-full sm:w-auto text-center rounded-lg transition-colors"
         >
-          Explore 🚀
+          Explore <ArrowRight className="w-4 h-4 inline-block ml-1 -mt-0.5" />
         </Link>
       </div>
     </div>

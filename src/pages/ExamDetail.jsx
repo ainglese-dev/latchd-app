@@ -1,5 +1,6 @@
 import { useParams, Link } from 'react-router-dom'
 import TopicCard from '../components/TopicCard'
+import { ArrowLeft } from '../components/Icons'
 import exams from '../data/exams.json'
 import { useSEO } from '../utils/useSEO'
 
@@ -18,8 +19,8 @@ export default function ExamDetail() {
         <div className="max-w-lg mx-auto">
           <div className="text-center py-12">
             <h1 className="text-xl font-bold text-[#2c2418] mb-2">Exam not found</h1>
-            <Link to="/app" className="text-sm text-[#e07840] hover:text-[#c8682f]">
-              ← Back to Home
+            <Link to="/app" className="inline-flex items-center gap-1 text-sm text-[#e07840] hover:text-[#c8682f]">
+              <ArrowLeft className="w-3.5 h-3.5" /> Back to Home
             </Link>
           </div>
         </div>
@@ -30,8 +31,8 @@ export default function ExamDetail() {
   return (
     <div className="min-h-dvh px-4 py-6 pb-8">
       <div className="max-w-lg mx-auto">
-        <Link to="/app" className="text-sm text-[#6b5e52] hover:text-[#2c2418] mb-6 inline-block">
-          ← Back to Home
+        <Link to="/app" className="inline-flex items-center gap-1 text-sm text-[#6b5e52] hover:text-[#2c2418] mb-6">
+          <ArrowLeft className="w-3.5 h-3.5" /> Back to Home
         </Link>
 
         <header className="mb-8">

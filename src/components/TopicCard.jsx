@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { ArrowRight, Lock } from './Icons'
 
 export default function TopicCard({ examId, topicId, name, description, questionCount, locked }) {
   return (
@@ -12,14 +13,14 @@ export default function TopicCard({ examId, topicId, name, description, question
             className="text-sm text-[#a39686] font-medium px-5 py-2 cursor-default"
             title="Premium — coming soon"
           >
-            🔒 Locked
+            <Lock className="w-4 h-4 inline-block -mt-0.5" /> Locked
           </span>
         ) : (
           <Link
             to={`/app/exam/${examId}/${topicId}`}
             className="bg-[#e07840] hover:bg-[#c8682f] focus:outline-none focus:ring-2 focus:ring-[#e07840]/50 text-white font-semibold text-sm px-5 py-2.5 w-full sm:w-auto text-center rounded-lg transition-colors"
           >
-            Start Quiz 🚀
+            Start Quiz <ArrowRight className="w-4 h-4 inline-block ml-1 -mt-0.5" />
           </Link>
         )}
       </div>
