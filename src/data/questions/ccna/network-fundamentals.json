@@ -1,0 +1,206 @@
+[
+  {
+    "id": "ccna-nf-001",
+    "question": "Which layer of the OSI model is responsible for logical addressing and routing packets between networks?",
+    "options": [
+      "Data Link (Layer 2)",
+      "Network (Layer 3)",
+      "Transport (Layer 4)",
+      "Session (Layer 5)"
+    ],
+    "correct": 1,
+    "explanation": "The Network layer (Layer 3) handles logical addressing (such as IP addresses) and determines the best path for routing packets across interconnected networks."
+  },
+  {
+    "id": "ccna-nf-002",
+    "question": "At which OSI layer does a switch primarily operate when forwarding frames based on MAC addresses?",
+    "options": [
+      "Physical (Layer 1)",
+      "Data Link (Layer 2)",
+      "Network (Layer 3)",
+      "Transport (Layer 4)"
+    ],
+    "correct": 1,
+    "explanation": "Switches operate at the Data Link layer (Layer 2), using MAC addresses stored in their MAC address table to make forwarding decisions for Ethernet frames."
+  },
+  {
+    "id": "ccna-nf-003",
+    "question": "Which OSI layer is responsible for establishing, managing, and terminating sessions between applications?",
+    "options": [
+      "Transport (Layer 4)",
+      "Session (Layer 5)",
+      "Presentation (Layer 6)",
+      "Application (Layer 7)"
+    ],
+    "correct": 1,
+    "explanation": "The Session layer (Layer 5) manages dialogs between applications, handling session establishment, maintenance, and teardown to ensure orderly communication."
+  },
+  {
+    "id": "ccna-nf-004",
+    "question": "How does the TCP/IP model differ from the OSI model in terms of layer count?",
+    "options": [
+      "TCP/IP has 4 layers; OSI has 7 layers",
+      "TCP/IP has 5 layers; OSI has 7 layers",
+      "TCP/IP has 7 layers; OSI has 4 layers",
+      "TCP/IP has 4 layers; OSI has 5 layers"
+    ],
+    "correct": 0,
+    "explanation": "The TCP/IP model has 4 layers (Network Access, Internet, Transport, and Application), while the OSI model has 7 layers. The TCP/IP Application layer combines the functions of OSI layers 5, 6, and 7."
+  },
+  {
+    "id": "ccna-nf-005",
+    "question": "Which characteristic distinguishes TCP from UDP?",
+    "options": [
+      "TCP is connectionless and faster than UDP",
+      "UDP provides reliable delivery with acknowledgments",
+      "TCP uses a three-way handshake to establish a connection before sending data",
+      "UDP guarantees in-order delivery of segments"
+    ],
+    "correct": 2,
+    "explanation": "TCP is a connection-oriented protocol that uses a three-way handshake (SYN, SYN-ACK, ACK) to establish a reliable connection before data transfer. UDP is connectionless and does not guarantee delivery or ordering."
+  },
+  {
+    "id": "ccna-nf-006",
+    "question": "Which of the following correctly matches protocols to their default port numbers?",
+    "options": [
+      "HTTP — 443, HTTPS — 80, SSH — 23",
+      "HTTP — 80, HTTPS — 443, SSH — 22",
+      "HTTP — 8080, HTTPS — 8443, SSH — 21",
+      "HTTP — 80, HTTPS — 443, SSH — 23"
+    ],
+    "correct": 1,
+    "explanation": "HTTP uses port 80, HTTPS uses port 443, and SSH uses port 22. Port 23 is used by Telnet, port 21 is used by FTP control, and 8080/8443 are common alternative ports but not the defaults."
+  },
+  {
+    "id": "ccna-nf-007",
+    "question": "A host needs to automatically obtain an IP address, subnet mask, default gateway, and DNS server address when it connects to the network. Which protocol provides this service?",
+    "options": [
+      "DNS",
+      "ARP",
+      "DHCP",
+      "FTP"
+    ],
+    "correct": 2,
+    "explanation": "DHCP (Dynamic Host Configuration Protocol) automatically assigns IP configuration parameters to clients, including an IP address, subnet mask, default gateway, and DNS server addresses."
+  },
+  {
+    "id": "ccna-nf-008",
+    "question": "Given the IP address 192.168.10.45 with a subnet mask of 255.255.255.224 (/27), what is the network address?",
+    "options": [
+      "192.168.10.0",
+      "192.168.10.32",
+      "192.168.10.48",
+      "192.168.10.64"
+    ],
+    "correct": 1,
+    "explanation": "A /27 subnet mask creates blocks of 32 addresses. The address 192.168.10.45 falls in the 192.168.10.32 - 192.168.10.63 block, making 192.168.10.32 the network address."
+  },
+  {
+    "id": "ccna-nf-009",
+    "question": "How many usable host addresses are available in a /26 IPv4 subnet?",
+    "options": [
+      "30",
+      "62",
+      "64",
+      "126"
+    ],
+    "correct": 1,
+    "explanation": "A /26 subnet has 6 host bits, providing 2^6 = 64 total addresses. Subtracting the network address and broadcast address leaves 62 usable host addresses."
+  },
+  {
+    "id": "ccna-nf-010",
+    "question": "Which of the following is a valid IPv4 Class B private address range defined in RFC 1918?",
+    "options": [
+      "10.0.0.0 — 10.255.255.255",
+      "172.16.0.0 — 172.31.255.255",
+      "192.168.0.0 — 192.168.255.255",
+      "169.254.0.0 — 169.254.255.255"
+    ],
+    "correct": 1,
+    "explanation": "The 172.16.0.0 - 172.31.255.255 range is the Class B private address space defined in RFC 1918. The 10.x.x.x range is Class A private, 192.168.x.x is Class C private, and 169.254.x.x is the link-local range (APIPA)."
+  },
+  {
+    "id": "ccna-nf-011",
+    "question": "What is the purpose of the IPv6 link-local address prefix fe80::/10?",
+    "options": [
+      "To provide globally routable addresses for internet communication",
+      "To enable communication between devices on the same local network segment without a router",
+      "To replace IPv4 multicast addressing",
+      "To assign temporary addresses for DNS resolution"
+    ],
+    "correct": 1,
+    "explanation": "IPv6 link-local addresses (fe80::/10) are automatically assigned to every IPv6-enabled interface and are used for communication on the local link only. They are not routable beyond the local network segment."
+  },
+  {
+    "id": "ccna-nf-012",
+    "question": "In which network topology does every device connect to a single central device, and what is a key disadvantage?",
+    "options": [
+      "Mesh topology — high cost due to cabling",
+      "Ring topology — data must pass through each device sequentially",
+      "Star topology — a central device failure brings down the entire network",
+      "Bus topology — limited to two connected devices"
+    ],
+    "correct": 2,
+    "explanation": "In a star topology, all devices connect to a central switch or hub. The main disadvantage is a single point of failure: if the central device fails, all connected devices lose network connectivity."
+  },
+  {
+    "id": "ccna-nf-013",
+    "question": "Which Ethernet standard supports speeds of up to 10 Gbps over fiber optic cabling?",
+    "options": [
+      "100BASE-TX",
+      "1000BASE-T",
+      "10GBASE-SR",
+      "1000BASE-LX"
+    ],
+    "correct": 2,
+    "explanation": "10GBASE-SR is a 10 Gigabit Ethernet standard that operates over multimode fiber optic cabling. 100BASE-TX supports 100 Mbps, 1000BASE-T supports 1 Gbps over copper, and 1000BASE-LX supports 1 Gbps over fiber."
+  },
+  {
+    "id": "ccna-nf-014",
+    "question": "A network has one hub with 8 ports, all connected to hosts. How many collision domains and broadcast domains exist?",
+    "options": [
+      "8 collision domains, 8 broadcast domains",
+      "1 collision domain, 1 broadcast domain",
+      "8 collision domains, 1 broadcast domain",
+      "1 collision domain, 8 broadcast domains"
+    ],
+    "correct": 1,
+    "explanation": "A hub operates at Layer 1 and does not segment traffic. All ports on a hub share a single collision domain and a single broadcast domain, meaning all devices compete for the same bandwidth."
+  },
+  {
+    "id": "ccna-nf-015",
+    "question": "What is the primary purpose of ARP (Address Resolution Protocol) in an IPv4 network?",
+    "options": [
+      "To translate domain names into IP addresses",
+      "To map an IP address to a MAC address on the local network",
+      "To assign IP addresses dynamically to hosts",
+      "To encrypt data transmitted between two hosts"
+    ],
+    "correct": 1,
+    "explanation": "ARP resolves a known IPv4 address to its corresponding MAC address so that frames can be properly addressed at Layer 2 for delivery on the local network segment."
+  },
+  {
+    "id": "ccna-nf-016",
+    "question": "When a host queries a DNS recursive resolver for a domain name it has never seen, what is the correct order of the resolution process?",
+    "options": [
+      "Root server, TLD server, authoritative server",
+      "Authoritative server, TLD server, root server",
+      "TLD server, root server, authoritative server",
+      "Root server, authoritative server, TLD server"
+    ],
+    "correct": 0,
+    "explanation": "DNS recursive resolution follows a hierarchical process: the resolver first queries a root server, which directs it to the appropriate TLD (Top-Level Domain) server, which then points to the authoritative name server that holds the final answer."
+  },
+  {
+    "id": "ccna-nf-017",
+    "question": "A host with IP address 10.0.1.50/24 needs to communicate with a server at 10.0.2.100/24. What role does the default gateway play in this communication?",
+    "options": [
+      "It translates the server's hostname to an IP address",
+      "It forwards the packet to the destination since the server is on a different subnet",
+      "It assigns a temporary IP address to the host for cross-subnet communication",
+      "It caches the server's MAC address so the host can send frames directly"
+    ],
+    "correct": 1,
+    "explanation": "The default gateway is a router that forwards packets destined for hosts outside the local subnet. Since 10.0.1.0/24 and 10.0.2.0/24 are different subnets, the host sends the packet to its default gateway, which routes it toward the destination network."
+  }
+]

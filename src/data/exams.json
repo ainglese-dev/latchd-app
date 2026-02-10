@@ -1,30 +1,93 @@
 [
   {
-    "id": "dcauto",
-    "category": "devnet",
-    "name": "DCAUTO 300-635",
-    "description": "Automating and Programming Cisco Data Center Solutions",
+    "id": "ccst",
+    "category": "entry",
+    "name": "CCST Networking (100-150)",
+    "version": "v1.0",
+    "blueprintUrl": "https://learningnetwork.cisco.com/s/ccst-networking-exam-topics",
+    "description": "Cisco Certified Support Technician — Networking",
     "topics": [
       {
-        "id": "network-programmability",
-        "name": "Network Programmability",
-        "description": "REST APIs, YANG, NETCONF, RESTCONF",
-        "file": "dcauto/network-programmability.json",
+        "id": "networking-basics",
+        "name": "Networking Basics",
+        "description": "OSI model, IP addressing, subnetting",
+        "file": "ccst/networking-basics.json",
         "questionCount": 17
       },
       {
-        "id": "aci-programmability",
-        "name": "ACI Programmability",
-        "description": "Cisco ACI automation and APIs",
-        "file": "dcauto/aci-programmability.json",
+        "id": "network-security",
+        "name": "Network Security Basics",
+        "description": "Firewalls, VPNs, threats, best practices",
+        "file": "ccst/network-security.json",
+        "questionCount": 17
+      },
+      {
+        "id": "endpoints-media",
+        "name": "Endpoints & Media Types",
+        "description": "Cables, connectors, wireless media",
+        "file": "ccst/endpoints-media.json",
         "questionCount": 17,
         "locked": true
       },
       {
-        "id": "nxos-automation",
-        "name": "NX-OS Automation",
-        "description": "Python, Ansible, Git for NX-OS",
-        "file": "dcauto/nxos-automation.json",
+        "id": "troubleshooting",
+        "name": "Troubleshooting Fundamentals",
+        "description": "Ping, traceroute, CLI tools, methodology",
+        "file": "ccst/troubleshooting.json",
+        "questionCount": 17,
+        "locked": true
+      }
+    ]
+  },
+  {
+    "id": "ccna",
+    "category": "associate",
+    "name": "CCNA 200-301",
+    "version": "v1.1",
+    "blueprintUrl": "https://learningnetwork.cisco.com/s/ccna-exam-topics",
+    "description": "Cisco Certified Network Associate",
+    "topics": [
+      {
+        "id": "network-fundamentals",
+        "name": "Network Fundamentals",
+        "description": "OSI model, TCP/IP, protocols, topologies",
+        "file": "ccna/network-fundamentals.json",
+        "questionCount": 17
+      },
+      {
+        "id": "vlans-trunking",
+        "name": "VLANs & Trunking",
+        "description": "VLAN configuration, 802.1Q, DTP, VTP",
+        "file": "ccna/vlans-trunking.json",
+        "questionCount": 17
+      },
+      {
+        "id": "ip-routing",
+        "name": "IP Routing",
+        "description": "Static routes, OSPF basics, routing concepts",
+        "file": "ccna/ip-routing.json",
+        "questionCount": 17
+      },
+      {
+        "id": "security-fundamentals",
+        "name": "Security Fundamentals",
+        "description": "ACLs, port security, AAA basics",
+        "file": "ccna/security-fundamentals.json",
+        "questionCount": 17
+      },
+      {
+        "id": "ip-services",
+        "name": "IP Services",
+        "description": "DHCP, NAT, NTP, DNS, SNMP",
+        "file": "ccna/ip-services.json",
+        "questionCount": 17,
+        "locked": true
+      },
+      {
+        "id": "wireless-fundamentals",
+        "name": "Wireless Fundamentals",
+        "description": "WLAN architectures, AP modes, security",
+        "file": "ccna/wireless-fundamentals.json",
         "questionCount": 17,
         "locked": true
       }
@@ -32,8 +95,10 @@
   },
   {
     "id": "devasc",
-    "category": "devnet",
+    "category": "associate",
     "name": "DEVASC 200-901",
+    "version": "v1.1",
+    "blueprintUrl": "https://learningnetwork.cisco.com/s/devnet-associate-exam-topics",
     "description": "Developing Applications and Automating Workflows using Cisco Platforms",
     "topics": [
       {
@@ -69,10 +134,45 @@
     ]
   },
   {
+    "id": "dcauto",
+    "category": "professional",
+    "name": "DCNAUTO 300-635",
+    "version": "v2.0",
+    "blueprintUrl": "https://learningnetwork.cisco.com/s/dcauto-exam-topics",
+    "description": "Automating and Programming Cisco Data Center Solutions",
+    "topics": [
+      {
+        "id": "network-programmability",
+        "name": "Network Programmability",
+        "description": "REST APIs, YANG, NETCONF, RESTCONF",
+        "file": "dcauto/network-programmability.json",
+        "questionCount": 17
+      },
+      {
+        "id": "aci-programmability",
+        "name": "ACI Programmability",
+        "description": "Cisco ACI automation and APIs",
+        "file": "dcauto/aci-programmability.json",
+        "questionCount": 17,
+        "locked": true
+      },
+      {
+        "id": "nxos-automation",
+        "name": "NX-OS Automation",
+        "description": "Python, Ansible, Git for NX-OS",
+        "file": "dcauto/nxos-automation.json",
+        "questionCount": 17,
+        "locked": true
+      }
+    ]
+  },
+  {
     "id": "devcor",
-    "category": "devnet",
-    "name": "DEVCOR 350-901",
-    "description": "Developing Applications using Cisco Core Platforms and APIs",
+    "category": "professional",
+    "name": "AUTOCOR (formerly DEVCOR) 350-901",
+    "version": "v2.0",
+    "blueprintUrl": "https://learningnetwork.cisco.com/s/autocor-exam-topics",
+    "description": "Designing, Deploying, and Managing Network Automation Systems",
     "topics": [
       {
         "id": "app-deployment",
@@ -101,8 +201,10 @@
   },
   {
     "id": "enarsi",
-    "category": "enterprise",
+    "category": "professional",
     "name": "ENARSI 300-410",
+    "version": "v1.0",
+    "blueprintUrl": "https://learningnetwork.cisco.com/s/enarsi-exam-topics",
     "description": "Implementing Cisco Enterprise Advanced Routing and Services",
     "topics": [
       {

@@ -1,0 +1,206 @@
+[
+  {
+    "id": "ccna-ir-001",
+    "question": "A router has the following routes in its routing table: 10.0.0.0/8, 10.1.0.0/16, 10.1.1.0/24, and 10.1.1.128/25. A packet arrives destined for 10.1.1.200. Which route will the router use to forward the packet?",
+    "options": [
+      "10.0.0.0/8",
+      "10.1.0.0/16",
+      "10.1.1.0/24",
+      "10.1.1.128/25"
+    ],
+    "correct": 3,
+    "explanation": "Routers use longest prefix match to select the best route. The /25 route (10.1.1.128/25 covers 10.1.1.128-10.1.1.255) is the most specific match for the destination 10.1.1.200."
+  },
+  {
+    "id": "ccna-ir-002",
+    "question": "What does the routing table entry 'S 0.0.0.0/0 [1/0] via 192.168.1.1' represent?",
+    "options": [
+      "A connected route to the 192.168.1.0 network",
+      "A static default route pointing to 192.168.1.1",
+      "An OSPF-learned route with a metric of 1",
+      "A floating static route with administrative distance 0"
+    ],
+    "correct": 1,
+    "explanation": "The 'S' indicates a static route, and 0.0.0.0/0 is the default route (matches all destinations). The [1/0] shows an administrative distance of 1 and metric of 0, which are the defaults for a static route."
+  },
+  {
+    "id": "ccna-ir-003",
+    "question": "A network engineer configures a static route with an administrative distance of 210. What is the purpose of this configuration?",
+    "options": [
+      "To make the static route preferred over all dynamic routing protocols",
+      "To create a floating static route that serves as a backup path",
+      "To set the metric for the static route to 210",
+      "To limit the route to 210 hops maximum"
+    ],
+    "correct": 1,
+    "explanation": "A floating static route has a higher administrative distance than the primary routing protocol, so it only enters the routing table when the primary route is lost. Since 210 exceeds the AD of most protocols, it acts as a backup."
+  },
+  {
+    "id": "ccna-ir-004",
+    "question": "Which of the following correctly lists routing sources from lowest (most trusted) to highest administrative distance?",
+    "options": [
+      "Connected (0), OSPF (110), Static (1), EIGRP (90)",
+      "Connected (0), Static (1), EIGRP (90), OSPF (110)",
+      "Static (1), Connected (0), OSPF (110), EIGRP (90)",
+      "Connected (0), Static (1), OSPF (110), EIGRP (90)"
+    ],
+    "correct": 1,
+    "explanation": "The correct order from lowest to highest AD is: Connected (0), Static (1), EIGRP (90), OSPF (110). A lower administrative distance means the routing source is more trusted by the router."
+  },
+  {
+    "id": "ccna-ir-005",
+    "question": "What is the default administrative distance of an OSPF route?",
+    "options": [
+      "90",
+      "100",
+      "110",
+      "120"
+    ],
+    "correct": 2,
+    "explanation": "OSPF has a default administrative distance of 110. This is higher than EIGRP (90) but lower than RIP (120), meaning OSPF routes are preferred over RIP but not over EIGRP routes to the same destination."
+  },
+  {
+    "id": "ccna-ir-006",
+    "question": "Two OSPF routers on the same Ethernet segment are stuck in the 2-Way state. What is the most likely reason they are not progressing to the Full state?",
+    "options": [
+      "Neither router was elected as the DR or BDR",
+      "They have mismatched OSPF hello timers",
+      "They are in different OSPF areas",
+      "The OSPF process ID does not match on both routers"
+    ],
+    "correct": 0,
+    "explanation": "On multi-access networks, OSPF routers that are neither the DR nor the BDR remain in the 2-Way state with each other. Only adjacencies with the DR and BDR progress to the Full state, which is normal OSPF behavior."
+  },
+  {
+    "id": "ccna-ir-007",
+    "question": "In an OSPF DR/BDR election on a broadcast network, which value is used first as the tiebreaker?",
+    "options": [
+      "The lowest OSPF cost on the interface",
+      "The highest OSPF interface priority",
+      "The lowest router ID",
+      "The highest IP address on a loopback interface"
+    ],
+    "correct": 1,
+    "explanation": "The DR/BDR election first compares OSPF interface priority values, with the highest priority winning. If priorities are equal, the highest router ID is used as the tiebreaker. The default priority is 1, and a priority of 0 prevents a router from becoming DR or BDR."
+  },
+  {
+    "id": "ccna-ir-008",
+    "question": "A router has two OSPF-enabled interfaces: a GigabitEthernet link (1 Gbps) and a FastEthernet link (100 Mbps). Using the default OSPF reference bandwidth of 100 Mbps, what are the OSPF costs for these interfaces?",
+    "options": [
+      "GigabitEthernet = 1, FastEthernet = 1",
+      "GigabitEthernet = 1, FastEthernet = 10",
+      "GigabitEthernet = 10, FastEthernet = 100",
+      "GigabitEthernet = 100, FastEthernet = 1000"
+    ],
+    "correct": 0,
+    "explanation": "OSPF cost is calculated as reference bandwidth / interface bandwidth. With a 100 Mbps reference bandwidth: GigabitEthernet = 100/1000 = 0.1, rounded up to 1; FastEthernet = 100/100 = 1. Both get a cost of 1, which is why increasing the reference bandwidth is recommended in modern networks."
+  },
+  {
+    "id": "ccna-ir-009",
+    "question": "How does an OSPF router select its router ID? What is the order of preference?",
+    "options": [
+      "Highest physical interface IP, then highest loopback IP, then manual configuration",
+      "Manual configuration with router-id command, then highest loopback IP, then highest physical interface IP",
+      "Lowest loopback IP, then lowest physical interface IP, then manual configuration",
+      "Manual configuration with router-id command, then lowest loopback IP, then lowest physical interface IP"
+    ],
+    "correct": 1,
+    "explanation": "OSPF router ID selection follows this order: (1) manually configured router-id, (2) highest IP address on any active loopback interface, (3) highest IP address on any active physical interface. The manual configuration always takes precedence."
+  },
+  {
+    "id": "ccna-ir-010",
+    "question": "What is the default OSPF network type on an Ethernet interface?",
+    "options": [
+      "Point-to-point",
+      "Broadcast",
+      "Non-broadcast multi-access (NBMA)",
+      "Point-to-multipoint"
+    ],
+    "correct": 1,
+    "explanation": "Ethernet interfaces default to the broadcast OSPF network type. This means a DR and BDR election occurs, the hello interval is 10 seconds, and the dead interval is 40 seconds. Point-to-point is the default on serial links with HDLC or PPP encapsulation."
+  },
+  {
+    "id": "ccna-ir-011",
+    "question": "A router's interface GigabitEthernet0/0 is configured with the IP address 10.10.10.1/24 and is in the up/up state. How does this route appear in the routing table?",
+    "options": [
+      "S 10.10.10.0/24 is directly connected, GigabitEthernet0/0",
+      "C 10.10.10.0/24 is directly connected, GigabitEthernet0/0",
+      "L 10.10.10.1/24 is directly connected, GigabitEthernet0/0",
+      "O 10.10.10.0/24 is directly connected, GigabitEthernet0/0"
+    ],
+    "correct": 1,
+    "explanation": "Connected routes (marked with 'C') are automatically added to the routing table for networks directly attached to active interfaces. The route shows the network address (10.10.10.0/24), not the host address. A local route (L) for 10.10.10.1/32 also appears."
+  },
+  {
+    "id": "ccna-ir-012",
+    "question": "Which of the following best describes a link-state routing protocol?",
+    "options": [
+      "Each router shares its entire routing table with directly connected neighbors at regular intervals",
+      "Each router builds a complete topology map of the network and independently calculates the best paths",
+      "Each router only knows about its directly connected neighbors and forwards packets based on hop count",
+      "Each router sends triggered updates only when a route changes, using hop count as the metric"
+    ],
+    "correct": 1,
+    "explanation": "Link-state protocols like OSPF flood link-state advertisements (LSAs) to all routers, allowing each router to build an identical topology database (LSDB). Each router then independently runs the SPF algorithm to calculate the shortest path tree."
+  },
+  {
+    "id": "ccna-ir-013",
+    "question": "What is the purpose of the gateway of last resort on a Cisco router?",
+    "options": [
+      "It identifies the fastest interface for forwarding packets",
+      "It specifies the next hop used when no specific route matches the destination",
+      "It prevents routing loops by discarding packets with an expired TTL",
+      "It provides a backup OSPF neighbor in case the primary adjacency fails"
+    ],
+    "correct": 1,
+    "explanation": "The gateway of last resort is the default route (0.0.0.0/0). When a router has no more specific match in its routing table for a packet's destination, it forwards the packet to the gateway of last resort rather than dropping it."
+  },
+  {
+    "id": "ccna-ir-014",
+    "question": "Which command configures a static IPv6 default route pointing to next-hop address 2001:db8::1 on a Cisco router?",
+    "options": [
+      "ipv6 route 0.0.0.0/0 2001:db8::1",
+      "ipv6 route ::/0 2001:db8::1",
+      "ip route ::/0 2001:db8::1",
+      "ipv6 route default 2001:db8::1"
+    ],
+    "correct": 1,
+    "explanation": "The IPv6 default route is ::/0, which matches all IPv6 destinations. The 'ipv6 route' command is used for IPv6 static routes (not 'ip route'), and the full prefix notation ::/0 is required rather than the keyword 'default'."
+  },
+  {
+    "id": "ccna-ir-015",
+    "question": "A company has four subnets: 172.16.0.0/24, 172.16.1.0/24, 172.16.2.0/24, and 172.16.3.0/24. Which single summary route covers all four subnets with no wasted addresses?",
+    "options": [
+      "172.16.0.0/21",
+      "172.16.0.0/22",
+      "172.16.0.0/23",
+      "172.16.0.0/16"
+    ],
+    "correct": 1,
+    "explanation": "A /22 mask (255.255.252.0) covers addresses from 172.16.0.0 to 172.16.3.255, which includes exactly the four /24 subnets with no overlap or waste. A /23 would only cover two subnets, and a /21 or /16 would include extra address space."
+  },
+  {
+    "id": "ccna-ir-016",
+    "question": "What is the difference between configuring a static route with a next-hop IP address versus an exit interface?",
+    "options": [
+      "There is no functional difference; both produce identical routing behavior",
+      "Using a next-hop IP requires an additional recursive lookup, while an exit interface routes packets directly out the interface",
+      "An exit interface is required for multi-access networks, while a next-hop IP is only for point-to-point links",
+      "A next-hop IP address only works with IPv6, while an exit interface works with both IPv4 and IPv6"
+    ],
+    "correct": 1,
+    "explanation": "A next-hop IP address requires the router to perform a recursive lookup to determine the exit interface. An exit-interface static route sends traffic directly out the specified interface. On multi-access networks like Ethernet, using only an exit interface can cause ARP issues, so specifying the next-hop IP (or both) is recommended."
+  },
+  {
+    "id": "ccna-ir-017",
+    "question": "When a router receives a packet, what is the correct order of the packet forwarding decision process?",
+    "options": [
+      "Check ACLs, decrement TTL, look up destination in routing table, forward out exit interface",
+      "Look up destination in routing table using longest prefix match, determine exit interface and next hop, rewrite Layer 2 header, forward the frame",
+      "Decrement TTL, check if TTL is zero, look up source address in routing table, forward out exit interface",
+      "Check the source IP against the routing table, look up the destination, apply NAT, forward the frame"
+    ],
+    "correct": 1,
+    "explanation": "The router first examines the destination IP and performs a longest prefix match lookup in the routing table. It then determines the exit interface and next-hop address, rewrites the Layer 2 header (new source and destination MAC), decrements the TTL, and forwards the frame."
+  }
+]

@@ -29,6 +29,8 @@ export default function Home() {
               description={exam.description}
               topicCount={exam.topics.length}
               questionCount={exam.topics.reduce((sum, t) => sum + (t.questionCount || 0), 0)}
+              version={exam.version}
+              blueprintUrl={exam.blueprintUrl}
             />
           ))}
         </div>

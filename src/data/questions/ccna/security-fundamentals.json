@@ -1,0 +1,206 @@
+[
+  {
+    "id": "ccna-sf-001",
+    "question": "Which type of ACL filters traffic based only on the source IP address?",
+    "options": [
+      "Extended ACL",
+      "Standard ACL",
+      "Reflexive ACL",
+      "Named ACL"
+    ],
+    "correct": 1,
+    "explanation": "Standard ACLs (numbered 1-99 and 1300-1999) filter traffic based solely on the source IP address. Extended ACLs can filter on source, destination, protocol, and port numbers."
+  },
+  {
+    "id": "ccna-sf-002",
+    "question": "An extended ACL needs to block HTTP traffic from 10.0.0.0/24 to a web server at 192.168.1.100. Which ACL entry accomplishes this?",
+    "options": [
+      "access-list 100 deny tcp 10.0.0.0 0.0.0.255 host 192.168.1.100 eq 80",
+      "access-list 10 deny tcp 10.0.0.0 0.0.0.255 host 192.168.1.100 eq 80",
+      "access-list 100 deny ip 10.0.0.0 0.0.0.255 host 192.168.1.100",
+      "access-list 100 deny tcp host 192.168.1.100 10.0.0.0 0.0.0.255 eq 80"
+    ],
+    "correct": 0,
+    "explanation": "Extended ACLs (numbered 100-199) can match on protocol, source/destination addresses, and port numbers. The correct syntax specifies TCP, the source network, the destination host, and port 80 for HTTP."
+  },
+  {
+    "id": "ccna-sf-003",
+    "question": "Where should a standard ACL be placed in the network?",
+    "options": [
+      "As close to the source as possible",
+      "As close to the destination as possible",
+      "On the core layer switch",
+      "On the default gateway only"
+    ],
+    "correct": 1,
+    "explanation": "Standard ACLs should be placed as close to the destination as possible because they only filter on source address. Placing them near the source could inadvertently block legitimate traffic to other destinations."
+  },
+  {
+    "id": "ccna-sf-004",
+    "question": "What is the wildcard mask for the subnet 172.16.0.0/20?",
+    "options": [
+      "0.0.15.255",
+      "0.0.0.255",
+      "0.0.255.255",
+      "0.0.31.255"
+    ],
+    "correct": 0,
+    "explanation": "A /20 subnet mask is 255.255.240.0. The wildcard mask is calculated by subtracting each octet from 255, giving 0.0.15.255. Wildcard masks indicate which bits are \"don't care\" bits in ACL matching."
+  },
+  {
+    "id": "ccna-sf-005",
+    "question": "What is the primary purpose of port security on a Cisco switch?",
+    "options": [
+      "To encrypt traffic on the port",
+      "To limit and identify MAC addresses allowed on a port",
+      "To assign VLANs dynamically",
+      "To enable 802.1Q trunking"
+    ],
+    "correct": 1,
+    "explanation": "Port security restricts a switch port to a specific number of MAC addresses, preventing unauthorized devices from connecting. It can learn addresses statically, dynamically, or via sticky learning."
+  },
+  {
+    "id": "ccna-sf-006",
+    "question": "A switch port configured with port security detects a violation. If the violation mode is set to 'restrict', what happens?",
+    "options": [
+      "The port is shut down immediately",
+      "Frames from the violating MAC are dropped and a log message is generated, but the port stays up",
+      "The port allows all traffic but logs the violation",
+      "Frames from the violating MAC are dropped silently with no log message"
+    ],
+    "correct": 1,
+    "explanation": "In restrict mode, frames from unauthorized MAC addresses are dropped, and the violation counter increments with an SNMP trap or syslog message generated. The port remains operational, unlike shutdown mode."
+  },
+  {
+    "id": "ccna-sf-007",
+    "question": "What is the primary function of DHCP snooping on a switch?",
+    "options": [
+      "To assign IP addresses to clients faster",
+      "To prevent rogue DHCP servers from distributing incorrect IP information",
+      "To encrypt DHCP traffic between client and server",
+      "To load-balance DHCP requests across multiple servers"
+    ],
+    "correct": 1,
+    "explanation": "DHCP snooping filters untrusted DHCP messages by distinguishing between trusted ports (connected to legitimate DHCP servers) and untrusted ports (client-facing). It prevents rogue DHCP server attacks."
+  },
+  {
+    "id": "ccna-sf-008",
+    "question": "Dynamic ARP Inspection (DAI) relies on which feature's binding table to validate ARP packets?",
+    "options": [
+      "Port security",
+      "802.1X authentication",
+      "DHCP snooping",
+      "IP Source Guard"
+    ],
+    "correct": 2,
+    "explanation": "DAI uses the DHCP snooping binding table to validate ARP packets. The binding table maps IP addresses to MAC addresses on specific ports, allowing DAI to detect and drop spoofed ARP messages."
+  },
+  {
+    "id": "ccna-sf-009",
+    "question": "In the AAA framework, which component determines what an authenticated user is permitted to do?",
+    "options": [
+      "Authentication",
+      "Authorization",
+      "Accounting",
+      "Auditing"
+    ],
+    "correct": 1,
+    "explanation": "Authorization determines what resources and actions an authenticated user is allowed to access. Authentication verifies identity, and accounting tracks what the user does after gaining access."
+  },
+  {
+    "id": "ccna-sf-010",
+    "question": "Which statement correctly describes a difference between RADIUS and TACACS+?",
+    "options": [
+      "RADIUS encrypts the entire packet payload, while TACACS+ encrypts only the password",
+      "RADIUS separates authentication and authorization, while TACACS+ combines them",
+      "TACACS+ encrypts the entire packet payload, while RADIUS encrypts only the password field",
+      "TACACS+ uses UDP, while RADIUS uses TCP"
+    ],
+    "correct": 2,
+    "explanation": "TACACS+ encrypts the entire packet body and uses TCP port 49, while RADIUS only encrypts the password field and uses UDP ports 1812/1813. TACACS+ also separates AAA functions, giving more granular control."
+  },
+  {
+    "id": "ccna-sf-011",
+    "question": "In 802.1X port-based authentication, what role does the switch play?",
+    "options": [
+      "Authentication server",
+      "Supplicant",
+      "Authenticator",
+      "RADIUS client and server"
+    ],
+    "correct": 2,
+    "explanation": "In 802.1X, the switch acts as the authenticator, controlling physical access to the network. The client device is the supplicant, and a RADIUS server typically serves as the authentication server."
+  },
+  {
+    "id": "ccna-sf-012",
+    "question": "Why is SSH preferred over Telnet for remote device management?",
+    "options": [
+      "SSH is faster than Telnet",
+      "SSH supports more concurrent sessions",
+      "SSH encrypts all traffic including credentials, while Telnet sends everything in cleartext",
+      "SSH uses less bandwidth than Telnet"
+    ],
+    "correct": 2,
+    "explanation": "SSH encrypts the entire session including usernames and passwords, protecting against eavesdropping. Telnet transmits all data in plaintext, making credentials vulnerable to packet capture attacks."
+  },
+  {
+    "id": "ccna-sf-013",
+    "question": "What is the difference between the 'service password-encryption' command and using 'enable secret'?",
+    "options": [
+      "Both use the same strong MD5 hashing algorithm",
+      "'service password-encryption' uses strong AES encryption, while 'enable secret' uses weak Type 7",
+      "'enable secret' uses a strong MD5 hash (Type 5), while 'service password-encryption' applies weak reversible Type 7 encoding",
+      "There is no difference; they are interchangeable commands"
+    ],
+    "correct": 2,
+    "explanation": "The 'enable secret' command stores the password using a strong MD5 hash (Type 5) that cannot be easily reversed. The 'service password-encryption' command applies Type 7 encoding, which is easily reversible and provides only minimal protection."
+  },
+  {
+    "id": "ccna-sf-014",
+    "question": "Which attack involves a malicious host sending 802.1Q double-tagged frames to reach a VLAN it should not have access to?",
+    "options": [
+      "MAC flooding",
+      "ARP spoofing",
+      "VLAN hopping",
+      "DHCP starvation"
+    ],
+    "correct": 2,
+    "explanation": "VLAN hopping using double-tagging exploits the native VLAN by nesting a second 802.1Q tag inside the first. The switch strips the outer tag and forwards the frame to the inner VLAN, bypassing VLAN segmentation."
+  },
+  {
+    "id": "ccna-sf-015",
+    "question": "What type of firewall inspects traffic at Layers 3 and 4 and makes filtering decisions based on source/destination IP, port numbers, and protocol?",
+    "options": [
+      "Application-layer gateway (proxy firewall)",
+      "Stateful packet inspection firewall",
+      "Stateless packet-filtering firewall",
+      "Next-generation firewall (NGFW)"
+    ],
+    "correct": 2,
+    "explanation": "A stateless packet-filtering firewall examines individual packets at Layers 3 and 4, checking IP addresses, ports, and protocols against its rule set. It does not track connection state or inspect application-layer data."
+  },
+  {
+    "id": "ccna-sf-016",
+    "question": "What is the key difference between a site-to-site VPN and a remote-access VPN?",
+    "options": [
+      "Site-to-site VPNs use SSL, while remote-access VPNs use IPsec exclusively",
+      "Site-to-site VPNs connect entire networks through gateway devices, while remote-access VPNs connect individual hosts to a network",
+      "Remote-access VPNs are more secure than site-to-site VPNs",
+      "Site-to-site VPNs do not use encryption"
+    ],
+    "correct": 1,
+    "explanation": "A site-to-site VPN creates a permanent encrypted tunnel between two network gateway devices (routers or firewalls), connecting entire networks. A remote-access VPN allows individual users to connect securely to a corporate network from remote locations."
+  },
+  {
+    "id": "ccna-sf-017",
+    "question": "A MAC flooding attack overwhelms a switch's CAM table. What is the resulting behavior of the switch?",
+    "options": [
+      "The switch drops all incoming frames",
+      "The switch reboots to clear the table",
+      "The switch begins flooding all unicast frames out every port, acting like a hub",
+      "The switch blocks the attacker's port automatically"
+    ],
+    "correct": 2,
+    "explanation": "When the CAM (MAC address) table is full, the switch can no longer learn new entries and begins flooding unknown unicast frames out all ports. This effectively turns it into a hub, allowing the attacker to capture traffic destined for other hosts."
+  }
+]

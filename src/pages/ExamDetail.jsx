@@ -1,6 +1,6 @@
 import { useParams, Link } from 'react-router-dom'
 import TopicCard from '../components/TopicCard'
-import { ArrowLeft } from '../components/Icons'
+import { ArrowLeft, Info } from '../components/Icons'
 import exams from '../data/exams.json'
 import { useSEO } from '../utils/useSEO'
 
@@ -36,7 +36,23 @@ export default function ExamDetail() {
         </Link>
 
         <header className="mb-8">
-          <h1 className="text-2xl font-bold text-[#2c2418] mb-2">{exam.name}</h1>
+          <div className="flex items-center gap-2 mb-2 flex-wrap">
+            <h1 className="text-2xl font-bold text-[#2c2418]">{exam.name}</h1>
+            {exam.version && (
+              <span className="text-xs font-medium text-[#6b5e52] bg-[#f0ebe4] px-2 py-0.5 rounded-full">{exam.version}</span>
+            )}
+            {exam.blueprintUrl && (
+              <a
+                href={exam.blueprintUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 text-xs text-[#a39686] hover:text-[#e07840] transition-colors"
+              >
+                <Info className="w-3.5 h-3.5" />
+                Exam Topics
+              </a>
+            )}
+          </div>
           <p className="text-sm text-[#6b5e52]">{exam.description}</p>
         </header>
 

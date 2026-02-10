@@ -1,0 +1,206 @@
+[
+  {
+    "id": "ccst-nb-001",
+    "question": "Which layer of the OSI model is responsible for routing packets between different networks?",
+    "options": [
+      "Data Link layer (Layer 2)",
+      "Network layer (Layer 3)",
+      "Transport layer (Layer 4)",
+      "Session layer (Layer 5)"
+    ],
+    "correct": 1,
+    "explanation": "The Network layer (Layer 3) handles logical addressing and routing, determining the best path for packets to travel between networks."
+  },
+  {
+    "id": "ccst-nb-002",
+    "question": "Which OSI layer is responsible for establishing, managing, and terminating connections between applications?",
+    "options": [
+      "Transport layer (Layer 4)",
+      "Session layer (Layer 5)",
+      "Presentation layer (Layer 6)",
+      "Application layer (Layer 7)"
+    ],
+    "correct": 1,
+    "explanation": "The Session layer (Layer 5) manages sessions between applications, controlling the setup, coordination, and teardown of communication sessions."
+  },
+  {
+    "id": "ccst-nb-003",
+    "question": "At which OSI layer do switches primarily operate?",
+    "options": [
+      "Physical layer (Layer 1)",
+      "Data Link layer (Layer 2)",
+      "Network layer (Layer 3)",
+      "Transport layer (Layer 4)"
+    ],
+    "correct": 1,
+    "explanation": "Switches primarily operate at the Data Link layer (Layer 2), using MAC addresses to forward frames to the correct port on the local network."
+  },
+  {
+    "id": "ccst-nb-004",
+    "question": "How many layers does the TCP/IP model have?",
+    "options": [
+      "3",
+      "4",
+      "5",
+      "7"
+    ],
+    "correct": 1,
+    "explanation": "The TCP/IP model has 4 layers: Network Access (Link), Internet, Transport, and Application. It is a simplified version of the 7-layer OSI model."
+  },
+  {
+    "id": "ccst-nb-005",
+    "question": "Which of the following is a private IPv4 address range?",
+    "options": [
+      "8.8.8.0 - 8.8.8.255",
+      "172.16.0.0 - 172.31.255.255",
+      "11.0.0.0 - 11.255.255.255",
+      "200.100.0.0 - 200.100.255.255"
+    ],
+    "correct": 1,
+    "explanation": "172.16.0.0 - 172.31.255.255 is one of three private IPv4 ranges defined in RFC 1918. The others are 10.0.0.0/8 and 192.168.0.0/16."
+  },
+  {
+    "id": "ccst-nb-006",
+    "question": "Which IP address is a valid private address commonly used on home networks?",
+    "options": [
+      "192.168.1.1",
+      "8.8.4.4",
+      "1.1.1.1",
+      "74.125.200.100"
+    ],
+    "correct": 0,
+    "explanation": "192.168.1.1 falls within the 192.168.0.0/16 private address range and is commonly used as a default gateway on home routers."
+  },
+  {
+    "id": "ccst-nb-007",
+    "question": "What does the CIDR notation /24 represent in terms of a subnet mask?",
+    "options": [
+      "255.0.0.0",
+      "255.255.0.0",
+      "255.255.255.0",
+      "255.255.255.128"
+    ],
+    "correct": 2,
+    "explanation": "/24 means the first 24 bits of the address are the network portion, which translates to a subnet mask of 255.255.255.0, leaving 8 bits for host addresses."
+  },
+  {
+    "id": "ccst-nb-008",
+    "question": "Which of the following is a key difference between IPv4 and IPv6?",
+    "options": [
+      "IPv6 uses 32-bit addresses while IPv4 uses 128-bit addresses",
+      "IPv4 uses 32-bit addresses while IPv6 uses 128-bit addresses",
+      "IPv6 does not support any form of routing",
+      "IPv4 addresses are written in hexadecimal notation"
+    ],
+    "correct": 1,
+    "explanation": "IPv4 uses 32-bit addresses (about 4.3 billion) while IPv6 uses 128-bit addresses, providing a vastly larger address space to accommodate the growing number of connected devices."
+  },
+  {
+    "id": "ccst-nb-009",
+    "question": "What is the primary purpose of a MAC address?",
+    "options": [
+      "To identify a device on the internet globally",
+      "To uniquely identify a network interface on a local network",
+      "To encrypt data traveling across the network",
+      "To assign an IP address to a device automatically"
+    ],
+    "correct": 1,
+    "explanation": "A MAC (Media Access Control) address is a hardware address burned into a network interface card (NIC) that uniquely identifies a device at the Data Link layer on a local network."
+  },
+  {
+    "id": "ccst-nb-010",
+    "question": "What protocol automatically assigns an IP address to a device when it connects to a network?",
+    "options": [
+      "DNS",
+      "HTTP",
+      "DHCP",
+      "FTP"
+    ],
+    "correct": 2,
+    "explanation": "DHCP (Dynamic Host Configuration Protocol) automatically assigns IP addresses, subnet masks, default gateways, and DNS server addresses to devices joining a network."
+  },
+  {
+    "id": "ccst-nb-011",
+    "question": "What is the primary function of DNS?",
+    "options": [
+      "To assign IP addresses to new devices on a network",
+      "To translate domain names into IP addresses",
+      "To encrypt web traffic between a browser and server",
+      "To filter malicious network traffic"
+    ],
+    "correct": 1,
+    "explanation": "DNS (Domain Name System) translates human-readable domain names like www.example.com into IP addresses that computers use to communicate on the network."
+  },
+  {
+    "id": "ccst-nb-012",
+    "question": "Which well-known port number is used by HTTPS?",
+    "options": [
+      "22",
+      "53",
+      "80",
+      "443"
+    ],
+    "correct": 3,
+    "explanation": "HTTPS (HTTP Secure) uses port 443 by default. Other common ports include HTTP on port 80, SSH on port 22, and DNS on port 53."
+  },
+  {
+    "id": "ccst-nb-013",
+    "question": "What is the main difference between a LAN and a WAN?",
+    "options": [
+      "A LAN uses wireless only, while a WAN uses wired connections only",
+      "A LAN covers a small geographic area like a building, while a WAN spans large distances",
+      "A LAN can only connect two devices, while a WAN connects unlimited devices",
+      "A LAN is always faster than a WAN in every situation"
+    ],
+    "correct": 1,
+    "explanation": "A LAN (Local Area Network) covers a limited area such as a home or office, while a WAN (Wide Area Network) connects networks across cities, countries, or even continents."
+  },
+  {
+    "id": "ccst-nb-014",
+    "question": "Which network device is specifically designed to forward traffic between different networks based on IP addresses?",
+    "options": [
+      "Hub",
+      "Switch",
+      "Router",
+      "Access point"
+    ],
+    "correct": 2,
+    "explanation": "A router operates at Layer 3 and uses IP addresses to make forwarding decisions, directing traffic between different networks such as a home LAN and the internet."
+  },
+  {
+    "id": "ccst-nb-015",
+    "question": "In a client-server model, which statement is true?",
+    "options": [
+      "All devices share resources equally with no central authority",
+      "Clients request services or resources from a centralized server",
+      "Every device acts as both a client and a server simultaneously",
+      "No network connection is needed between the devices"
+    ],
+    "correct": 1,
+    "explanation": "In the client-server model, clients send requests to a centralized server that provides resources or services. This differs from peer-to-peer, where each device can act as both client and server."
+  },
+  {
+    "id": "ccst-nb-016",
+    "question": "What is the purpose of a default gateway on a network?",
+    "options": [
+      "To assign IP addresses to devices on the network",
+      "To block unauthorized traffic from entering the network",
+      "To forward traffic destined for networks outside the local subnet",
+      "To translate domain names into IP addresses"
+    ],
+    "correct": 2,
+    "explanation": "The default gateway is the router interface that a device sends traffic to when the destination is outside its local network. Without it, devices can only communicate within their own subnet."
+  },
+  {
+    "id": "ccst-nb-017",
+    "question": "What is the difference between bandwidth and latency?",
+    "options": [
+      "Bandwidth measures delay; latency measures data capacity",
+      "Bandwidth is the maximum data transfer rate; latency is the time delay for data to travel from source to destination",
+      "Bandwidth only applies to wireless networks; latency only applies to wired networks",
+      "There is no difference; they both measure network speed"
+    ],
+    "correct": 1,
+    "explanation": "Bandwidth refers to the maximum amount of data that can be transmitted per unit of time (e.g., 100 Mbps), while latency is the delay or time it takes for a packet to travel from its source to its destination."
+  }
+]

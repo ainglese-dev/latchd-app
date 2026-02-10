@@ -1,0 +1,206 @@
+[
+  {
+    "id": "ccst-ns-001",
+    "question": "What is the primary purpose of a firewall in a network?",
+    "options": [
+      "To speed up internet connections",
+      "To filter traffic and block unauthorized access between networks",
+      "To assign IP addresses to devices on the network",
+      "To convert domain names to IP addresses"
+    ],
+    "correct": 1,
+    "explanation": "A firewall monitors and filters incoming and outgoing network traffic based on predefined security rules, acting as a barrier between trusted and untrusted networks."
+  },
+  {
+    "id": "ccst-ns-002",
+    "question": "Which type of firewall inspects traffic at the application layer and can make decisions based on the content of the data?",
+    "options": [
+      "Packet-filtering firewall",
+      "Stateless firewall",
+      "Application-layer firewall",
+      "MAC-address firewall"
+    ],
+    "correct": 2,
+    "explanation": "An application-layer firewall (also called a proxy firewall or next-generation firewall) operates at Layer 7 of the OSI model and can inspect the actual content of traffic, not just headers and ports."
+  },
+  {
+    "id": "ccst-ns-003",
+    "question": "Which type of malware disguises itself as legitimate software to trick users into installing it?",
+    "options": [
+      "Worm",
+      "Virus",
+      "Trojan",
+      "Adware"
+    ],
+    "correct": 2,
+    "explanation": "A Trojan (or Trojan horse) disguises itself as a useful or harmless program but performs malicious actions once installed, such as stealing data or opening backdoors."
+  },
+  {
+    "id": "ccst-ns-004",
+    "question": "What distinguishes a worm from a virus?",
+    "options": [
+      "A worm encrypts files for ransom while a virus does not",
+      "A worm can spread across networks without user interaction, while a virus requires a host file",
+      "A worm only affects mobile devices, while a virus only affects computers",
+      "A worm is always harmless, while a virus is always destructive"
+    ],
+    "correct": 1,
+    "explanation": "A worm is self-replicating malware that spreads across networks on its own without needing to attach to a host file or require user action, unlike a virus which must attach to a file and typically needs user interaction to spread."
+  },
+  {
+    "id": "ccst-ns-005",
+    "question": "An employee receives an email that appears to be from their bank asking them to click a link and verify their account details. What type of attack is this?",
+    "options": [
+      "Brute-force attack",
+      "Denial of service",
+      "Phishing",
+      "Buffer overflow"
+    ],
+    "correct": 2,
+    "explanation": "Phishing is a social engineering attack where an attacker sends fraudulent communications (often email) that appear to come from a trusted source, tricking victims into revealing sensitive information."
+  },
+  {
+    "id": "ccst-ns-006",
+    "question": "Which of the following is considered the BEST practice for creating a strong password?",
+    "options": [
+      "Using a single dictionary word that is easy to remember",
+      "Using a combination of uppercase, lowercase, numbers, and special characters with at least 12 characters",
+      "Using your birthday followed by your name",
+      "Using the same password across all accounts so you do not forget it"
+    ],
+    "correct": 1,
+    "explanation": "Strong passwords should be at least 12 characters long and include a mix of uppercase letters, lowercase letters, numbers, and special characters. This makes them significantly harder to crack through brute-force or dictionary attacks."
+  },
+  {
+    "id": "ccst-ns-007",
+    "question": "What does multi-factor authentication (MFA) require from a user?",
+    "options": [
+      "Two or more passwords entered at the same time",
+      "Verification using two or more different categories of evidence, such as something you know and something you have",
+      "Logging in from two different devices simultaneously",
+      "Answering at least three security questions"
+    ],
+    "correct": 1,
+    "explanation": "MFA requires users to provide two or more verification factors from different categories: something you know (password), something you have (phone or token), or something you are (fingerprint or face scan)."
+  },
+  {
+    "id": "ccst-ns-008",
+    "question": "What is the primary purpose of a VPN (Virtual Private Network)?",
+    "options": [
+      "To increase your internet download speed",
+      "To create a secure, encrypted tunnel for data transmitted over a public network",
+      "To block all advertisements while browsing the internet",
+      "To replace the need for a firewall"
+    ],
+    "correct": 1,
+    "explanation": "A VPN creates an encrypted tunnel between your device and a VPN server, protecting data from eavesdropping as it travels across untrusted networks like the public internet."
+  },
+  {
+    "id": "ccst-ns-009",
+    "question": "In symmetric encryption, which of the following is true?",
+    "options": [
+      "The sender and receiver use different keys for encryption and decryption",
+      "The same key is used for both encryption and decryption",
+      "No key is required because the algorithm secures the data automatically",
+      "Only the receiver has a key; the sender does not need one"
+    ],
+    "correct": 1,
+    "explanation": "Symmetric encryption uses a single shared key for both encrypting and decrypting data. Both the sender and receiver must possess the same secret key, which makes key distribution a critical challenge."
+  },
+  {
+    "id": "ccst-ns-010",
+    "question": "What is the main advantage of asymmetric encryption over symmetric encryption?",
+    "options": [
+      "It is always faster than symmetric encryption",
+      "It uses a public-private key pair, so the encryption key can be shared openly without compromising security",
+      "It does not require any computational resources",
+      "It eliminates the need for any form of authentication"
+    ],
+    "correct": 1,
+    "explanation": "Asymmetric encryption uses a key pair: a public key (shared openly) for encryption and a private key (kept secret) for decryption. This solves the key distribution problem of symmetric encryption because the public key can be freely distributed."
+  },
+  {
+    "id": "ccst-ns-011",
+    "question": "Which wireless security protocol introduced Simultaneous Authentication of Equals (SAE) to replace the PSK handshake?",
+    "options": [
+      "WEP",
+      "WPA",
+      "WPA2",
+      "WPA3"
+    ],
+    "correct": 3,
+    "explanation": "WPA3 introduced SAE (also known as Dragonfly) to replace the 4-way PSK handshake used in WPA2. SAE provides stronger protection against offline dictionary attacks and improves security even when users choose weak passwords."
+  },
+  {
+    "id": "ccst-ns-012",
+    "question": "What is the main difference between an Intrusion Detection System (IDS) and an Intrusion Prevention System (IPS)?",
+    "options": [
+      "An IDS encrypts traffic while an IPS decrypts it",
+      "An IDS only monitors and alerts on suspicious activity, while an IPS can also actively block threats",
+      "An IDS works on wireless networks only, while an IPS works on wired networks only",
+      "There is no difference; the terms are interchangeable"
+    ],
+    "correct": 1,
+    "explanation": "An IDS passively monitors network traffic and generates alerts when suspicious activity is detected. An IPS goes a step further by actively blocking or preventing the detected threats in real time."
+  },
+  {
+    "id": "ccst-ns-013",
+    "question": "Which of the following is an example of a physical security control?",
+    "options": [
+      "Installing antivirus software on all workstations",
+      "Requiring access badges to enter the server room",
+      "Configuring a firewall rule to block port 23",
+      "Enabling WPA3 on the wireless access point"
+    ],
+    "correct": 1,
+    "explanation": "Physical security controls protect the tangible assets of an organization. Access badges, security cameras, locked server rooms, and biometric door locks are all examples of physical security measures."
+  },
+  {
+    "id": "ccst-ns-014",
+    "question": "Why is it important to regularly apply software updates and security patches?",
+    "options": [
+      "Updates always add new features that users want",
+      "Patches fix known vulnerabilities that attackers could exploit",
+      "Software will stop working completely if it is not updated monthly",
+      "Updates are only cosmetic and improve the user interface"
+    ],
+    "correct": 1,
+    "explanation": "Security patches fix known vulnerabilities in software. Without regular patching, systems remain exposed to exploits that attackers can use to gain unauthorized access, steal data, or cause disruption."
+  },
+  {
+    "id": "ccst-ns-015",
+    "question": "The CIA triad is a foundational model in information security. What does CIA stand for?",
+    "options": [
+      "Control, Identity, Authentication",
+      "Confidentiality, Integrity, Availability",
+      "Cybersecurity, Infrastructure, Access",
+      "Compliance, Investigation, Authorization"
+    ],
+    "correct": 1,
+    "explanation": "The CIA triad stands for Confidentiality (keeping data private), Integrity (ensuring data is accurate and unaltered), and Availability (making sure systems and data are accessible when needed). It is the core framework for information security."
+  },
+  {
+    "id": "ccst-ns-016",
+    "question": "What does the principle of least privilege mean?",
+    "options": [
+      "Users should be given administrator access by default to avoid productivity delays",
+      "Users should only be granted the minimum permissions necessary to perform their job functions",
+      "Only the IT department should have access to any network resources",
+      "All users on a network should share a single account with limited access"
+    ],
+    "correct": 1,
+    "explanation": "The principle of least privilege states that users, programs, and processes should only have the minimum access rights needed to perform their tasks. This limits potential damage from accidents, errors, or unauthorized use."
+  },
+  {
+    "id": "ccst-ns-017",
+    "question": "In a Distributed Denial of Service (DDoS) attack, what is the attacker's primary goal?",
+    "options": [
+      "To steal encrypted passwords from the target's database",
+      "To intercept and modify traffic between two communicating parties",
+      "To overwhelm a target server or network with massive amounts of traffic so it becomes unavailable",
+      "To install ransomware on every device connected to the target network"
+    ],
+    "correct": 2,
+    "explanation": "A DDoS attack uses multiple compromised systems to flood a target with traffic, exhausting its resources and making it unavailable to legitimate users. The goal is disruption of service, not data theft."
+  }
+]

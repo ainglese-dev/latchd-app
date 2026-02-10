@@ -1,0 +1,206 @@
+[
+  {
+    "id": "ccna-vt-001",
+    "question": "What is the primary purpose of VLANs in a switched network?",
+    "options": [
+      "To increase the speed of all switch ports",
+      "To logically segment a network into separate broadcast domains",
+      "To encrypt traffic between switches",
+      "To replace the need for IP addressing"
+    ],
+    "correct": 1,
+    "explanation": "VLANs logically divide a single physical switch (or group of switches) into multiple broadcast domains, reducing broadcast traffic and improving security without requiring separate physical hardware."
+  },
+  {
+    "id": "ccna-vt-002",
+    "question": "Which of the following is a benefit of using VLANs?",
+    "options": [
+      "They eliminate the need for routers entirely",
+      "They increase the size of the collision domain",
+      "They reduce the number of broadcast domains",
+      "They improve security by isolating sensitive traffic into separate broadcast domains"
+    ],
+    "correct": 3,
+    "explanation": "VLANs improve security by isolating groups of devices into separate broadcast domains, so sensitive traffic (such as management or finance data) is not visible to hosts in other VLANs."
+  },
+  {
+    "id": "ccna-vt-003",
+    "question": "Which command correctly creates VLAN 10 and assigns it the name 'Sales' on a Cisco switch?",
+    "options": [
+      "Switch(config-if)# vlan 10 name Sales",
+      "Switch(config)# vlan 10 followed by Switch(config-vlan)# name Sales",
+      "Switch# create vlan 10 Sales",
+      "Switch(config)# interface vlan 10 name Sales"
+    ],
+    "correct": 1,
+    "explanation": "To create a VLAN, you enter global configuration mode and use 'vlan 10' to enter VLAN configuration mode, then use the 'name Sales' command to assign a descriptive name."
+  },
+  {
+    "id": "ccna-vt-004",
+    "question": "What type of traffic does an access port carry?",
+    "options": [
+      "Traffic from all VLANs simultaneously",
+      "Only tagged 802.1Q frames",
+      "Traffic belonging to a single VLAN, sent and received as untagged frames",
+      "Only management traffic for the switch"
+    ],
+    "correct": 2,
+    "explanation": "An access port is assigned to exactly one VLAN and carries traffic for that VLAN only. Frames on an access port are untagged, meaning no 802.1Q header is added."
+  },
+  {
+    "id": "ccna-vt-005",
+    "question": "What is the key difference between an access port and a trunk port?",
+    "options": [
+      "Access ports are faster than trunk ports",
+      "Trunk ports carry traffic for multiple VLANs using 802.1Q tags, while access ports carry traffic for a single VLAN",
+      "Access ports use 802.1Q tagging, while trunk ports do not",
+      "Trunk ports can only connect to routers, not other switches"
+    ],
+    "correct": 1,
+    "explanation": "Trunk ports carry traffic for multiple VLANs by inserting an 802.1Q tag into each frame to identify the VLAN, whereas access ports belong to a single VLAN and send untagged frames."
+  },
+  {
+    "id": "ccna-vt-006",
+    "question": "In 802.1Q trunking, how is a frame's VLAN membership identified?",
+    "options": [
+      "By the source MAC address of the frame",
+      "By a 4-byte tag inserted into the Ethernet frame header that includes a 12-bit VLAN ID field",
+      "By the destination IP address",
+      "By the physical port number on the switch"
+    ],
+    "correct": 1,
+    "explanation": "802.1Q inserts a 4-byte tag into the Ethernet frame after the source MAC address. This tag contains a 12-bit VLAN ID field, allowing identification of up to 4094 VLANs."
+  },
+  {
+    "id": "ccna-vt-007",
+    "question": "What happens to frames belonging to the native VLAN on an 802.1Q trunk?",
+    "options": [
+      "They are dropped by the trunk port",
+      "They are sent untagged across the trunk",
+      "They are tagged with VLAN ID 0",
+      "They are encrypted before transmission"
+    ],
+    "correct": 1,
+    "explanation": "On an 802.1Q trunk, frames belonging to the native VLAN are sent without a VLAN tag. This is why a native VLAN mismatch between trunk endpoints can cause traffic to be placed in the wrong VLAN, creating a security risk."
+  },
+  {
+    "id": "ccna-vt-008",
+    "question": "What is the function of DTP (Dynamic Trunking Protocol)?",
+    "options": [
+      "To dynamically assign IP addresses to VLAN interfaces",
+      "To automatically negotiate trunk links between Cisco switches",
+      "To distribute VLAN databases across all switches in the network",
+      "To load-balance traffic across multiple trunk links"
+    ],
+    "correct": 1,
+    "explanation": "DTP is a Cisco proprietary protocol that automatically negotiates whether a link between two switches becomes a trunk or remains an access port. For security, many administrators disable DTP using 'switchport nonegotiate'."
+  },
+  {
+    "id": "ccna-vt-009",
+    "question": "A switch is configured as a VTP server. Which statement is true about VTP server mode?",
+    "options": [
+      "It can only receive VLAN information but cannot create or modify VLANs",
+      "It can create, modify, and delete VLANs, and propagates changes to other VTP switches in the same domain",
+      "It does not participate in VTP advertisements at all",
+      "It forwards VTP advertisements but does not synchronize its own VLAN database"
+    ],
+    "correct": 1,
+    "explanation": "A VTP server can create, modify, and delete VLANs and advertises those changes to all switches in the same VTP domain. VTP clients receive and apply these changes but cannot make local VLAN modifications."
+  },
+  {
+    "id": "ccna-vt-010",
+    "question": "Why is a Layer 3 device required for inter-VLAN routing?",
+    "options": [
+      "Because switches cannot forward any frames between ports",
+      "Because VLANs create separate broadcast domains, and traffic between different broadcast domains must be routed at Layer 3",
+      "Because VLANs disable all IP communication on a switch",
+      "Because 802.1Q tags can only be removed by a router"
+    ],
+    "correct": 1,
+    "explanation": "Each VLAN is a separate broadcast domain with its own IP subnet. Since Layer 2 switches only forward within a broadcast domain, a Layer 3 device (router or Layer 3 switch) is needed to route packets between VLANs."
+  },
+  {
+    "id": "ccna-vt-011",
+    "question": "Which inter-VLAN routing method uses a single physical router interface divided into subinterfaces, each assigned to a different VLAN?",
+    "options": [
+      "Layer 3 EtherChannel",
+      "Router-on-a-stick",
+      "Policy-based routing",
+      "Static VLAN mapping"
+    ],
+    "correct": 1,
+    "explanation": "Router-on-a-stick uses a single physical router interface connected to a switch trunk port. The router interface is divided into subinterfaces (e.g., G0/0.10, G0/0.20), each configured with 802.1Q encapsulation and an IP address for its respective VLAN."
+  },
+  {
+    "id": "ccna-vt-012",
+    "question": "What is the purpose of configuring a voice VLAN on a switch port?",
+    "options": [
+      "To block all data traffic on that port",
+      "To allow an IP phone and a PC to share the same switch port, with voice traffic separated into its own VLAN for QoS prioritization",
+      "To convert analog voice signals to digital",
+      "To encrypt voice calls end-to-end"
+    ],
+    "correct": 1,
+    "explanation": "A voice VLAN allows an IP phone connected to a switch port to send voice traffic on a separate VLAN from the PC's data traffic. This enables QoS policies to prioritize voice traffic and reduces jitter and latency."
+  },
+  {
+    "id": "ccna-vt-013",
+    "question": "What does VLAN pruning accomplish on trunk links?",
+    "options": [
+      "It removes unused VLANs from the VLAN database entirely",
+      "It prevents broadcast and unknown unicast traffic for specific VLANs from being sent across trunk links where those VLANs have no active ports",
+      "It deletes all VLANs except VLAN 1",
+      "It limits the number of MAC addresses learned per VLAN"
+    ],
+    "correct": 1,
+    "explanation": "VLAN pruning reduces unnecessary traffic on trunk links by restricting flooded traffic (broadcasts, unknown unicasts, multicasts) to only those trunk links that actually need it, based on whether the VLAN has active ports on the other side."
+  },
+  {
+    "id": "ccna-vt-014",
+    "question": "Which of the following statements about VLAN 1 is correct?",
+    "options": [
+      "VLAN 1 can be deleted from the switch",
+      "VLAN 1 is the default VLAN and cannot be deleted; all ports are assigned to it by default",
+      "VLAN 1 is reserved exclusively for voice traffic",
+      "VLAN 1 is only used on trunk ports and never on access ports"
+    ],
+    "correct": 1,
+    "explanation": "VLAN 1 is the factory-default VLAN on Cisco switches. All switch ports belong to VLAN 1 by default, and it cannot be deleted or renamed. For security best practices, administrators often move user traffic off VLAN 1."
+  },
+  {
+    "id": "ccna-vt-015",
+    "question": "What is the basic concept behind private VLANs (PVLANs)?",
+    "options": [
+      "They encrypt all traffic within a VLAN",
+      "They provide Layer 2 isolation between ports within the same primary VLAN, using promiscuous, isolated, and community port types",
+      "They are VLANs that can only be configured via the console port",
+      "They are VLANs that automatically assign IP addresses to connected devices"
+    ],
+    "correct": 1,
+    "explanation": "Private VLANs subdivide a primary VLAN into secondary VLANs (isolated and community) to restrict Layer 2 communication between hosts. Isolated ports cannot communicate with each other, community ports can communicate within their group, and promiscuous ports can communicate with all."
+  },
+  {
+    "id": "ccna-vt-016",
+    "question": "Which command statically configures a switch port as a trunk port and prevents DTP negotiation?",
+    "options": [
+      "switchport mode access",
+      "switchport mode dynamic desirable",
+      "switchport mode trunk followed by switchport nonegotiate",
+      "switchport trunk allowed vlan all"
+    ],
+    "correct": 2,
+    "explanation": "The command 'switchport mode trunk' forces the port into trunk mode, and 'switchport nonegotiate' disables DTP so the port does not send or respond to DTP negotiation frames. This is a security best practice to prevent unauthorized trunk formation."
+  },
+  {
+    "id": "ccna-vt-017",
+    "question": "On a Layer 3 switch, which configuration enables inter-VLAN routing using SVIs (Switched Virtual Interfaces)?",
+    "options": [
+      "Creating a loopback interface for each VLAN",
+      "Enabling 'ip routing' globally and creating VLAN interfaces (interface vlan X) with IP addresses for each VLAN",
+      "Configuring static routes on every access port",
+      "Enabling spanning tree on all VLANs"
+    ],
+    "correct": 1,
+    "explanation": "On a Layer 3 switch, you enable 'ip routing' in global configuration and create SVIs (e.g., 'interface vlan 10') with IP addresses serving as the default gateway for each VLAN. This is more scalable than router-on-a-stick for inter-VLAN routing."
+  }
+]
