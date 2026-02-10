@@ -25,7 +25,7 @@ export default function EmailCTA() {
     <div className="bg-white border border-[#e8e0d8] rounded-xl p-5 shadow-card">
       <p className="text-sm font-semibold text-[#2c2418] mb-1">Get notified when new exams drop</p>
       <p className="text-xs text-[#a39686] mb-4">No spam. Just new quiz content.</p>
-      <form onSubmit={handleSubmit} className="flex gap-3">
+      <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
         <input
           type="email"
           required
@@ -36,7 +36,7 @@ export default function EmailCTA() {
         />
         <button
           type="submit"
-          className="bg-[#e07840] hover:bg-[#c8682f] text-white font-semibold text-sm px-5 py-2 rounded-lg transition-colors"
+          className="bg-[#e07840] hover:bg-[#c8682f] text-white font-semibold text-sm px-5 py-2.5 w-full sm:w-auto rounded-lg transition-colors"
         >
           Notify me
         </button>

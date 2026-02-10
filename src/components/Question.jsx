@@ -1,5 +1,5 @@
 function getOptionStyle(index, correctIndex, selectedAnswer, showFeedback) {
-  const base = 'w-full text-left p-4 rounded-lg border transition-colors text-sm'
+  const base = 'w-full text-left px-3 py-3 sm:p-4 rounded-lg border transition-colors text-sm'
 
   if (!showFeedback) {
     return `${base} border-[#e8e0d8] hover:border-[#e07840] hover:bg-[#f5f0ea] active:bg-[#f5f0ea] focus:outline-none focus:ring-2 focus:ring-[#e07840]/50 shadow-card cursor-pointer`
@@ -19,7 +19,7 @@ export default function Question({ question, selectedAnswer, showFeedback, onSel
 
   return (
     <div>
-      <p className="text-lg font-medium mb-6 leading-relaxed">{question.question}</p>
+      <p className="text-base sm:text-lg font-medium mb-4 sm:mb-6 leading-relaxed">{question.question}</p>
       <div className="flex flex-col gap-3">
         {question.options.map((option, i) => (
           <button

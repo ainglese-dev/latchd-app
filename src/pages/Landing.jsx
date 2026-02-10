@@ -10,34 +10,34 @@ export default function Landing() {
     <div className="min-h-dvh px-4 py-6 pb-12">
       <div className="max-w-3xl mx-auto">
         {/* Hero */}
-        <section className="text-center py-16 md:py-24">
-          <h1 className="text-3xl md:text-4xl font-bold text-[#2c2418] mb-4">
+        <section className="text-center py-10 sm:py-16 md:py-24">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#2c2418] mb-4">
             Cisco cert practice, done right
           </h1>
-          <p className="text-lg text-[#6b5e52] mb-8 max-w-xl mx-auto">
+          <p className="text-base sm:text-lg text-[#6b5e52] mb-8 max-w-xl mx-auto">
             Free practice quizzes for DCAUTO, DEVASC, DEVCOR, and ENARSI certifications. Start practicing now.
           </p>
           <Link
             to="/app"
-            className="inline-block bg-[#e07840] hover:bg-[#c8682f] text-white font-semibold text-lg px-8 py-3 rounded-lg transition-colors"
+            className="inline-block bg-[#e07840] hover:bg-[#c8682f] text-white font-semibold text-base sm:text-lg px-6 sm:px-8 py-3 rounded-lg transition-colors"
           >
             Start Practicing 🚀
           </Link>
         </section>
 
         {/* Value Props */}
-        <section className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-          <div className="text-center p-6">
+        <section className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 mb-10 sm:mb-16">
+          <div className="text-center p-4 sm:p-6">
             <span className="text-2xl mb-3 block">🛸</span>
             <h3 className="font-semibold text-[#2c2418] mb-2">Free to Start</h3>
             <p className="text-sm text-[#6b5e52]">No credit card needed. Jump right in.</p>
           </div>
-          <div className="text-center p-6">
+          <div className="text-center p-4 sm:p-6">
             <span className="text-2xl mb-3 block">🎯</span>
             <h3 className="font-semibold text-[#2c2418] mb-2">Exam-Focused</h3>
             <p className="text-sm text-[#6b5e52]">Questions mapped to real Cisco exam topics.</p>
           </div>
-          <div className="text-center p-6">
+          <div className="text-center p-4 sm:p-6">
             <span className="text-2xl mb-3 block">⚡</span>
             <h3 className="font-semibold text-[#2c2418] mb-2">No Barriers</h3>
             <p className="text-sm text-[#6b5e52]">Start practicing immediately — no account needed for free content.</p>
@@ -45,7 +45,7 @@ export default function Landing() {
         </section>
 
         {/* Exam Preview Cards */}
-        <section className="mb-16">
+        <section className="mb-10 sm:mb-16">
           <h2 className="text-xl font-semibold text-[#2c2418] text-center mb-8">
             Available Exams
           </h2>

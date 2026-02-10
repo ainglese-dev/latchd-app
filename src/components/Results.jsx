@@ -18,7 +18,7 @@ export default function Results({ questions, answers, onTryAgain, onBackHome, ex
   return (
     <div className="pb-8">
       <div className="text-center mb-8">
-        <p className="text-5xl font-bold text-[#2c2418] mb-2">{score}/{total}</p>
+        <p className="text-4xl sm:text-5xl font-bold text-[#2c2418] mb-2">{score}/{total}</p>
         <p className={`text-lg font-medium ${passed ? 'text-[#2d8a4e]' : 'text-[#c44545]'}`}>
           {passed ? '⭐ Passed!' : '🌌 Keep exploring'}
         </p>
