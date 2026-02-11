@@ -4,11 +4,11 @@
 
 ## Vision
 
-Quiz app for network engineers studying DevNet/DC automation certifications. That's it.
+Quiz app for network engineers studying Cisco certifications — from CCST entry-level to CCNP professional tracks. That's it.
 
 ## Target User
 
-Network engineer students preparing for Cisco DevNet and Enterprise exams (DCAUTO, DEVASC, DEVCOR, ENARSI).
+Network engineers and students preparing for Cisco certifications: CCST, CCNA, DEVASC, DCAUTO, DEVCOR, ENARSI.
 
 ## v1.0 — COMPLETED ✅
 
@@ -327,26 +327,112 @@ New marketing page at `/` — app moves to `/app/*`.
 - [ ] CF Web Analytics collecting real data (deferred to v1.4)
 - [x] Deployed and live
 
-## v1.4 — PLANNED
+## Undocumented Changes (shipped by CC, not in original PRD scope)
 
-### Goals
-1. Authentication for progress tracking and premium content access
-2. Free tier remains (current content accessible without login)
-3. Premium tier requires login (unlocks locked topics, expanded question banks)
-4. Progress validation: track quiz scores, completed topics, streak history per user
-5. Replace CF Analytics placeholder token with real Cloudflare Web Analytics token
+These were added during v1.3 implementation without PRD updates:
+- **CCST (100-150) exam** — 4 topics (2 free, 2 locked)
+- **CCNA (200-301) exam** — 6 topics (4 free, 2 locked)
+- **Icons.jsx component** — SVG icon library replacing emoji buttons
+- **Version badges** — exam version pills (v1.0, v1.1, v2.0) on ExamCard and ExamDetail
+- **Blueprint links** — "Exam Topics" links to Cisco Learning Network per exam
+- **ExamCard redesigned** — responsive layout with version + blueprint + pluralization fix
+- **TopicCard redesigned** — responsive layout, locked state styling
+- **DCAUTO exam renamed** — "DCNAUTO 300-635" in exams.json (typo — should be DCAUTO)
+- **DEVCOR exam renamed** — "AUTOCOR (formerly DEVCOR) 350-901" reflecting Cisco rename
 
-### Open Questions (decide before implementation)
-- Auth provider: Supabase Auth, Auth0, Clerk, or Cloudflare Access?
-- Backend: Supabase, Cloudflare D1 + Workers, or another option?
-- What content is free vs premium? (Currently 6 free topics, 8 locked)
-- Payment integration needed, or login-only gating first?
+## Current State (post-v1.3)
 
-### NOT in v1.4 (tentative)
-- No payment processing (start with free login-only gating)
-- No social login (start with email/password)
-- No badges / gamification beyond streak
+**6 exams, 24 topics total:**
+- 12 free topics (~204 questions, 17 per topic)
+- 12 locked topics (visual lock only, URL-accessible — intentional)
+
+**Exams:** CCST, CCNA, DEVASC, DCAUTO, DEVCOR, ENARSI
+
+## v1.4 — CURRENT
+
+### Goals (priority order)
+1. **Expand free content** — add 1-2 more free topics per exam
+2. **Debt cleanup** — fix 7 known issues
+3. **Per-topic score history** — localStorage-based progress tracking
+4. **Question randomization** — shuffle question order per attempt (stretch)
+
+### 1. Free Content Expansion
+
+More free content = more organic traffic + word of mouth.
+
+**Strategy:** Unlock 1 currently-locked topic per exam OR add a new free topic.
+Target: 15-18 free topics (up from 12), ~255-306 questions.
+
+For exams with locked topics that already have question files:
+- Move `"locked": true` → `"locked": false` (or remove field)
+- Verify question quality before unlocking
+
+For exams where locked topics lack question files:
+- Create question files (17 questions each)
+- Keep topic locked until questions are written and reviewed
+
+### 2. Debt Cleanup (7 issues)
+
+- [ ] CF Analytics placeholder token → real token (CF dashboard → Web Analytics)
+- [ ] `og:image` is SVG → needs PNG/JPG 1200x630 for social previews
+- [ ] DCAUTO exam name typo: "DCNAUTO" → "DCAUTO 300-635" in exams.json
+- [ ] Missing question files for some locked topics (endpoints-media, troubleshooting, ip-services, wireless-fundamentals, meraki-apis, infrastructure-automation)
+- [ ] EmailCTA still localStorage-only (4th version deferred — decide: implement or remove)
+- [ ] PRD was stale (fixed in this update)
+- [ ] OG meta tags don't update per-route (SPA limitation — static in index.html)
+
+### 3. Per-Topic Score History
+
+- Store last 3 scores per topic in localStorage
+- Key: `latchd_scores_{examId}_{topicId}` → `[{score, total, date}]`
+- Show on TopicCard: "Last: 8/10" or mini sparkline
+- Show on ExamDetail: topic completion indicator (attempted vs not)
+- No backend needed
+
+### 4. Question Randomization (stretch)
+
+- Shuffle question order when starting a quiz
+- Shuffle answer options per question
+- Same questions, different order each attempt
+- Increases replay value
+
+### NOT in v1.4
+
+- No auth / login
+- No payment processing
+- No backend / Supabase / D1
+- No real premium gating
+- No TypeScript
+- No real email capture backend
 - No leaderboard
+- No badges
+
+### Locked Topic Policy
+
+Locked topics are UI-only hints. Content is accessible via direct URL.
+This is intentional — all current content is free. Lock signals future premium.
+Route-level gating deferred to when auth + payments exist.
+
+## v1.4 Sprint (1hr/day, ~2 weeks)
+
+| Days | Task | Done |
+|------|------|------|
+| 1-2 | Fix DCNAUTO typo, og:image PNG, CF Analytics token | ⬜ |
+| 3-4 | Unlock/create 1 free topic per exam (6 topics) | ⬜ |
+| 5-6 | Write questions for newly unlocked topics (17 each) | ⬜ |
+| 7-8 | Review question quality across all free topics | ⬜ |
+| 9-10 | Per-topic score history: localStorage + TopicCard UI | ⬜ |
+| 11-12 | Question randomization (shuffle on quiz start) | ⬜ |
+| 13-14 | Polish, deploy, verify | ⬜ |
+
+## v1.4 Success Criteria
+
+- [ ] 15+ free topics available (up from 12)
+- [ ] All 7 debt items resolved or consciously deferred
+- [ ] Per-topic score history visible on TopicCard
+- [ ] CF Web Analytics collecting real data
+- [ ] Questions randomized per attempt
+- [ ] Deployed and live
 
 ---
 
@@ -380,3 +466,5 @@ Blockers: [any issues]
 | 2026-02-08 | v1.2 completed ✅ (warm theme, SEO, analytics snippet, post-quiz CTAs) |
 | 2026-02-08 | v1.3 scope: fixes, landing page, locked topics, question expansion |
 | 2026-02-10 | v1.3 completed ✅ (landing page, 8 locked topics, 17q/topic, ENARSI exam, route restructure) |
+| 2026-02-11 | Audit: documented CC scope creep (CCST, CCNA, Icons, badges, blueprint links) |
+| 2026-02-11 | v1.4 scope: free content expansion, debt cleanup, score history, randomization |

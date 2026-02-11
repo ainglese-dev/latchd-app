@@ -4,13 +4,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Latchd — Quiz app for network engineers studying Cisco DevNet and Enterprise certifications (DCAUTO, DEVASC, DEVCOR, ENARSI). **PRD.md is the source of truth** — read it at the start of every session.
+Latchd — Quiz app for network engineers studying Cisco certifications (CCST, CCNA, DEVASC, DCAUTO, DEVCOR, ENARSI). **PRD.md is the source of truth** — read it at the start of every session.
 
 - v1.0: COMPLETED ✅ — Single DCAUTO quiz, deployed to Cloudflare Pages
 - v1.1: COMPLETED ✅ — Exam/topic structure, 4 exams, 12 topics, email CTA
 - v1.2: COMPLETED ✅ — Warm light theme, post-quiz CTA, SEO, CF Web Analytics
-- v1.3: COMPLETED ✅ — Landing page, locked topics, question expansion, ENARSI exam, v1.2 fixes
-- v1.4: PLANNED — Auth, premium gating, progress tracking (see PRD.md)
+- v1.3: COMPLETED ✅ — Landing page, locked topics, 6 exams (added CCST/CCNA), Icons, badges, blueprint links
+- v1.4: CURRENT — Free content expansion, debt cleanup, score history, question randomization
 
 ## Tech Stack
 
@@ -34,12 +34,14 @@ Five-screen SPA flow: **Landing → Home → Exam Detail → Quiz → Results**
 
 ```
 src/
-├── components/       # ExamCard, TopicCard, Question, Results, StreakCounter, EmailCTA
+├── components/       # ExamCard, TopicCard, Question, Results, StreakCounter, EmailCTA, Icons
 ├── pages/            # Landing, Home, ExamDetail, Quiz
 │   └── Landing.jsx   # Marketing landing page at /
 ├── data/
-│   ├── exams.json    # Exam registry with topics (4 exams, 14 topics)
+│   ├── exams.json    # Exam registry with topics (6 exams, 24 topics)
 │   └── questions/    # Organized by exam/topic
+│       ├── ccst/
+│       ├── ccna/
 │       ├── dcauto/
 │       ├── devasc/
 │       ├── devcor/
@@ -95,25 +97,39 @@ Landing page is a separate page component. App routes all live under `/app`.
 
 ## Locked Topics
 
-Topics in `exams.json` can have `"locked": true`. 8 topics locked (2 per exam). These show:
+Topics in `exams.json` can have `"locked": true`. 12 topics locked (2 per exam). These show:
 - Lock icon (🔒) instead of "Start Quiz" button
 - Tooltip: "Premium — coming soon"
 - No click action, no navigation
 - Visual only — no auth, no paywall
-- DEVCOR has 2 placeholder locked topics (no question files, just exams.json entries)
+- Content still accessible via direct URL (intentional — all content is free for now)
+- Some locked topics lack question files (will 404 if URL-hacked)
+
+## Score History (v1.4)
+
+- Store last 3 scores per topic in localStorage
+- Key: `latchd_scores_{examId}_{topicId}` → `[{score, total, date}]`
+- Display on TopicCard: "Last: 8/10" or completion indicator
+- Display on ExamDetail: attempted vs not-attempted topics
+
+## Question Randomization (v1.4)
+
+- Shuffle question order when starting a quiz
+- Shuffle answer options per question
+- Maintain correct answer tracking through shuffle
+- Same questions, different order each attempt
 
 ## Constraints (v1.4)
 
 Do NOT build any of these — they are explicitly excluded:
 - Authentication / login
 - Payment processing
-- Backend / Supabase
+- Backend / Supabase / D1
 - Real premium gating (lock is visual only)
 - Badges / mission patches
 - Profile page
 - TypeScript
 - Leaderboard
-- Question randomization across topics
 - Real email capture backend (EmailCTA stays localStorage)
 
 ## Lessons from v0
